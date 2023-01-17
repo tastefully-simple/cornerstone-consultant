@@ -24,7 +24,7 @@
             display:flex;
             position:relative;
             .guide-label{
-                color:$bbdarkteal;
+                color:$tsteal;
             }
         }
         &.style-logos{
@@ -32,7 +32,7 @@
                 align-items: flex-end;
                 img{
                     &.logo-white{
-                        background-color:$bbteal;
+                        background-color:$tsteal;
                         margin-left: 1rem;
                     }
                 }
@@ -45,7 +45,7 @@
                 dl{
                     display:flex;
                     dt{
-                        color:$text-gray;
+                        color:$black;
                         margin-top:30px;
                         margin-right:20px;
                         max-width:100px;
