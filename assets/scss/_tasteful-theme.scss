@@ -8,7 +8,7 @@
 $tsgreen-light: #91c63a;
 $tsgreen: #559707;
 $green-apple: #6e7a06;
-$tsred: #e4002b
+$tsred: #e4002b;
 $tsorange: #f37929;
 $tsaqua: #319990;
 $tsteal: #005e64;
@@ -22,19 +22,19 @@ $utility-success: #d5ffd8;
 
 // Text Color Classes
 // -----------------------------------------------------------------------------
-$black-text {
+.black-text {
     color: $black;
 }
 .greenapple-text{
     color: $green-apple;
 }
-$tsteal-text {
+.tsteal-text {
     color: $tsteal;
 }
-$tsred-text {
+.tsred-text {
     color: $tsred;
 }
-$white-text {
+.white-text {
     color: $white;
 }
 
@@ -42,6 +42,9 @@ $white-text {
 // -----------------------------------------------------------------------------
 .black-background {
     background-color: $black;
+}
+.tsteat-background {
+    background-color: $tsteal;
 }
 .tsgreenlight-background {
     background-color: $tsgreen-light;
