@@ -16,7 +16,6 @@
 .footer {
     background-color: $footer-background;
     border-top: container("border");
-    padding: spacing("double") 0;
     position: relative;
     transform: translateZ(0); // 3
 }
@@ -33,6 +32,133 @@
 .footer-info {
     @include grid-row($behavior: nest);
     font-size: 0; // 1
+}
+
+@media screen and (max-width: 768px) {
+    .footer-info.web {
+        display: none;
+    }
+    
+    .footer-info.mobile {
+        display: block !important;
+    }
+}
+
+.footer-info.mobile {
+    display: none;
+}
+
+.footer-drawer {
+    margin-bottom: 10px;
+    padding: 0 10px;
+    text-align: center;
+
+    ul {
+        li {
+            margin-bottom: 5px;
+        }
+    }
+}
+  
+.footer-drawer__content-wrapper {
+    font-size: 1.25em;
+    line-height: 1.4em;
+    max-height: 0px;
+    overflow: hidden;
+    transition: 0.25s ease-in-out;
+}
+
+.footer-drawer__title {
+    cursor: pointer;
+    color: stencilColor("color-secondary");
+    display: block;
+    font-size: 1.15em;
+    font-weight: 700;
+    position: relative;
+    margin-bottom: 15px;
+    transition: all 0.25s ease-out;
+}
+
+.footer-drawer__title::after {
+    border-style: solid;
+    border: 5px solid transparent;
+    border-top: 6px solid #559707;
+    border-bottom: 0 none;
+    content: " ";
+    display: inline-block;
+    height: 7px;
+    left: 7px;
+    position: relative;
+    right: 20px;
+    top: 5px;
+    transform: rotate(-360deg);
+    transition: 0.35s ease-in-out;
+    vertical-align: top;
+    width: 10px;
+}
+
+
+.footer-drawer__trigger:checked
++ .footer-drawer__title
++ .footer-drawer__content-wrapper {
+    max-height: 350px;
+}
+
+.footer-drawer__trigger:checked + .footer-drawer__title::after {
+    transform: rotate(-180deg);
+    transition: 0.25s ease-in-out;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+  
+
+.footer-upper {
+    padding-top: 1.5rem;
+}
+
+.footer-bottom {
+    background: #2d2d2d;
+    padding: 0.8rem 0;
+    color: white;
+}
+
+.footer-info-four-col {
+    @include grid-column(12);
+    color: stencilColor("color-textSecondary");
+    display: inline-block;
+    float: none;
+    font-size: fontSize("base"); // 2
+    margin-bottom: spacing("double");
+    overflow-wrap: break-word;
+    text-align: center;
+    vertical-align: top;
+    // TODO: specifically use vendor only for IE11 since overflow-wrap is not supported here
+    -ms-word-break: break-all;
+    @include breakpoint("small") {
+        text-align: left;
+        width: width("6/12");
+    }
+
+    @include breakpoint("medium") {
+        width: 25% !important;
+    }
+
+    > :first-child {
+        margin-top: 0;
+        color: stencilColor("color-secondary");
+    }
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+
+    ul {
+        li {
+            margin-bottom: 5px;
+        }
+    }
 }
 
 .footer-info-col {
@@ -111,11 +237,11 @@
     margin-left: 0;
 
     a {
-        color: stencilColor("color-textSecondary");
+        color: stencilColor("color-secondary");
         text-decoration: none;
 
         &:hover {
-            color: stencilColor("color-textSecondary--hover");
+            color: stencilColor("color-secondary--hover");
         }
     }
 }
@@ -128,13 +254,13 @@
     }
 
     > .powered-by {
-        color: stencilColor("color-textSecondary");
+        color: stencilColor("color-secondary");
         font-size: fontSize("tiny");
         margin: 0;
     }
 
     > .paypal-credit {
-        color: stencilColor("color-textSecondary");
+        color: stencilColor("color-secondary");
         font-size: fontSize("tiny");
         margin: 1em 0 2em;
     }

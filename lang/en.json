@@ -8,7 +8,10 @@
         "brands": "Popular Brands",
         "navigate": "Navigate",
         "info": "Info",
-        "categories": "Categories",
+        "products": "Products",
+        "about_us": "About Us",
+        "helpful_links": "Helpful Links",
+        "support": "Support",
         "call_us": "Call us at {phone_number}",
         "powered_by": "Powered by"
     },
