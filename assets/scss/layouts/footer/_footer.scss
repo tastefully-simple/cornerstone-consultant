@@ -52,6 +52,12 @@
     margin-bottom: 10px;
     padding: 0 10px;
     text-align: center;
+
+    ul {
+        li {
+            margin-bottom: 5px;
+        }
+    }
 }
   
 .footer-drawer__content-wrapper {
@@ -146,6 +152,12 @@ input[type="checkbox"] {
 
     > :last-child {
         margin-bottom: 0;
+    }
+
+    ul {
+        li {
+            margin-bottom: 5px;
+        }
     }
 }
 
