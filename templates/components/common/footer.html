@@ -20,88 +20,149 @@
 {{/if}}
 <footer class="footer" role="contentinfo">
     <h2 class="footer-title-sr-only">{{lang 'footer.title'}}</h2>
-    <div class="container">
-        {{#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
-            <article class="footer-info-col
-                footer-info-col--social
-                footer-info-col--{{#if theme_settings.social_icon_placement_bottom '===' 'bottom_left'}}left{{else}}right{{/if}}"
-                data-section-type="footer-webPages">
-                    <h3 class="footer-info-heading">{{lang 'social.connect'}}</h3>
-                    {{> components/common/social-links}}
-            </article>
-        {{/if}}
-        <section class="footer-info">
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
-                <h3 class="footer-info-heading">{{lang 'footer.navigate'}}</h3>
-                <ul class="footer-info-list">
-                    {{#each pages}}
-                        <li>
-                            <a href="{{url}}">{{name}}</a>
-                        </li>
-                    {{/each}}
-                    <li>
-                        <a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a>
-                    </li>
-                </ul>
-            </article>
-
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-categories">
-                <h3 class="footer-info-heading">{{lang 'footer.categories'}}</h3>
-                <ul class="footer-info-list">
-                    {{#each categories}}
-                        <li>
-                            <a href="{{url}}">{{name}}</a>
-                        </li>
-                    {{/each}}
-                </ul>
-            </article>
-
-            {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-brands">
-                <h3 class="footer-info-heading">{{lang 'footer.brands'}}</h3>
-                <ul class="footer-info-list">
-                    {{#each shop_by_brand}}
-                        <li>
-                            <a href="{{url}}">{{name}}</a>
-                        </li>
-                    {{/each}}
-                    <li><a href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
-                </ul>
-            </article>
-            {{/and}}
-
-            {{#if settings.address}}
-            <article class="footer-info-col footer-info-col--small" data-section-type="storeInfo">
-                <h3 class="footer-info-heading">{{lang 'footer.info'}}</h3>
-                <address>{{nl2br settings.address}}</address>
-                {{#if settings.phone_number}}
-                    <strong>{{lang 'footer.call_us' phone_number=settings.phone_number}}</strong>
-                {{/if}}
-            </article>
+    <div class="footer-upper">
+        <div class="container">
+            {{#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
+                <article class="footer-info-col
+                    footer-info-col--social
+                    footer-info-col--{{#if theme_settings.social_icon_placement_bottom '===' 'bottom_left'}}left{{else}}right{{/if}}"
+                    data-section-type="footer-webPages">
+                        <h3 class="footer-info-heading">{{lang 'social.connect'}}</h3>
+                        {{> components/common/social-links}}
+                </article>
             {{/if}}
 
-            <article class="footer-info-col" data-section-type="newsletterSubscription">
-                {{#if settings.show_newsletter_box}}
-                    {{> components/common/subscription-form}}
-                {{/if}}
-                {{> components/common/payment-icons}}
-            </article>
-        </section>
-        {{#if settings.paypal_commerce_credit_message}}
-        <div class="footer-copyright">
-            <p class="paypal-credit">{{nl2br settings.paypal_commerce_credit_message}}</p>
+            <section class="footer-info web">
+                <nav class="footer-info-four-col tst-accordion-item" data-section-type="footer-categories">
+                    <h3 class="footer-info-heading">{{lang 'footer.categories'}}</h3>
+                    <ul class="footer-info-list tst-accordion-body">
+                        {{#each categories}}
+                            <li>
+                                <a href="{{url}}">{{name}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </nav>
+    
+                <nav class="footer-info-four-col tst-accordion-item" data-section-type="footer-about-us">
+                    <h3 class="footer-info-heading">{{lang 'footer.about_us'}}</h3>
+                    <ul class="footer-info-list tst-accordion-body">
+                        {{#each pages}}
+                            <li>
+                                <a href="{{url}}">{{name}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </nav>
+    
+                <nav class="footer-info-four-col tst-accordion-item" data-section-type="footer-brands">
+                    <h3 class="footer-info-heading">{{lang 'footer.support'}}</h3><i class="arrow down"></i>
+                    <ul class="footer-info-list tst-accordion-body">
+                        <li>
+                            <a href="/contact-us">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="/faq">FAQ</a>
+                        </li>
+                    </ul>
+                    
+                </nav>
+                
+    
+                <nav class="footer-info-four-col tst-accordion-item" data-section-type="footer-brands">
+                    <h3 class="footer-info-heading">{{lang 'footer.helpful_links'}}</h3>
+                    <ul class="footer-info-list tst-accordion-body">
+                        <li>
+                            <a href="/#">Link to TS Central</a>
+                        </li>
+                        <li>
+                            <a href="/#">Code of Conduct</a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+
+            <section class="footer-info mobile">
+                <div class="footer-drawer">
+                    <input class="footer-drawer__trigger" id="footer-drawer" type="checkbox" />
+                    <label class="footer-drawer__title" for="footer-drawer">{{lang 'footer.categories'}}</label>
+                    <div class="footer-drawer__content-wrapper">
+                      <div class="footer-drawer__content">
+                        <ul class="footer-info-list">
+                            {{#each categories}}
+                                <li>
+                                    <a href="{{url}}">{{name}}</a>
+                                </li>
+                            {{/each}}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="footer-drawer">
+                    <input class="footer-drawer__trigger" id="footer-drawer-2" type="checkbox" />
+                    <label class="footer-drawer__title" for="footer-drawer-2">{{lang 'footer.about_us'}}</label>
+                    <div class="footer-drawer__content-wrapper">
+                      <div class="footer-drawer__content">
+                        <ul class="footer-info-list">
+                            {{#each pages}}
+                                <li>
+                                    <a href="{{url}}">{{name}}</a>
+                                </li>
+                            {{/each}}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="footer-drawer">
+                    <input class="footer-drawer__trigger" id="footer-drawer-3" type="checkbox" />
+                    <label class="footer-drawer__title" for="footer-drawer-3">{{lang 'footer.support'}}</label>
+                    <div class="footer-drawer__content-wrapper">
+                      <div class="footer-drawer__content">
+                        <ul class="footer-info-list">
+                            <li>
+                                <a href="/contact-us">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="/faq">FAQ</a>
+                            </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="footer-drawer">
+                    <input class="footer-drawer__trigger" id="footer-drawer-4" type="checkbox" />
+                    <label class="footer-drawer__title" for="footer-drawer-4">{{lang 'footer.helpful_links'}}</label>
+                    <div class="footer-drawer__content-wrapper">
+                      <div class="footer-drawer__content">
+                        <ul class="footer-info-list tst-accordion-body">
+                            <li>
+                                <a href="/#">Link to TS Central</a>
+                            </li>
+                            <li>
+                                <a href="/#">Code of Conduct</a>
+                            </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+            </section>
         </div>
-        {{/if}}
-        {{#if theme_settings.show_powered_by}}
-            <div class="footer-copyright">
-                <p class="powered-by">{{lang 'footer.powered_by'}} <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a></p>
-            </div>
-        {{/if}}
-        {{#if theme_settings.show_copyright_footer}}
-            <div class="footer-copyright">
-                <p class="powered-by">&copy; {{moment format="YYYY"}} {{settings.store_name}} </p>
-            </div>
-        {{/if}}
     </div>
-    {{{region name="ssl_site_seal--global"}}}
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="copyright-logos">
+                {{#if theme_settings.show_copyright_footer}}
+                <div class="footer-copyright">
+                    <p class="powered-by">&copy; 1998-{{moment format="YYYY"}}, Tastefully Simple, Inc. </p>
+                    <p class="powered-by">Serving suggestions throughout the website.</p>
+                </div>
+                {{/if}}
+            </div>
+            
+        </div>
+        {{{region name="ssl_site_seal--global"}}}
+    </div>
 </footer>
