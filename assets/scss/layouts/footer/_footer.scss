@@ -16,7 +16,6 @@
 .footer {
     background-color: $footer-background;
     border-top: container("border");
-    // padding: spacing("double") 0;
     position: relative;
     transform: translateZ(0); // 3
 }
@@ -53,17 +52,17 @@
     margin-bottom: 10px;
     padding: 0 10px;
     text-align: center;
-  }
+}
   
-  .footer-drawer__content-wrapper {
+.footer-drawer__content-wrapper {
     font-size: 1.25em;
     line-height: 1.4em;
     max-height: 0px;
     overflow: hidden;
     transition: 0.25s ease-in-out;
-  }
-  
-  .footer-drawer__title {
+}
+
+.footer-drawer__title {
     cursor: pointer;
     color: stencilColor("color-secondary");
     display: block;
@@ -72,9 +71,9 @@
     position: relative;
     margin-bottom: 15px;
     transition: all 0.25s ease-out;
-  }
-  
-  .footer-drawer__title::after {
+}
+
+.footer-drawer__title::after {
     border-style: solid;
     border: 5px solid transparent;
     border-top: 6px solid #559707;
@@ -90,23 +89,23 @@
     transition: 0.35s ease-in-out;
     vertical-align: top;
     width: 10px;
-  }
+}
 
-  
-  .footer-drawer__trigger:checked
-    + .footer-drawer__title
-    + .footer-drawer__content-wrapper {
+
+.footer-drawer__trigger:checked
++ .footer-drawer__title
++ .footer-drawer__content-wrapper {
     max-height: 350px;
-  }
-  
-  .footer-drawer__trigger:checked + .footer-drawer__title::after {
+}
+
+.footer-drawer__trigger:checked + .footer-drawer__title::after {
     transform: rotate(-180deg);
     transition: 0.25s ease-in-out;
-  }
-  
-  input[type="checkbox"] {
+}
+
+input[type="checkbox"] {
     display: none;
-  }
+}
   
 
 .footer-upper {
