@@ -305,6 +305,12 @@
 //
 // -----------------------------------------------------------------------------
 
+@media only screen and (max-width:800px) {
+    .navPages-search {
+        display: none;
+    }
+}
+
 .navPage-subMenu {
     display: none;
     outline: 0;
@@ -314,6 +320,8 @@
         padding: spacing("single") spacing("single") (spacing("single") + spacing("half")) !important;
         position: absolute;
         text-align: left;
+        width: 200% !important;
+        margin-left: -60%;
 
         &.is-open {
             display: block;
