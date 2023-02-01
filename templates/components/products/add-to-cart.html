@@ -2,16 +2,11 @@
     {{#if product.show_quantity_input}}
         {{inject 'productQuantityErrorMessage'  (lang 'products.quantity_error_message')}}
         <div class="form-field form-field--increments">
-            <label class="form-label form-label--alternate"
+            <label class="form-label form-label--alternate frame-caption"
                    for="qty[]">{{lang 'products.quantity'}}</label>
                 <div class="form-increment" data-quantity-change>
-                    <button class="button button--icon" data-action="dec">
-                        <span class="is-srOnly">{{lang 'products.quantity_decrease' name=product.title}}</span>
-                        <i class="icon" aria-hidden="true">
-                            <svg>
-                                <use xlink:href="#icon-keyboard-arrow-down"/>
-                            </svg>
-                        </i>
+                    <button class="icon-toggle-minus button--icon" data-action="dec">
+                        <span class="is-srOnly">{{lang 'products.quantity_decrease'}}</span>
                     </button>
                     <input class="form-input form-input--incrementTotal"
                            id="qty[]"
@@ -23,13 +18,8 @@
                            min="1"
                            pattern="[0-9]*"
                            aria-live="polite">
-                    <button class="button button--icon" data-action="inc">
-                        <span class="is-srOnly">{{lang 'products.quantity_increase' name=product.title}}</span>
-                        <i class="icon" aria-hidden="true">
-                            <svg>
-                                <use xlink:href="#icon-keyboard-arrow-up"/>
-                            </svg>
-                        </i>
+                    <button class="icon-toggle-plus button--icon" data-action="inc">
+                        <span class="is-srOnly">{{lang 'products.quantity_increase'}}</span>
                     </button>
                 </div>
         </div>
