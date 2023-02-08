@@ -4,6 +4,11 @@
     {{/or}}
 
     <ul class="navUser-section navUser-section--alt">
+        <li class="navUser-item" style="padding-bottom: 0; height: 50px">
+            <div id="quick-add-to-cart-top">
+                {{> components/common/consultant-store/quick-add-to-cart name='quick-add-to-cart'}}
+            </div>
+        </li>
         {{#if customer.store_credit.value '>' 0}}
         <li class="navUser-item">
             <a class="navUser-action navUser-action--storeCredit"
