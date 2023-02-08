@@ -1,0 +1,25 @@
+<form action="/cart.php" method="GET" data-quick-add-to-cart>
+    <input class="form-input sku-field"
+           name="sku"
+           placeholder="Add Item Number"
+           autocomplete="off"
+    >
+    <input class="form-input qty-field" type="number"
+           name="qty"
+           placeholder=""
+           value="1"
+           autocomplete="off"
+    >
+    <button type="submit" class="button button--primary add-to-cart-button" type="submit">
+        <span data-wait-message="Adding...">{{lang 'products.add_to_cart'}}</span>
+    </button>
+    <div class="quick-add-popup error-message" data-error-enter-sku>
+        {{lang 'quick_add_to_cart.messages.field_error' }}
+    </div>
+    <div class="quick-add-popup error-message" data-error-sku-unavailable>
+        {{lang 'quick_add_to_cart.messages.product_error' }}
+    </div>
+    <div class="quick-add-popup success-message" data-sku-success>
+        {{lang 'quick_add_to_cart.messages.product_success' }}
+    </div>
+</form>

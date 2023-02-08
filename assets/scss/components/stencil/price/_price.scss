@@ -11,3 +11,10 @@
 .price-section--minor {
     color: color("greys", "light");
 }
+
+.price-section {
+    &.price-section--withoutTax {
+        text-align: center;
+        font-weight: bold;
+    }
+}
