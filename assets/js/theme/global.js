@@ -13,6 +13,7 @@ import cartPreview from './global/cart-preview';
 import privacyCookieNotification from './global/cookieNotification';
 import carousel from './common/carousel';
 import svgInjector from './global/svg-injector';
+import quickAddToCart from './global/custom/quick-add-to-cart';
 
 export default class Global extends PageManager {
     onReady() {
@@ -27,7 +28,9 @@ export default class Global extends PageManager {
         mobileMenuToggle();
         privacyCookieNotification();
         svgInjector();
+
         // Custom components
+        quickAddToCart();
         const accountMenu = document.getElementById('navPages-account-main');
         if (accountMenu) {
             accountMenu.classList.add('is-open');

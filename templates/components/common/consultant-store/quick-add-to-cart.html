@@ -1,33 +1,25 @@
-<div style="margin-top: 7px;
-    padding-right: 40px;
-    height: 42px;
-    margin-left: 20px;">
-    <input class="form-input"
-           data-search-quick
-           name="{{name}}"
-           data-error-message="{{lang 'search.error.empty_field'}}"
-           placeholder="Add SKU to Cart"
+<form action="/cart.php" method="GET" data-quick-add-to-cart>
+    <input class="form-input sku-field"
+           name="sku"
+           placeholder="Add Item Number"
            autocomplete="off"
-           style="float:left; position: relative; display: block; width: 200px"
     >
-    <input class="form-input"
-           data-search-quick
-           name="{{name}}"
-           data-error-message="{{lang 'search.error.empty_field'}}"
+    <input class="form-input qty-field" type="number"
+           name="qty"
            placeholder=""
            value="1"
            autocomplete="off"
-           style="float:left; position: relative; display: block; width: 50px; text-align: center; margin-left: 5px"
     >
-    <input id="form-search-button" data-wait-message="Adding..." class="button button--primary" type="submit"
-           value="Add to Cart" style="float: left;
-    display: block;
-    position: relative;
-    font-size: 12px;
-    font-weight: 500;
-    color: white;
-    margin-left: 5px;
-    border-radius: 2px;
-    height: 42px;">
-
-</div>
+    <button type="submit" class="button button--primary add-to-cart-button" type="submit">
+        <span data-wait-message="Adding...">{{lang 'products.add_to_cart'}}</span>
+    </button>
+    <div class="quick-add-popup error-message" data-error-enter-sku>
+        {{lang 'quick_add_to_cart.messages.field_error' }}
+    </div>
+    <div class="quick-add-popup error-message" data-error-sku-unavailable>
+        {{lang 'quick_add_to_cart.messages.product_error' }}
+    </div>
+    <div class="quick-add-popup success-message" data-sku-success>
+        {{lang 'quick_add_to_cart.messages.product_success' }}
+    </div>
+</form>

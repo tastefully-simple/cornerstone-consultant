@@ -1,6 +1,9 @@
 <nav class="navPages">
     <div class="navPages-quickSearch">
-        {{> components/common/quick-search name='nav-menu-quick-search'}}
+        <div id="quick-add-to-cart-mobile">
+            <span class="quick-add-to-cart-label">Quick add product to cart</span>
+            {{> components/common/consultant-store/quick-add-to-cart name='quick-add-to-cart'}}
+        </div>
     </div>
     <ul class="navPages-list{{#if theme_settings.navigation_design '!==' 'simple'}} navPages-list-depth-max{{/if}}">
         {{#each categories}}
