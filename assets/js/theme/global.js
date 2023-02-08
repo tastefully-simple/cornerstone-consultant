@@ -27,5 +27,10 @@ export default class Global extends PageManager {
         mobileMenuToggle();
         privacyCookieNotification();
         svgInjector();
+        // Custom components
+        const accountMenu = document.getElementById('navPages-account-main');
+        if (accountMenu) {
+            accountMenu.classList.add('is-open');
+        }
     }
 }

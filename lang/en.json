@@ -295,17 +295,20 @@
         "nav": {
             "overview": "Overview",
             "orders": "Orders",
+            "order_history": "Order History",
             "returns": "Returns",
             "messages": "Messages ({num_new_messages})",
-            "wishlists": "Wish Lists",
+            "wishlists": "Favorites",
             "recently_viewed": "Recently Viewed",
             "settings": "Account Settings",
             "addresses": "Addresses",
-            "payment_methods": "Payment Methods"
+            "payment_methods": "Payment Methods",
+            "account_profile": "Account Profile",
+            "manage_subscriptions": "Manage Subscriptions"
         },
         "mobile_nav": {
             "messages": "Messages",
-            "wishlists": "Wish Lists"
+            "wishlists": "Favorites"
         },
         "addresses": {
             "heading": "Addresses",
@@ -471,10 +474,10 @@
             "no_items": "The items you've recently looked at on our site will appear below."
         },
         "wishlists": {
-            "heading": "Wish Lists",
+            "heading": "Favorites",
             "tag_line": "Fill in the form below to create a new Wish List. Click the \"Create Wish List\" button when you're done.",
             "new": "New Wish List",
-            "you_have_none": "You have no Wish Lists, add one now.",
+            "you_have_none": "You have no Favorites, add one now.",
             "empty_wishlist": "Your Wish List is empty. When you add items to your Wish List they will appear here.",
             "num_items": "Items",
             "add_item": "Add to Wish List",
@@ -1021,5 +1024,12 @@
         "privacy_policy": "Privacy Policy",
         "allow_category_tracking": "Allow [CATEGORY_NAME] tracking",
         "disallow_category_tracking": "Disallow [CATEGORY_NAME] tracking"
+    },
+    "quick_add_to_cart": {
+        "messages": {
+            "field_error": "Please complete the Item Number and Quantity fields.",
+            "product_error": "Unfortunately this product is not available for purchase.",
+            "product_success": "The item has been added!"
+        }
     }
 }

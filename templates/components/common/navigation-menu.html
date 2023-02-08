@@ -99,24 +99,39 @@
         {{/if}}
         {{#if customer}}
             <li class="navPages-item">
-                <a class="navPages-action has-subMenu"
+                <a class="navPages-action has-subMenu is-open"
                    href="{{urls.account.index}}"
                    data-collapsible="navPages-account"
                    aria-label="{{lang 'common.account'}}"
+                   id="navPages-account-main"
+                   aria-expanded="true"
                 >
-                    {{lang 'common.account'}}
-                    <i class="icon navPages-action-moreIcon" aria-hidden="true">
-                        <svg><use xlink:href="#icon-chevron-down" /></svg>
-                    </i>
+                    Hi, {{ first (split customer.name " ") }}
                 </a>
-                <div class="navPage-subMenu" id="navPages-account" aria-hidden="true" tabindex="-1">
+                <div class="navPage-subMenu is-open" id="navPages-account" aria-hidden="false" tabindex="-1">
                     <ul class="navPage-subMenu-list">
                         <li class="navPage-subMenu-item">
                             <a class="navPage-subMenu-action navPages-action"
-                               href="{{urls.account.orders.all}}"
-                               aria-label="{{lang 'account.nav.orders'}}"
+                               href="{{urls.account.details}}"
+                               aria-label="{{lang 'account.nav.order_history'}}"
                             >
-                                {{lang 'account.nav.orders'}}
+                                {{lang 'account.nav.account_profile'}}
+                            </a>
+                        </li>
+                        <li class="navPage-subMenu-item">
+                            <a class="navPage-subMenu-action navPages-action"
+                               href="{{urls.account.orders.all}}"
+                               aria-label="{{lang 'account.nav.order_history'}}"
+                            >
+                                {{lang 'account.nav.order_history'}}
+                            </a>
+                        </li>
+                        <li class="navPage-subMenu-item">
+                            <a class="navPage-subMenu-action navPages-action"
+                               href="#"
+                               aria-label="{{lang 'account.nav.manage_subscriptions'}}"
+                            >
+                                {{lang 'account.nav.manage_subscriptions'}}
                             </a>
                         </li>
                         {{#if settings.returns_enabled}}
@@ -129,22 +144,6 @@
                                 </a>
                             </li>
                         {{/if}}
-                        <li class="navPage-subMenu-item">
-                            <a class="navPage-subMenu-action navPages-action"
-                               href="{{urls.account.inbox}}"
-                               aria-label="{{lang 'account.mobile_nav.messages'}}"
-                            >
-                                {{lang 'account.mobile_nav.messages'}}
-                            </a>
-                        </li>
-                        <li class="navPage-subMenu-item">
-                            <a class="navPage-subMenu-action navPages-action"
-                               href="{{urls.account.addresses}}"
-                               aria-label="{{lang 'account.nav.addresses'}}"
-                            >
-                                {{lang 'account.nav.addresses'}}
-                            </a>
-                        </li>
                         {{#if settings.show_payment_methods}}
                             <li class="navPage-subMenu-item">
                                 <a class="navPage-subMenu-action navPages-action"
@@ -165,30 +164,14 @@
                         </li>
                         <li class="navPage-subMenu-item">
                             <a class="navPage-subMenu-action navPages-action"
-                               href="{{urls.account.recent_items}}"
-                               aria-label="{{lang 'account.nav.recently_viewed'}}"
+                               href="{{urls.auth.logout}}"
+                               aria-label="{{lang 'common.logout'}}"
                             >
-                                {{lang 'account.nav.recently_viewed'}}
-                            </a>
-                        </li>
-                        <li class="navPage-subMenu-item">
-                            <a class="navPage-subMenu-action navPages-action"
-                               href="{{urls.account.details}}"
-                               aria-label="{{lang 'account.nav.settings'}}"
-                            >
-                                {{lang 'account.nav.settings'}}
+                                {{lang 'common.logout'}}
                             </a>
                         </li>
                     </ul>
                 </div>
-            </li>
-            <li class="navPages-item">
-                <a class="navPages-action"
-                   href="{{urls.auth.logout}}"
-                   aria-label="{{lang 'common.logout'}}"
-                >
-                    {{lang 'common.logout'}}
-                </a>
             </li>
         {{else}}
             <li class="navPages-item">
