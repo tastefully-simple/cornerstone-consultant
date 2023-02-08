@@ -299,6 +299,7 @@
 
         .add-to-cart-wrapper {
             display: inline;
+            visibility: hidden;
         }
     }
 
@@ -393,7 +394,6 @@
         }
     }
 }
-
 
 // Product list (with images)
 // -----------------------------------------------------------------------------
