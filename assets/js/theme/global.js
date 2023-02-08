@@ -14,6 +14,7 @@ import privacyCookieNotification from './global/cookieNotification';
 import carousel from './common/carousel';
 import svgInjector from './global/svg-injector';
 import quickAddToCart from './global/custom/quick-add-to-cart';
+import gridListSwitcher from './global/custom/grid-list-switcher';
 
 export default class Global extends PageManager {
     onReady() {
@@ -31,6 +32,7 @@ export default class Global extends PageManager {
 
         // Custom components
         quickAddToCart();
+        gridListSwitcher();
         const accountMenu = document.getElementById('navPages-account-main');
         if (accountMenu) {
             accountMenu.classList.add('is-open');
