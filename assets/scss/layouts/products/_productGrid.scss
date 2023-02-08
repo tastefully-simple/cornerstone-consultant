@@ -17,8 +17,12 @@
     font-size: 0; // 1
     margin-bottom: spacing("single");
 
+    .card {
+        margin-bottom: 0;
+    }
+
     .product {
-        @include grid-column(6, $float: none);
+        @include grid-column(5);
         display: inline-block;
         font-size: fontSize("base"); // 1
         vertical-align: top;
@@ -29,6 +33,53 @@
 
         @include breakpoint("medium") {
             width: grid-calc(3, $total-columns);
+        }
+    }
+}
+
+@media only screen and (max-width:800px) {
+    .productGrid {
+        li.product {
+            width: 48% !important;
+            margin-bottom: 5px;
+            .button {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        li.product:nth-child(odd) {
+            margin-right: 1.5% !important;
+            margin-left: 0 !important;
+        }
+        li.product:nth-child(even) {
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+        }
+        .card {
+            margin-bottom: 10px;
+        }
+        &.list-mode {
+            .card-body {
+                width: 80% !important;
+            }
+            .card-title {
+                width: 100% !important;
+                height: unset !important;
+                text-align: left;
+                a {
+                    font-size: 13px !important;
+                    margin-top: 0 !important;
+                }
+            }
+            .price-section {
+                margin-top: 10px;
+            }
+            .card-text {
+                padding-top: 15px;
+            }
+            .card-img-container {
+                margin-top: 11px;
+            }
         }
     }
 }
@@ -44,9 +95,19 @@
 .page-sidebar + .page-content {
     .productGrid {
         .product { // 1
+            padding: 2%;
             @include breakpoint("small") {
-                width: grid-calc(4, $total-columns);
+                width: grid-calc(4, 17);
             }
+            .card-title  {
+                height: 60px;
+                a {
+                    font-size: 15px;
+                }
+            }
+        }
+        .product + .product {
+            margin-left: 1.5%;
         }
     }
 
@@ -129,5 +190,95 @@
                 @include grid-column(4, $float: none);
             }
         }
+    }
+}
+
+.list-mode {
+    .product + .product {
+        margin-left: 0 !important;
+        margin-top: 10px;
+    }
+    li.product {
+        width: 100% !important;
+        padding: 0 !important;
+        .card-figure {
+            width: 65px;
+            float: left;
+            position: relative;
+            display: block;
+            margin-top: auto;
+            margin-left: 2%;
+        }
+        .card-body {
+            width: 90%;
+            position: relative;
+            float: left;
+            display: block;
+        }
+        .card-text {
+            float: left;
+            position: relative;
+            display: block;
+            width: 10%;
+            margin-top: 1%;
+            padding-top: 5px;
+        }
+        .add-to-cart-category {
+            float: right;
+            display: block;
+            position: relative;
+        }
+        .card-title {
+            width: 50%;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block;
+            float: left;
+            a {
+                margin-top: 2%;
+                margin-left: 5%;
+            }
+        }
+        .add-to-cart-category {
+            padding-top: 3px;
+        }
+        .button {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+    }
+}
+
+.productGrid {
+    li.product {
+        border: 1px solid #ccc;
+    }
+}
+
+.grid-list-switch {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    width: 40px;
+    font-size: 30px;
+    color: #ccc;
+    &:focus, &:active {
+        outline: 0 !important;
+    }
+    &.active {
+        color: #0b7179;
+    }
+}
+.actionBar-section {
+    max-width: 60%;
+    float: left;
+    &.grid-list-selectors {
+        float: right;
+        .form-field {
+            border: none;
+        }
+    }
+    &.sort-selector {
+        padding: 5px;
     }
 }

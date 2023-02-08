@@ -1,4 +1,4 @@
-<fieldset class="form-fieldset actionBar-section">
+<fieldset class="form-fieldset actionBar-section sort-selector">
     <div class="form-field">
         <label class="form-label" for="sort">{{lang 'common.sorter.sort_by'}}</label>
         <select class="form-select form-select--small " name="sort" id="sort" role="listbox">
@@ -14,5 +14,16 @@
                 <option value="relevance" {{#if sort '==' 'relevance'}}selected{{/if}}>{{lang 'common.sorter.relevance'}}</option>
             {{/if}}
         </select>
+    </div>
+</fieldset>
+
+<fieldset class="form-fieldset actionBar-section grid-list-selectors">
+    <div class="form-field">
+        <button type="button" class="grid-list-switch" id="grid-switch">
+            <i class="fas fa-th-large"></i>
+        </button>
+        <button type="button" class="grid-list-switch" id="list-switch">
+            <i class="fal fa-list"></i>
+        </button>
     </div>
 </fieldset>

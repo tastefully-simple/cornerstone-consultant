@@ -100,10 +100,6 @@
                         {{#if pre_order}}
                             <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--small card-figcaption-button">{{lang 'products.pre_order'}}</a>
                         {{/if}}
-                        {{#if add_to_cart_url }}
-                            <a href="{{add_to_cart_url}}" data-event-type="product-click" data-button-type="add-cart" class="button button--small card-figcaption-button">{{lang 'products.add_to_cart'}}</a>
-                            <span class="product-status-message aria-description--hidden">{{lang 'category.add_cart_announcement'}}</span>
-                        {{/if}}
                         {{#if out_of_stock_message }}
                             <a href="{{url}}" data-event-type="product-click" class="button button--small card-figcaption-button" data-product-id="{{id}}">{{out_of_stock_message}}</a>
                         {{/if}}
@@ -131,7 +127,7 @@
                 {{name}}
             </a>
         </h3>
-
+        {{> components/category/custom/add-to-cart with_wallet_buttons=false id=id add_to_cart_url=add_to_cart_url}}
         <div class="card-text" data-test-info-type="price">
             {{#or customer (unless settings.hide_price_from_guests)}}
                 {{> components/products/price price=price}}
