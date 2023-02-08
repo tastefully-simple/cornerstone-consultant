@@ -279,6 +279,12 @@
     }
 }
 
+@media only screen and (max-width:800px) {
+    .header-logo {
+        margin: auto;
+    }
+}
+
 @media only screen and (min-width:801px) {
     .header-container {
         margin: 3rem auto 0.5rem;
@@ -292,11 +298,5 @@
 
     .navUser-action:hover, .navUser-item-cartLabel:hover {
         color: #f2f2f2;
-    }
-}
-.header-search-button {
-    &::before{
-        margin-left: 1px;
-        font-size: 15px;
     }
 }

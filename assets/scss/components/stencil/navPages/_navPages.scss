@@ -56,7 +56,7 @@
     &.is-open {
         display: block;
         padding-top: $header-height;
-        z-index: 0;
+        z-index: 2;
     }
 }
 
@@ -69,6 +69,7 @@
     height: 100%;
     overflow-y: auto;
     padding: spacing("single");
+    z-index: 2 !important;
 
     @include breakpoint("medium") {
         @include grid-row(); // 1
@@ -307,7 +308,58 @@
 
 @media only screen and (max-width:800px) {
     .navPages-search {
-        display: none;
+        width: 100%;
+        position: absolute;
+        z-index: 1;
+        margin-top: 55px;
+        background: #e5e5e5;
+        height: 57px;
+        .button--primary {
+            background: none;
+            position: absolute;
+            right: 5%;
+            top: 7px;
+            .fa-search:before {
+                color: #ccc;
+            }
+        }
+        .form-input {
+            width: 90%;
+            margin-left: 5%;
+            margin-top: 7px;
+        }
+    }
+}
+
+.navPages-search {
+    form {
+        .header-search-button {
+            margin-left: -9px;
+            &::before{
+                margin-left: 1px;
+                font-size: 15px;
+            }
+        }
+        input {
+            float:left;
+            position: relative;
+            display: block;
+            width: 200px
+        }
+        button {
+            float: left;
+            display: block;
+            position: relative;
+            font-size: 12px;
+            font-weight: 500;
+            color: white;
+            margin-left: 5px;
+            border-radius: 2px;
+            width: 10px;
+            background: #007078;
+            border: 0;
+            height: 42px;
+        }
     }
 }
 
@@ -458,6 +510,7 @@
 .navPages-quickSearch {
     border-bottom: container("border");
     margin-bottom: spacing("half");
+    height: 70px;
 
     @include breakpoint("medium") {
         display: none;
@@ -502,4 +555,8 @@
             padding: spacing("half") spacing("single");
         }
     }
+}
+
+#navPages-account ul li a {
+    font-weight: 100;
 }
