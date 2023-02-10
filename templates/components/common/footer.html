@@ -43,35 +43,15 @@
                 </nav>
                 <nav class="footer-info-four-col tst-accordion-item" data-section-type="footer-about-us">
                     <h3 class="footer-info-heading">{{lang 'footer.about_us'}}</h3>
-                    <ul class="footer-info-list tst-accordion-body">
-                        {{#each pages}}
-                            <li>
-                                <a href="{{url}}">{{name}}</a>
-                            </li>
-                        {{/each}}
-                    </ul>
+                    <div id="bcapi_footer_about_links"></div>
                 </nav>
                 <nav class="footer-info-four-col tst-accordion-item" data-section-type="footer-brands">
                     <h3 class="footer-info-heading">{{lang 'footer.support'}}</h3><i class="arrow down"></i>
-                    <ul class="footer-info-list tst-accordion-body">
-                        <li>
-                            <a href="/contact-us">Contact Us</a>
-                        </li>
-                        <li>
-                            <a href="/faq">FAQ</a>
-                        </li>
-                    </ul>
+                    <div id="bcapi_footer_support_links"></div>
                 </nav>
                 <nav class="footer-info-four-col tst-accordion-item" data-section-type="footer-brands">
                     <h3 class="footer-info-heading">{{lang 'footer.helpful_links'}}</h3>
-                    <ul class="footer-info-list tst-accordion-body">
-                        <li>
-                            <a href="/#">Link to TS Central</a>
-                        </li>
-                        <li>
-                            <a href="/#">Code of Conduct</a>
-                        </li>
-                    </ul>
+                    <div id="bcapi_footer_helpful_links"></div>
                 </nav>
             </section>
             <section class="footer-info mobile">
@@ -154,3 +134,4 @@
         {{{region name="ssl_site_seal--global"}}}
     </div>
 </footer>
+{{> components/consultant-store/bcapi-loader }}
