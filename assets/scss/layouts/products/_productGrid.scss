@@ -58,7 +58,7 @@
         .card {
             margin-bottom: 10px;
         }
-        &.list-mode {
+        &.list-switch {
             .card-body {
                 width: 80% !important;
             }
@@ -193,7 +193,7 @@
     }
 }
 
-.list-mode {
+.list-switch {
     .product + .product {
         margin-left: 0 !important;
         margin-top: 10px;
