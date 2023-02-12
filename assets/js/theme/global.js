@@ -15,6 +15,7 @@ import carousel from './common/carousel';
 import svgInjector from './global/svg-injector';
 import quickAddToCart from './global/custom/quick-add-to-cart';
 import gridListSwitcher from './global/custom/grid-list-switcher';
+import loginModal from './global/custom/login-modal';
 
 export default class Global extends PageManager {
     onReady() {
@@ -31,6 +32,7 @@ export default class Global extends PageManager {
         svgInjector();
 
         // Custom components
+        loginModal();
         quickAddToCart();
         gridListSwitcher();
         const accountMenu = document.getElementById('navPages-account-main');
