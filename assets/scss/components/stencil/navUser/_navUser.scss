@@ -404,11 +404,14 @@
 }
 #quick-add-to-cart-mobile {
     height: 42px;
+    input {
+        height: 41px;
+    }
     .sku-field {
         float:left;
         position: relative;
         display: block;
-        width: 50%
+        width: 50%;
     }
     .qty-field {
         float:left;
@@ -452,6 +455,9 @@
     padding-right: 10px;
     height: 42px;
     margin-left: 20px;
+    input {
+        height: 41px;
+    }
     .sku-field {
         float:left;
         position: relative;
