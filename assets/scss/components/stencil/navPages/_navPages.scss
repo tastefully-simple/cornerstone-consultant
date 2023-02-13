@@ -102,6 +102,17 @@
     }
 }
 
+@media only screen and (min-width:801px) {
+    .navPages-list {
+        margin-top: 13px !important;
+    }
+    .navPages-search {
+        form {
+            margin-top: 12px;
+        }
+    }
+}
+
 .navPages-list {
     margin: 0;
 
@@ -187,7 +198,7 @@
 .navPages-action {
     color: stencilColor("navPages-color");
     display: block;
-    font-size: fontSize("smaller");
+    font-size: fontSize("tiny");
     font-weight: fontWeight("bold");
     padding: spacing("half") 0;
     text-decoration: none;
@@ -325,6 +336,7 @@
         }
         .form-input {
             width: 90%;
+            max-width: 90%;
             margin-left: 5%;
             margin-top: 7px;
         }
@@ -344,7 +356,9 @@
             float:left;
             position: relative;
             display: block;
-            width: 200px
+            width: 200px;
+            max-width: 70%;
+            height: 42px;
         }
         button {
             float: left;
