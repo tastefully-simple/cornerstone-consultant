@@ -74,13 +74,9 @@
                     <input class="footer-drawer__trigger" id="footer-drawer-2" type="checkbox" />
                     <label class="footer-drawer__title" for="footer-drawer-2">{{lang 'footer.about_us'}}</label>
                     <div class="footer-drawer__content-wrapper">
-                      <div class="footer-drawer__content">
+                      <div class="footer-drawer__content bcapi_footer_about_links">
                         <ul class="footer-info-list">
-                            {{#each pages}}
-                                <li>
-                                    <a href="{{url}}">{{name}}</a>
-                                </li>
-                            {{/each}}
+                            <div class="bcapi_footer_about_links"></div>
                         </ul>
                       </div>
                     </div>
@@ -90,14 +86,7 @@
                     <label class="footer-drawer__title" for="footer-drawer-3">{{lang 'footer.support'}}</label>
                     <div class="footer-drawer__content-wrapper">
                       <div class="footer-drawer__content">
-                        <ul class="footer-info-list">
-                            <li>
-                                <a href="/contact-us">Contact Us</a>
-                            </li>
-                            <li>
-                                <a href="/faq">FAQ</a>
-                            </li>
-                        </ul>
+                        <div class="bcapi_footer_support_links"></div>
                       </div>
                     </div>
                   </div>
@@ -106,14 +95,7 @@
                     <label class="footer-drawer__title" for="footer-drawer-4">{{lang 'footer.helpful_links'}}</label>
                     <div class="footer-drawer__content-wrapper">
                       <div class="footer-drawer__content">
-                        <ul class="footer-info-list tst-accordion-body">
-                            <li>
-                                <a href="/#">Link to TS Central</a>
-                            </li>
-                            <li>
-                                <a href="/#">Code of Conduct</a>
-                            </li>
-                        </ul>
+                        <div class="bcapi_footer_helpful_links"></div>
                       </div>
                     </div>
                   </div>
