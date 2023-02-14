@@ -30,8 +30,8 @@ export default function () {
         inputSubmit.innerHTML = $(inputSubmit).attr('data-wait-message');
 
         utils.api.cart.makeRequest('/cart.php', 'GET', options, false, (err, response) => {
-            const isAddedToCart = $(response).find('div[data-cart-status]')[0].children.length;
-            if (isAddedToCart === 0) {
+            const isAddedToCart = $(response).find('div[data-cart-status]')[0];
+            if (typeof isAddedToCart !== 'undefined' && isAddedToCart.children.length === 0) {
                 $($(event.currentTarget).find('div[data-sku-success]')).show().delay(5000).fadeOut();
             } else {
                 $($(event.currentTarget).find('div[data-error-sku-unavailable]')).show().delay(5000).fadeOut();
