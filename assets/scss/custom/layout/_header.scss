@@ -1,0 +1,27 @@
+// =============================================================================
+// TASTEFULLY SIMPLE HEADER (CSS)
+// =============================================================================
+
+.header-logo {
+  z-index: 1;
+}
+
+.navPages-action {
+  text-transform: lowercase !important;
+}
+
+.quick-add-to-cart-label, .sku-field {
+  text-transform: lowercase !important;
+}
+
+.navUser-item-cartLabel {
+  margin-top: 2px;
+  display: block;
+  position: relative;
+  float: left;
+  margin-right: 3px;
+}
+
+a[data-collapsible="navPages-account"] {
+  text-transform: unset;
+}
