@@ -1,0 +1,12 @@
+// =============================================================================
+// Tastefully Simple My Account Styles
+// =============================================================================
+
+form[data-edit-account-form] {
+  #FormField_1_input, #FormField_2_inpu, #FormField_3_input, #FormField_24_input, #FormField_2_input {
+    pointer-events: none;
+    background-color: $smoke;
+    color: $aluminum;
+    cursor: not-allowed;
+  }
+}
