@@ -33,6 +33,13 @@ export default function () {
             const isAddedToCart = $(response).find('div[data-cart-status]')[0];
             if (typeof isAddedToCart !== 'undefined' && isAddedToCart.children.length === 0) {
                 $($(event.currentTarget).find('div[data-sku-success]')).show().delay(5000).fadeOut();
+
+                // Update mini cart count
+                const totalCartItems = $('h1.page-heading:first', response)[0].innerHTML.replace(/[^0-9]/g, '');
+                if (!$('.cart-quantity:first').hasClass('countPill--positive')) {
+                    $('.cart-quantity:first').addClass('countPill--positive');
+                }
+                $('.cart-quantity:first').html(totalCartItems);
             } else {
                 $($(event.currentTarget).find('div[data-error-sku-unavailable]')).show().delay(5000).fadeOut();
             }
