@@ -274,6 +274,8 @@
         "heading": "Sign in",
         "field_email": "Email Address:",
         "field_password": "Password:",
+        "sso_message": "You will need to login using TS Central. Please click button below to be redirected.",
+        "click_here": "Click Here to Sign In",
         "submit_value": "Sign in",
         "forgot_password": "Forgot password",
         "new_customer": {
