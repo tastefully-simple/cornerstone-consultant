@@ -15,7 +15,6 @@ import { createTranslationDictionary } from './common/utils/translations-utils';
 import { creditCardType, storeInstrument, Validators as CCValidators, Formatters as CCFormatters } from './common/payment-method';
 import { showAlertModal } from './global/modal';
 import compareProducts from './global/compare-products';
-import $ from 'jquery';
 
 export default class Account extends PageManager {
     constructor(context) {
@@ -23,15 +22,6 @@ export default class Account extends PageManager {
         this.validationDictionary = createTranslationDictionary(context);
         this.$state = $('[data-field-type="State"]');
         this.$body = $('body');
-    }
-
-    cleanPasswordFields() {
-        const passwordFields = document.querySelectorAll('input[type=password]');
-        // eslint-disable-next-line array-callback-return
-        Array.from(passwordFields).map((field) => {
-            // eslint-disable-next-line no-param-reassign
-            field.value = '';
-        });
     }
 
     onReady() {
@@ -43,18 +33,6 @@ export default class Account extends PageManager {
         const $reorderForm = classifyForm('[data-account-reorder-form]');
         const $invoiceButton = $('[data-print-invoice]');
         const $bigCommerce = window.BigCommerce;
-
-        // Clear all password fields 2 seconds after loading the page
-        // Just using "onReady" doesn't work because Chrome fills the password fields using its autocomplete
-        // a few moments after the page is ready
-        setTimeout(() => {
-            this.cleanPasswordFields();
-        }, 2000);
-
-        // Clear all password fields before submitting the form
-        $editAccountForm.on('submit', () => {
-            this.cleanPasswordFields();
-        });
 
         compareProducts(this.context);
 
