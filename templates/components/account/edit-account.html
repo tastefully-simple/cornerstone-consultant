@@ -8,35 +8,31 @@
             <div class="form-field" id="account_firstname_id">
                 <label class="form-label" for="account_firstname">
                     {{lang 'account.settings.first_name' }}
-                    <small>{{lang 'common.required' }}</small>
+                    <small>{{lang 'common.locked' }}</small>
                 </label>
-                <input aria-labelledby="account_firstname_id" aria-live="polite" type="text" class="form-input" name="account_firstname" id="account_firstname" value="{{forms.edit_account.first_name}}">
+                <input disabled aria-labelledby="account_firstname_id" aria-live="polite" type="text" class="form-input" name="account_firstname" id="account_firstname" value="{{forms.edit_account.first_name}}">
             </div>
             <div class="form-field" id="account_lastname_id">
                 <label class="form-label" for="account_lastname">
                     {{lang 'account.settings.last_name' }}
-                    <small>{{lang 'common.required' }}</small>
+                    <small>{{lang 'common.locked' }}</small>
                 </label>
-                <input aria-labelledby="account_lastname_id" aria-live="polite" type="text" class="form-input" name="account_lastname" id="account_lastname" value="{{forms.edit_account.last_name}}">
+                <input disabled aria-labelledby="account_lastname_id" aria-live="polite" type="text" class="form-input" name="account_lastname" id="account_lastname" value="{{forms.edit_account.last_name}}">
             </div>
-            <div class="form-field" id="account_companyname_id">
-                <label class="form-label" for="account_companyname">
-                    {{lang 'account.settings.company' }}
+            <div class="form-field" id="account_email_id">
+                <label class="form-label" for="account_email">
+                    {{lang 'account.settings.email' }}
+                    <small>{{lang 'common.locked' }}</small>
                 </label>
-                <input aria-labelledby="account_companyname_id" aria-live="polite" type="text" class="form-input" name="account_companyname" id="account_companyname" value="{{forms.edit_account.company_name}}">
+                <input disabled aria-labelledby="account_email_id" aria-live="polite" type="text" class="form-input" name="account_lastname" id="account_email" value="{{customer.email}}">
             </div>
             <div class="form-field" id="account_phone_id">
                 <label class="form-label" for="account_phone">
+                    <small>{{lang 'common.locked' }}</small>
                     {{lang 'account.settings.phone' }}
                 </label>
-                <input aria-labelledby="account_phone_id" aria-live="polite" type="text" class="form-input" name="account_phone" id="account_phone" value="{{forms.edit_account.phone}}">
+                <input disabled aria-labelledby="account_phone_id" aria-live="polite" type="text" class="form-input" name="account_phone" id="account_phone" value="{{forms.edit_account.phone}}">
             </div>
-            {{#each forms.edit_account.fields}}
-                {{{dynamicComponent 'components/common/forms'}}}
-            {{/each}}
         </div>
     </fieldset>
-    <div class="form-actions">
-        <button class="button button--primary">{{lang 'account.settings.update_details'}}</button>
-    </div>
 </form>
