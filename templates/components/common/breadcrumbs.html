@@ -7,7 +7,17 @@
                        href="{{url}}"
                        {{#if @last}}aria-current="page"{{/if}}
                     >
-                        <span>{{name}}</span>
+                        <span>
+                            {{#if name '===' 'Your Orders'}}
+                                {{lang 'account.orders.heading' }}
+                            {{else if name '===' 'Account Details'}}
+                                {{lang 'account.settings.heading' }}
+                            {{else if name '===' 'Your Wishlists'}}
+                                {{lang 'account.wishlists.heading' }}
+                            {{else}}
+                                {{name}}
+                            {{/if}}
+                        </span>
                     </a>
                 </li>
             {{/each}}

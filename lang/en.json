@@ -294,13 +294,13 @@
         "breadcrumb": "Your Account",
         "nav": {
             "overview": "Overview",
-            "orders": "Orders",
+            "orders": "Order History",
             "order_history": "Order History",
             "returns": "Returns",
             "messages": "Messages ({num_new_messages})",
-            "wishlists": "Favorites",
+            "wishlists": "Favorites Lists",
             "recently_viewed": "Recently Viewed",
-            "settings": "Account Settings",
+            "settings": "Account Profile",
             "addresses": "Addresses",
             "payment_methods": "Payment Methods",
             "account_profile": "Account Profile",
@@ -324,7 +324,7 @@
             "merchant_said": "{store_name} said:"
         },
         "orders": {
-            "heading": "Orders",
+            "heading": "Order History",
             "none": "You haven't placed any orders with us. When you do, their status will appear on this page.",
             "return": {
                 "already_returned": "This order contains no products that can be returned. Have you already returned all of the items within this order?",
@@ -458,7 +458,7 @@
             }
         },
         "settings": {
-            "heading": "Account Settings",
+            "heading": "Account Profile",
             "first_name": "First Name",
             "last_name": "Last Name",
             "email": "Email Address",
@@ -474,7 +474,7 @@
             "no_items": "The items you've recently looked at on our site will appear below."
         },
         "wishlists": {
-            "heading": "Favorites",
+            "heading": "Favorites Lists",
             "tag_line": "Fill in the form below to create a new Wish List. Click the \"Create Wish List\" button when you're done.",
             "new": "New Wish List",
             "you_have_none": "You have no Favorites, add one now.",
