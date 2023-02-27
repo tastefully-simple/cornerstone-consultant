@@ -364,7 +364,7 @@
     "amazon-button-color": "Gold",
     "masterpass-button-color": "black",
     "paymentbuttons-provider-sorting": [],
-    "force_session": {
+    "session_management": {
       "enabled": true,
       "login_url": "#",
       "timeout_seconds": 360
@@ -408,7 +408,7 @@
       },
       "images": {},
       "settings": {
-        "force_session": {
+        "session_management": {
           "enabled": false,
           "login_url": "#",
           "timeout_seconds": 360
@@ -435,7 +435,7 @@
       },
       "images": {},
       "settings": {
-        "force_session": {
+        "session_management": {
           "enabled": true,
           "login_url": "#",
           "timeout_seconds": 360
@@ -462,7 +462,7 @@
       },
       "images": {},
       "settings": {
-        "force_session": {
+        "session_management": {
           "enabled": true,
           "login_url": "#",
           "timeout_seconds": 360
