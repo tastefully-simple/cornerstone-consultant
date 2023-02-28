@@ -72,7 +72,7 @@
 
     @include breakpoint("small") { // 4
         margin-left: remCalc($header-toggle-width * 1.5);
-        margin-right: remCalc($header-toggle-width * 1.5);
+        margin-right: remCalc($header-toggle-width);
     }
 
     @include breakpoint("medium") {
