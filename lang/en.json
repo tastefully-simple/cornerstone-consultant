@@ -478,28 +478,30 @@
         },
         "wishlists": {
             "heading": "Favorites Lists",
-            "tag_line": "Fill in the form below to create a new Wish List. Click the \"Create Wish List\" button when you're done.",
-            "new": "New Wish List",
-            "you_have_none": "You have no Favorites, add one now.",
-            "empty_wishlist": "Your Wish List is empty. When you add items to your Wish List they will appear here.",
+            "tag_line": "Fill in the form below to create a new Favorites List. Click the \"Create Favorites List\" button when you're done.",
+            "new": "Edit Favorites List",
+            "new_button": "New Favorites List",
+            "you_have_none": "You have no Favorites List, add one now.",
+            "empty_wishlist": "Your Favorites List is empty. When you add items to your Favorites List they will appear here.",
             "num_items": "Items",
             "add_item": "Add to Favorites",
             "remove_item": "Remove Item",
-            "name": "Favorite Name",
+            "name": "Favorites List Name",
             "shared": "Shared",
             "action": "Action",
             "add": "Add Favorite",
             "delete_all": "Delete All",
             "edit": "Edit Favorite",
             "view_heading": "Favorite: {name}",
-            "share_intro": "Share this Favorite with friends:",
+            "share_intro": "Share this Favorites List with friends:",
             "num_products": "{num_products, plural, one {1 product} other {# products}}",
-            "create": "Create Favorite",
+            "create": "Create Favorites List",
             "save": "Save Favorite",
-            "delete_alert": "Are you sure you want to delete your Favorite(s)? This action cannot be undone.",
+            "delete_alert": "Are you sure you want to delete your Favorites List(s)? This action cannot be undone.",
             "create_new": "Create New Favorite",
             "add_to_default": "Add to My Favorite",
-            "enter_wishlist_name_error": "You must enter a wishlist name."
+            "enter_wishlist_name_error": "You must enter a Favorites List name.",
+            "list": "Favorite List Name"
         }
     },
     "page": {
@@ -662,8 +664,8 @@
             "searchsubs": "Automatically search sub categories"
         },
         "wishlist": {
-            "name": "Favorite Name:",
-            "public": "Share Favorite?"
+            "name": "Favorites List Name:",
+            "public": "Share Favorites List?"
         },
         "validate": {
             "account": {
