@@ -64,6 +64,13 @@
     position: relative;
     margin: auto;
   }
+  .navPages-list--user {
+    .navPages-action {
+      &.is-open {
+        text-transform: capitalize !important;
+      }
+    }
+  }
 }
 
 .quick-add-popup {
