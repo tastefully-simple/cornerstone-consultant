@@ -28,26 +28,26 @@
         </div>
         {{/if}}
 
+        <div class="navContainer" style="display: flex">
+            <div class="navPages-container" id="menu" data-menu>
+                {{> components/common/navigation-menu}}
+            </div>
 
-        <div class="navPages-container" id="menu" data-menu>
-            {{> components/common/navigation-menu}}
+            <div class="navPages-search">
+                <form class="form" action="/search.php">
+                    <input class="form-input"
+                           data-search-quick
+                           name="search_query_adv"
+                           placeholder="keywords"
+                           autocomplete="off"
+                           value="{{forms.search.query}}"
+                    >
+                    <button class="button button--primary" type="submit">
+                        <i class="header-search-button fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
         </div>
-
-        <div class="navPages-search">
-            <form class="form" action="/search.php">
-                <input class="form-input"
-                       data-search-quick
-                       name="search_query_adv"
-                       placeholder="keywords"
-                       autocomplete="off"
-                       value="{{forms.search.query}}"
-                >
-                <button class="button button--primary" type="submit">
-                    <i class="header-search-button fa fa-search"></i>
-                </button>
-            </form>
-        </div>
-        {{{region name="header_navigation_bottom--global"}}}
     </div>
 </header>
 {{{region name="header_bottom--global"}}}
