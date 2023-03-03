@@ -1,6 +1,18 @@
 // =============================================================================
 // CONSULTANT STORE PRODUCT
 // =============================================================================
+
+// Bold
+.bsub-widget {
+    border-style:none;
+    select {
+        border: 1px solid;
+    }
+}
+.bsub-details__toggle-btn { 
+    display: none;
+}
+
 // Product Page
 .productView {
     // Product Details Section - productView-product
