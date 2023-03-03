@@ -72,5 +72,18 @@ export default class WishList extends PageManager {
         }
 
         this.wishlistDeleteConfirm();
+        this.updateWishlistButton();
+        this.updateWishlistTable();
+    }
+
+    updateWishlistButton() {
+        $('.form-actions a[data-wishlist]').html(this.context.newWishlistLabel);
+    }
+
+    updateWishlistTable() {
+        // Change first column label
+        $('.wishlists-table th:first').html(this.context.listColumnLabel);
+        // Change edit button styles
+        $('.wishlists-table a[data-wishlist]').addClass('button--primary');
     }
 }
