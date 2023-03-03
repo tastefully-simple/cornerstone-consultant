@@ -24,3 +24,30 @@
 a[data-collapsible="navPages-account"] {
   text-transform: unset;
 }
+
+@media only screen and (min-width:801px) {
+  .header-container {
+    max-width: 1920px !important;
+  }
+  .navUser--desktop {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: flex-end;
+    max-width: 1920px;
+    justify-content: flex-end;
+  }
+}
+.header-logo {
+  @include breakpoint("small") { // 4
+    margin-left: 2rem;
+  }
+}
+@media only screen and (max-width:800px) {
+  div[data-content-region="header_bottom"], #main-content {
+    margin-top: 57px;
+  }
+  .countPill {
+    background-color: $teal;
+  }
+}
