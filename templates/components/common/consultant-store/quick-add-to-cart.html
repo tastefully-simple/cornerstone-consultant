@@ -2,7 +2,7 @@
     <input class="form-input sku-field"
            name="sku"
            placeholder="Add Item Number"
-           autocomplete="off"
+           autocomplete="off" id="field-sku" tabindex="1"
     >
     <input class="form-input qty-field" type="number"
            name="qty"
@@ -10,16 +10,16 @@
            value="1"
            autocomplete="off"
     >
-    <button type="submit" class="button button--primary add-to-cart-button" type="submit">
+    <button type="submit" class="button button--primary add-to-cart-button" type="submit" tabindex="3">
         <span data-wait-message="Adding...">{{lang 'products.add_to_cart'}}</span>
     </button>
-    <div class="quick-add-popup error-message" data-error-enter-sku>
+    <div class="quick-add-popup error-message" id="error1" data-error-enter-sku>
         {{lang 'quick_add_to_cart.messages.field_error' }}
     </div>
-    <div class="quick-add-popup error-message" data-error-sku-unavailable>
-        {{lang 'quick_add_to_cart.messages.product_error' }}
+    <div class="quick-add-popup error-message" id="error2" tabindex="4" data-error-sku-unavailable>
+       test test test test test test
     </div>
-    <div class="quick-add-popup success-message" data-sku-success>
+    <div class="quick-add-popup success-message" id="error3" data-sku-success>
         {{lang 'quick_add_to_cart.messages.product_success' }}
     </div>
 </form>

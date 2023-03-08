@@ -100,6 +100,7 @@
 
   .add-to-cart-button {
     float: left;
+    font-weight: 700;
     display: block;
     position: relative;
     font-size: 18px;
@@ -126,7 +127,7 @@
 }
 
 #quick-add-to-cart-top {
-  margin-top: 7px;
+  margin-top: 5px;
   padding-right: 10px;
   height: 42px;
   margin-left: 20px;
@@ -139,7 +140,8 @@
     float: left;
     position: relative;
     display: block;
-    width: 200px
+    width: 200px;
+    text-transform: capitalize !important;
   }
 
   .qty-field {
@@ -155,8 +157,8 @@
     float: left;
     display: block;
     position: relative;
-    font-weight: 500;
-    color: #ffffff;
+    font-weight: 700;
+    color: #000000;
     margin-left: 5px;
     border-radius: 2px;
     height: 42px;
