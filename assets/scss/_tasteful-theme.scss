@@ -87,16 +87,16 @@ a,
     font-size:20px;
 }
 .frametext{
-    font:400 16px stencilFontFamily("body-font"); 
+    font:400 16px stencilFontFamily("body-font");
 }
 .frametext-black{
-    font:900 16px stencilFontFamily("body-font"); 
+    font:900 16px stencilFontFamily("body-font");
 }
 .frametext-bold{
-    font:700 16px stencilFontFamily("body-font"); 
+    font:700 16px stencilFontFamily("body-font");
 }
 .frametext-semibold{
-    font:600 16px stencilFontFamily("body-font"); 
+    font:600 16px stencilFontFamily("body-font");
 }
 .frametext-body{
     @extend .frametext;
@@ -388,3 +388,10 @@ textarea{
     flex-direction:column;
 }
 
+// Cookie consent privacy policy link
+a {
+    &.eapp-cookie-consent-message-componentMore {
+        font-size: 12px;
+        font-weight: 800;
+    }
+}

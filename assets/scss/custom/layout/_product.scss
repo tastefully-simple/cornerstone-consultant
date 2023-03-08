@@ -9,12 +9,17 @@
         border: 1px solid;
     }
 }
-.bsub-details__toggle-btn { 
+.bsub-details__toggle-btn {
     display: none;
 }
 
 // Product Page
 .productView {
+    .price-section {
+        &.price-section--withoutTax {
+            text-align: left;
+        }
+    }
     // Product Details Section - productView-product
     .productView-details {
         margin-bottom: 0px;

@@ -32,7 +32,7 @@ export default function () {
         utils.api.cart.makeRequest('/cart.php', 'GET', options, false, (err, response) => {
             const isAddedToCart = $(response).find('div[data-cart-status]')[0];
             if (typeof isAddedToCart !== 'undefined' && isAddedToCart.children.length === 0) {
-                $($(event.currentTarget).find('div[data-sku-success]')).show().delay(5000).fadeOut();
+                $($(event.currentTarget).find('div[data-sku-success]')).show();
 
                 // Update mini cart count
                 const totalCartItems = $('h1.page-heading:first', response)[0].innerHTML.replace(/[^0-9]/g, '');
@@ -41,8 +41,11 @@ export default function () {
                 }
                 $('.cart-quantity:first').html(totalCartItems);
             } else {
-                $($(event.currentTarget).find('div[data-error-sku-unavailable]')).show().delay(5000).fadeOut();
+                $($(event.currentTarget).find('div[data-error-sku-unavailable]')).show();
+                document.getElementById('error2').focus();
             }
+
+            document.getElementById('error2').click();
             // Reset button label back to the original value
             inputSubmit.innerHTML = tempLabel;
         });
