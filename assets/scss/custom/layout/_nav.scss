@@ -15,6 +15,39 @@
 }
 
 @media only screen and (min-width:801px) {
+  #navpages-quick-add-mobile {
+    display: none;
+  }
+  [move-submenu="true"] {
+    width: 1000px !important;
+    left: -500px !important;
+    margin-left: 50%;
+    top: 130px;
+    position: absolute;;
+    z-index: 10;
+  }
+  .navPage-subMenu-item {
+    list-style: none;
+    width: 33%;
+  }
+  [target-submenu="true"] {
+    &.is-open {
+      background-color: transparent;
+      &::before {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid #e2e2e2;
+        content: '';
+        height: 0;
+        left: 31%;
+        position: absolute;
+        top: 20px;
+        width: 0;
+        margin-top: 33px;
+        margin-left: -17%;
+      }
+    }
+  }
   .navUser {
     background-color: #2d2d2d;
   }
@@ -64,6 +97,11 @@
     position: relative;
     margin: auto;
   }
+  li {
+    &.navPages-item {
+      clear: both;
+    }
+  }
   .navPages-list--user {
     .navPages-action {
       &.is-open {
@@ -88,51 +126,7 @@
     color: #ffffff;
   }
 }
-#quick-add-to-cart-mobile {
-  height: 42px;
-  input {
-    height: 41px;
-  }
-  .sku-field {
-    float:left;
-    position: relative;
-    display: block;
-    width: 50%;
-  }
-  .qty-field {
-    float:left;
-    position: relative;
-    display: block;
-    width: 23%;
-    text-align: center;
-    margin-left: 1%;
-    margin-right: 1%;
-  }
-  .quick-add-to-cart-label {
-    font-size: 11px;
-    text-transform: uppercase;
-  }
-  .add-to-cart-button {
-    float: left;
-    display: block;
-    position: relative;
-    font-size: 18px;
-    color: #ffffff;
-    border-radius: 2px;
-    height: 41px;
-    width: 25%;
-    font-family: "Font Awesome Kit";
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1;
-    &::after {
-      content: "\e001";
-    }
-    span {
-      display: none;
-    }
-  }
+
+.navPages-search form input {
+  width: 250px;
 }
