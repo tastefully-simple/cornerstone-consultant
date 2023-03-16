@@ -106,8 +106,12 @@
                 }
             }
         }
-        .product + .product {
-            margin-left: 1.5%;
+        .product {
+            margin-right: 1.5%;
+            margin-top: 20px;
+        }
+        .product:nth-of-type(4n) {
+            margin-right: 0 !important;
         }
     }
 

@@ -26,8 +26,12 @@ a[data-collapsible="navPages-account"] {
 }
 
 @media only screen and (min-width:801px) {
+  .navPages-action {
+    font: 900 14px Muli;
+  }
   .header-container {
     max-width: 1920px !important;
+    margin: 1.5rem auto 1.5rem;
   }
   .navUser--desktop {
     display: flex;
@@ -36,6 +40,13 @@ a[data-collapsible="navPages-account"] {
     align-items: flex-end;
     max-width: 1920px;
     justify-content: flex-end;
+  }
+  .header-logo-image-container {
+    min-height: unset;
+  }
+  .header-logo-image {
+    width: 200px;
+    margin-top: 10px;
   }
 }
 .header-logo {

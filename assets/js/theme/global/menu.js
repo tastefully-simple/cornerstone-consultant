@@ -22,6 +22,23 @@ class Menu {
 
         // Listen
         this.bindEvents();
+        this.initListeners();
+        this.updateMenuLocation();
+    }
+
+    initListeners() {
+        // Reposition menu according to the screen size
+        $(window).on('resize', () => this.updateMenuLocation());
+    }
+
+    updateMenuLocation() {
+        if (window.innerWidth <= 800) {
+            // Mobile menu. Move it to the original location
+            $('[target-submenu=true]:first').after($('[move-submenu=true]:first'));
+        } else {
+            // Desktop menu. Move it to after the header
+            $('.header-container:first').after($('[move-submenu=true]:first'));
+        }
     }
 
     collapseAll() {

@@ -1,11 +1,11 @@
 <nav class="navPages">
-    <div class="navPages-quickSearch">
-        <div id="quick-add-to-cart-mobile">
-            <span class="quick-add-to-cart-label">Quick add product to cart</span>
-            {{> components/common/consultant-store/quick-add-to-cart name='quick-add-to-cart'}}
-        </div>
-    </div>
     <ul class="navPages-list{{#if theme_settings.navigation_design '!==' 'simple'}} navPages-list-depth-max{{/if}}">
+        <li class="navPages-item" id="navpages-quick-add-mobile">
+            <div id="quick-add-to-cart-mobile" tabindex="-1">
+                <span class="quick-add-to-cart-label" id="quick-add-to-cart-label" tabindex="1">Quick add product to cart</span>
+                {{> components/common/consultant-store/quick-add-to-cart name='quick-add-to-cart'}}
+            </div>
+        </li>
         {{#each categories}}
             <li class="navPages-item">
             {{#if ../theme_settings.navigation_design '===' 'simple'}}

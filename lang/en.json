@@ -301,7 +301,8 @@
             "order_history": "Order History",
             "returns": "Returns",
             "messages": "Messages ({num_new_messages})",
-            "wishlists": "Favorites Lists",
+            "wishlists": "Favorite Lists",
+            "wishlists_menu": "Favorites",
             "recently_viewed": "Recently Viewed",
             "settings": "Account Profile",
             "addresses": "Addresses",
@@ -477,7 +478,7 @@
             "no_items": "The items you've recently looked at on our site will appear below."
         },
         "wishlists": {
-            "heading": "Favorites Lists",
+            "heading": "Favorite Lists",
             "tag_line": "Fill in the form below to create a new Favorites List. Click the \"Create Favorites List\" button when you're done.",
             "new": "Edit Favorites List",
             "new_button": "New Favorites List",
@@ -766,7 +767,7 @@
             "show": "Show Videos"
         },
         "add_to_cart": "Add to Cart",
-        "adding_to_cart": "Adding to cart…",
+        "adding_to_cart": "Adding to cart",
         "options": "Options",
         "none": "None",
         "sku": "SKU:",

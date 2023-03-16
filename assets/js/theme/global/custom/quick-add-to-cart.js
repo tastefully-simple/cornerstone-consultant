@@ -11,9 +11,16 @@ export default function () {
         const qty = $(event.currentTarget).find('[name=qty]')[0].value || 1;
         const inputSubmit = $(event.currentTarget).find('button[type=submit] span')[0];
 
+        function focusOnSkuField() {
+            setTimeout(() => {
+                $(event.currentTarget).find('[name=sku]:first').delay(5000).val('').focus();
+            }, 5000);
+        }
+
         if (sku.length < 1 || qty.length < 1) {
             // Show error message and hide it after a few seconds
-            $($(event.currentTarget).find('div[data-error-enter-sku]')).show().delay(5000).fadeOut();
+            $($(event.currentTarget).find('div[data-error-enter-sku]')).show().click().delay(5000).fadeOut();
+            focusOnSkuField();
             return;
         }
 
@@ -32,7 +39,8 @@ export default function () {
         utils.api.cart.makeRequest('/cart.php', 'GET', options, false, (err, response) => {
             const isAddedToCart = $(response).find('div[data-cart-status]')[0];
             if (typeof isAddedToCart !== 'undefined' && isAddedToCart.children.length === 0) {
-                $($(event.currentTarget).find('div[data-sku-success]')).show().delay(5000).fadeOut();
+                $($(event.currentTarget).find('div[data-sku-success]')).show().click().delay(5000).fadeOut();
+                focusOnSkuField();
 
                 // Update mini cart count
                 const totalCartItems = $('h1.page-heading:first', response)[0].innerHTML.replace(/[^0-9]/g, '');
@@ -41,8 +49,10 @@ export default function () {
                 }
                 $('.cart-quantity:first').html(totalCartItems);
             } else {
-                $($(event.currentTarget).find('div[data-error-sku-unavailable]')).show().delay(5000).fadeOut();
+                $($(event.currentTarget).find('div[data-error-sku-unavailable]')).show().click().delay(5000).fadeOut();
+                focusOnSkuField();
             }
+
             // Reset button label back to the original value
             inputSubmit.innerHTML = tempLabel;
         });

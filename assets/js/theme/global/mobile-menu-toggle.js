@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import mediaQueryListFactory from '../common/media-query-list';
 import { CartPreviewEvents } from './cart-preview';
+import $ from 'jquery';
 
 const PLUGIN_KEY = {
     CAMEL: 'mobileMenuToggle',
@@ -55,6 +56,11 @@ export class MobileMenuToggle {
     }
 
     get isOpen() {
+        // Focus on Quick add to cart when the mobile menu is open for ADA compliance
+        setTimeout(() => {
+            $('#quick-add-to-cart-label').focus();
+        }, 400);
+
         return this.$menu.hasClass('is-open');
     }
 
