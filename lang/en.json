@@ -501,6 +501,8 @@
             "delete_alert": "Are you sure you want to delete your Favorites List(s)? This action cannot be undone.",
             "create_new": "Create New Favorite",
             "add_to_default": "Add to My Favorite",
+            "copy_link": "Copy Link",
+            "link_copied": "Copied!",
             "enter_wishlist_name_error": "You must enter a Favorites List name.",
             "list": "Favorite List Name"
         }
