@@ -5,6 +5,9 @@
 #loginModal {
   max-width: 600px;
   border-radius: 10px;
+  #sso_login_message_inactive {
+    display: none;
+  }
 
   .login-modal-form {
     height: 450px;
