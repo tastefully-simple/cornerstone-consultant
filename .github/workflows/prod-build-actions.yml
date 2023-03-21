@@ -5,7 +5,7 @@ on:
     types:
       - created
     branches:
-      master
+      mock
 
 jobs:
   build:
