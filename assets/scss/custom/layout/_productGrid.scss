@@ -11,4 +11,10 @@
   .card {
     margin-bottom: 0;
   }
+
+  li {
+    &.product {
+      border-radius: 5px;
+    }
+  }
 }
