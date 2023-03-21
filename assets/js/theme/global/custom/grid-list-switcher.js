@@ -15,7 +15,7 @@ export default function () {
     const gridSwitcherCookie = 'grid-switcher';
     const expiryDays = 10;
     const $gridListSwitcher = $('.grid-list-selectors button');
-    const defaultDisplay = 'grid-switch';
+    const defaultDisplay = 'list-switch';
 
     if (!getCookie(gridSwitcherCookie)) {
         setCookie(gridSwitcherCookie, defaultDisplay, expiryDays);
@@ -25,7 +25,7 @@ export default function () {
     const currentDisplayId = `#${currentDisplay}`;
     $(currentDisplayId).addClass('active');
 
-    if (currentDisplay !== defaultDisplay) {
+    if (currentDisplay === defaultDisplay) {
         $('.productGrid:first').addClass('list-switch');
     }
 
@@ -39,4 +39,3 @@ export default function () {
         setCookie(gridSwitcherCookie, event.currentTarget.id, expiryDays);
     });
 }
-

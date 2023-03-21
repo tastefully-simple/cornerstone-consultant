@@ -105,7 +105,7 @@
     "default_image_product": "img/ProductDefault.gif",
     "default_image_gift_certificate": "img/GiftCertificate.png",
     "body-font": "Muli",
-    "headings-font": "Google_PT+Serif_400",
+    "headings-font": "Muli",
     "fontSize-root": 12,
     "fontSize-h1": 28,
     "fontSize-h2": 25,
