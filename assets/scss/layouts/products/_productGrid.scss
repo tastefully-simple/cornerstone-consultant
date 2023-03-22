@@ -97,7 +97,7 @@
         .product { // 1
             padding: 2%;
             @include breakpoint("small") {
-                width: grid-calc(4, 17);
+                width: grid-calc(4, 18.5);
             }
             .card-title  {
                 height: 60px;
@@ -107,7 +107,7 @@
             }
         }
         .product {
-            margin-right: 1.5%;
+            margin-right: 4.5%;
             margin-top: 20px;
         }
         .product:nth-of-type(4n) {

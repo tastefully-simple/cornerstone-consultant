@@ -55,6 +55,18 @@ h2 {
 h1, h2, h3, h4, h5, h6 {
 
 }
+.productGrid {
+  .card-title {
+    text-align: center;
+    a {
+      font-size: 14px !important;
+      font-weight: normal !important;
+    }
+  }
+  .price {
+    font-weight: normal;
+  }
+}
 .list-switch {
   .card-body {
     .card-title {
