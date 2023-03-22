@@ -1,0 +1,132 @@
+.navBar--sub {
+  .navBar-action {
+    font-size: fontSize("smaller");
+  }
+}
+
+.navUser-item--account {
+  .main-user-menu {
+    .navUser-action--account-text {
+      text-transform: capitalize !important;
+      font-family: 'Muli', serif;
+      font-weight: normal;
+    }
+  }
+}
+
+@media only screen and (min-width:801px) {
+  #navpages-quick-add-mobile {
+    display: none;
+  }
+  [move-submenu="true"] {
+    width: 1000px !important;
+    left: -500px !important;
+    margin-left: 50%;
+    top: 130px;
+    position: absolute;;
+    z-index: 10;
+  }
+  .navPage-subMenu-item {
+    list-style: none;
+    width: 33%;
+  }
+  [target-submenu="true"] {
+    &.is-open {
+      background-color: transparent;
+      &::before {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid #e2e2e2;
+        content: '';
+        height: 0;
+        left: 31%;
+        position: absolute;
+        top: 20px;
+        width: 0;
+        margin-top: 33px;
+        margin-left: -17%;
+      }
+    }
+  }
+  .navUser {
+    background-color: #2d2d2d;
+  }
+
+  .navUser-item--account {
+    a.main-user-menu, a.main-user-menu:hover, a.main-user-menu:visited, a.main-user-menu:focus {
+      color: #ffffff;
+      font-size: 15px;
+      margin-top: 4px;
+    }
+  }
+
+  .navUser {
+    #user-preview-dropdown {
+      background: #ececec;
+      text-align: right;
+      padding: 15px;
+      font-size: 12px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
+      border: none;
+
+      a {
+        text-decoration: none;
+        font-size: 16px;
+        text-transform: lowercase;
+      }
+      li {
+        margin-bottom: 5px;
+      }
+      &.is-open {
+        &::before {
+          border: none !important;
+        }
+        &::after {
+          left: initial !important;
+          right: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:800px) {
+  .header-logo {
+    clear: both;
+    display: block;
+    position: relative;
+    margin: auto;
+  }
+  li {
+    &.navPages-item {
+      clear: both;
+    }
+  }
+  .navPages-list--user {
+    .navPages-action {
+      &.is-open {
+        text-transform: capitalize !important;
+      }
+    }
+  }
+}
+
+.quick-add-popup {
+  position: absolute;
+  margin-top: 45px;
+  padding: 15px;
+  width: 255px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
+  display: none;
+  &.error-message {
+    background: #f2f2f2;
+  }
+  &.success-message {
+    background: #02777f;
+    color: #ffffff;
+  }
+}
+
+.navPages-search form input {
+  width: 250px;
+}

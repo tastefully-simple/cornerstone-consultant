@@ -1,0 +1,67 @@
+// =============================================================================
+// BODY (CSS)
+//
+// 1. Header is fixed on small screens, use the content body to create the whitespace
+//    between it and the header on all situations. If you change the spacing here,
+//    please update .heroCarousel too.
+//
+// =============================================================================
+
+
+.body {
+    margin-bottom: spacing("double") * 2;
+    margin-top: spacing("single"); // 1
+
+    @include breakpoint("medium") {
+        margin-top: spacing("single") + spacing("base"); // 1
+    }
+}
+
+
+.page {
+    @include grid-row(
+        $behavior: nest
+    );
+}
+
+.page-content,
+.page-content--full {
+    @include grid-column(12);
+}
+
+.page-content--centered {
+
+    @include breakpoint("medium") {
+        @include grid-column(
+            $columns: 8,
+            $center: true
+        );
+    }
+}
+
+.page-content--textCenter {
+    text-align: center;
+}
+
+.page-sidebar {
+    @include grid-column(12);
+    position: relative;
+
+    @include breakpoint("medium") {
+        @include grid-column(4);
+
+        + .page-content {
+            @include grid-column(12);
+        }
+    }
+}
+@media only screen and (max-width:800px) {
+    .container {
+        &.body-container {
+            padding-top: 3em;
+        }
+        .page-heading {
+            margin-bottom: 0;
+        }
+    }
+}

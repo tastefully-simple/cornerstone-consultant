@@ -1,0 +1,37 @@
+// =============================================================================
+// CATEGORY (CSS)
+// =============================================================================
+
+
+// Category header
+// -----------------------------------------------------------------------------
+
+.category-header-image {
+    width: 100%;
+}
+.grid-add-to-cart-form {
+    .form-input {
+        width: 25%;
+        display: block;
+        position: relative;
+        float: left;
+        text-align: center;
+        margin-right: 5%;
+    }
+    .button {
+        width: 65%;
+        float: left;
+        display: block;
+        position: relative;
+        font-size: 14px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+#faceted-search-container {
+    display: none;
+}
+.add-to-cart-category {
+    visibility: hidden;
+}

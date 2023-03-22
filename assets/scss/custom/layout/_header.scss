@@ -1,0 +1,64 @@
+// =============================================================================
+// CONSULTANT STORE HEADER
+// =============================================================================
+.header-logo {
+  z-index: 1;
+}
+
+.navPages-action {
+  text-transform: lowercase !important;
+}
+
+.quick-add-to-cart-label, .sku-field {
+  text-transform: lowercase !important;
+}
+
+.navUser-item-cartLabel {
+  margin-top: 2px;
+  display: block;
+  position: relative;
+  float: left;
+  margin-right: 3px;
+}
+
+a[data-collapsible="navPages-account"] {
+  text-transform: unset;
+}
+
+@media only screen and (min-width:801px) {
+  .navPages-action {
+    font: 900 14px Muli;
+  }
+  .header-container {
+    max-width: 1920px !important;
+    margin: 1.5rem auto 1.5rem;
+  }
+  .navUser--desktop {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: flex-end;
+    max-width: 1920px;
+    justify-content: flex-end;
+  }
+  .header-logo-image-container {
+    min-height: unset;
+  }
+  .header-logo-image {
+    width: 200px;
+    margin-top: 10px;
+  }
+}
+.header-logo {
+  @include breakpoint("small") { // 4
+    margin-left: 2rem;
+  }
+}
+@media only screen and (max-width:800px) {
+  div[data-content-region="header_bottom"], #main-content {
+    margin-top: 57px;
+  }
+  .countPill {
+    background-color: $teal;
+  }
+}
