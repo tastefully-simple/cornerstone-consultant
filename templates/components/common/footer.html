@@ -1,0 +1,119 @@
+{{#if banners.bottom}}
+    {{#if settings.data_tag_enabled}}
+        <div class="banners" data-banner-location="bottom">
+            {{#each (limit banners.bottom_metadata 1)}}
+                <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
+                    <div data-event-type="promotion-click">
+                        {{{this.content}}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="banners" data-banner-location="bottom">
+            <div class="banner">
+                {{{limit banners.bottom 1}}}
+            </div>
+        </div>
+    {{/if}}
+{{/if}}
+<footer class="footer" role="contentinfo">
+    <h2 class="footer-title-sr-only">{{lang 'footer.title'}}</h2>
+    <div class="footer-upper">
+        <div class="container">
+            {{#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
+                <article class="footer-info-col
+                    footer-info-col--social
+                    footer-info-col--{{#if theme_settings.social_icon_placement_bottom '===' 'bottom_left'}}left{{else}}right{{/if}}"
+                    data-section-type="footer-webPages">
+                        <h3 class="footer-info-heading">{{lang 'social.connect'}}</h3>
+                        {{> components/common/social-links}}
+                </article>
+            {{/if}}
+            <section class="footer-info web">
+                <nav class="footer-info-four-col tst-accordion-item" data-section-type="footer-categories">
+                    <h3 class="footer-info-heading">{{lang 'footer.products'}}</h3>
+                    <ul class="footer-info-list tst-accordion-body">
+                        {{#each categories}}
+                            <li>
+                                <a href="{{url}}">{{name}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </nav>
+                <nav class="footer-info-four-col tst-accordion-item" data-section-type="footer-about-us">
+                    <h3 class="footer-info-heading">{{lang 'footer.about_us'}}</h3>
+                    <div id="bcapi_footer_about_links"></div>
+                </nav>
+                <nav class="footer-info-four-col tst-accordion-item" data-section-type="footer-brands">
+                    <h3 class="footer-info-heading">{{lang 'footer.support'}}</h3><i class="arrow down"></i>
+                    <div id="bcapi_footer_support_links"></div>
+                </nav>
+                <nav class="footer-info-four-col tst-accordion-item" data-section-type="footer-brands">
+                    <h3 class="footer-info-heading">{{lang 'footer.helpful_links'}}</h3>
+                    <div id="bcapi_footer_helpful_links"></div>
+                </nav>
+            </section>
+            <section class="footer-info mobile">
+                <div class="footer-drawer">
+                    <input class="footer-drawer__trigger" id="footer-drawer" type="checkbox" />
+                    <label class="footer-drawer__title" for="footer-drawer">{{lang 'footer.products'}}</label>
+                    <div class="footer-drawer__content-wrapper">
+                      <div class="footer-drawer__content">
+                        <ul class="footer-info-list">
+                            {{#each categories}}
+                                <li>
+                                    <a href="{{url}}">{{name}}</a>
+                                </li>
+                            {{/each}}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer-drawer">
+                    <input class="footer-drawer__trigger" id="footer-drawer-2" type="checkbox" />
+                    <label class="footer-drawer__title" for="footer-drawer-2">{{lang 'footer.about_us'}}</label>
+                    <div class="footer-drawer__content-wrapper">
+                      <div class="footer-drawer__content bcapi_footer_about_links">
+                        <ul class="footer-info-list">
+                            <div class="bcapi_footer_about_links"></div>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer-drawer">
+                    <input class="footer-drawer__trigger" id="footer-drawer-3" type="checkbox" />
+                    <label class="footer-drawer__title" for="footer-drawer-3">{{lang 'footer.support'}}</label>
+                    <div class="footer-drawer__content-wrapper">
+                      <div class="footer-drawer__content">
+                        <div class="bcapi_footer_support_links"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer-drawer">
+                    <input class="footer-drawer__trigger" id="footer-drawer-4" type="checkbox" />
+                    <label class="footer-drawer__title" for="footer-drawer-4">{{lang 'footer.helpful_links'}}</label>
+                    <div class="footer-drawer__content-wrapper">
+                      <div class="footer-drawer__content">
+                        <div class="bcapi_footer_helpful_links"></div>
+                      </div>
+                    </div>
+                  </div>
+            </section>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="copyright-logos">
+                {{#if theme_settings.show_copyright_footer}}
+                <div class="footer-copyright">
+                    <p class="powered-by">&copy; 1998-{{moment format="YYYY"}}, Tastefully Simple, Inc. </p>
+                    <p class="powered-by">Serving suggestions throughout the website.</p>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        {{{region name="ssl_site_seal--global"}}}
+    </div>
+</footer>
+{{> components/common/consultant-store/bcapi-loader }}

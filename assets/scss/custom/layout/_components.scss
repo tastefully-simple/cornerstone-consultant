@@ -1,0 +1,51 @@
+// =============================================================================
+// CONSULTANT STORE COMPONENTS
+// =============================================================================
+
+.button {
+  font-size: 16px !important;
+  font-weight: 600;
+  font-family: "Muli", serif;
+  padding-bottom: 10px;
+  padding-top: 10px
+}
+
+h2 {
+  &.page-heading {
+    font-size: 30px;
+    color: $black;
+    font-weight: 300;
+  }
+}
+
+.breadcrumbs {
+  a {
+    font-size: 15px;
+  }
+
+  .breadcrumb {
+    &.is-active {
+      > .breadcrumb-label {
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+.wishlists-table {
+  thead tr th {
+    font-size: 16px;
+  }
+  a, a:visited, a:hover {
+    color: $teal;
+    font-size: 14px;
+    text-decoration: underline;
+  }
+  .table-actions {
+    a {
+      font-size: initial;
+      color: $black;
+      text-decoration: initial;
+    }
+  }
+}

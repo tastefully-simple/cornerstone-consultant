@@ -1,0 +1,397 @@
+// =============================================================================
+// Tastefully Simple Styles
+// =============================================================================
+
+// Color Variables
+// -----------------------------------------------------------------------------
+
+$burgundy: #610b31;
+$tsgreen-light: #91c63a;
+$tsgreen: #559707;
+$green-apple: #6e7a06;
+$tsred: #e4002b;
+$tsorange: #f37929;
+$tsaqua: #319990;
+$tsteal: #005e64;
+$teal: #005e64;
+$white: #fff;
+$black: #000;
+$utility-green: #028840;
+$utility-red: #d0021b;
+$utility-blue: #3473da;
+$utility-error: #fdd;
+$utility-success: #d5ffd8;
+
+// Text Color Classes
+// -----------------------------------------------------------------------------
+.black-text {
+    color: $black;
+}
+.burgundy-text{
+    color: $burgundy;
+}
+.greenapple-text{
+    color: $green-apple;
+}
+.tsteal-text {
+    color: $tsteal;
+}
+.tsred-text {
+    color: $tsred;
+}
+.white-text {
+    color: $white;
+}
+
+// Background Color Classes
+// -----------------------------------------------------------------------------
+.burgundy-background{
+    background-color: $burgundy;
+}
+.black-background {
+    background-color: $black;
+}
+.tsteat-background {
+    background-color: $tsteal;
+}
+.tsgreenlight-background {
+    background-color: $tsgreen-light;
+}
+.tsorange-background {
+    background-color: $tsorange;
+}
+.tsred-background {
+    background-color: $tsred;
+}
+
+// Typography
+// -----------------------------------------------------------------------------
+.subhead-16{
+    font-weight:700;
+    font-size:16px;
+}
+.subhead-14{
+    font-weight:700;
+    font-size:14px;
+}
+.system-14{
+    font-weight:300;
+    font-size:14px;
+}
+.system-12{
+    font-weight:300;
+    font-size:12px;
+}
+a,
+.global-link{
+    font-size:20px;
+}
+.frametext{
+    font:400 16px stencilFontFamily("body-font");
+}
+.frametext-black{
+    font:900 16px stencilFontFamily("body-font");
+}
+.frametext-bold{
+    font:700 16px stencilFontFamily("body-font");
+}
+.frametext-semibold{
+    font:600 16px stencilFontFamily("body-font");
+}
+.frametext-body{
+    @extend .frametext;
+}
+.frameheading-1{
+    @extend .frametext-black;
+}
+.frameheading-2{
+    @extend .frametext-bold;
+}
+.frameheading-3{
+    @extend .frametext-semibold;
+}
+.frameheading-4{
+    font-size:14px;
+    @extend .frametext-bold;
+}
+.frameheading-5{
+    font-size:14px;
+    text-transform:unset;
+    @extend .frametext-semibold;
+}
+.frame-subhead {
+    font-size:14px;
+}
+.framelink-xl{
+    @extend .frametext-black;
+}
+.framelink-lg{
+    font-size:14px;
+    @extend .frametext-black;
+}
+.framelink-md{
+    font-size:13px;
+    @extend .frametext-black;
+}
+.framelink-sm{
+    font-size:12px;
+    @extend .frametext-black;
+}
+.frame-caption{
+    font-size:12px;
+    @extend .frametext;
+}
+.framecaption-sm{
+    font-size:9px;
+    @extend .frametext;
+}
+
+header,
+footer,
+.alertbox,
+.modal-general{
+    h1{
+        @extend .frameheading-1;
+    }
+    h2{
+        @extend .frameheading-2;
+    }
+    h3{
+        @extend .frameheading-3;
+    }
+    h4{
+        @extend .frameheading-4;
+    }
+    h5{
+        @extend .frameheading-5;
+    }
+}
+footer{
+    *{
+        @extend .frame-caption;
+    }
+}
+
+// Buttons
+// -----------------------------------------------------------------------------
+.button{
+    font-weight: 600;
+    font-size: 20px;
+    -webkit-transition: all 0.15s ease;
+}
+.button-primary{
+    border-radius: 10px;
+    padding:20px 5px;
+    @extend .button--primary;
+    @extend .button;
+}
+.form-wishlist.form-action .button,
+.button--primary {
+    font-family: 'Muli';
+    font-size: 16px;
+}
+
+// Icons
+// -----------------------------------------------------------------------------
+.all-icons{
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:contain;
+    display:inline-block;
+}
+.standard-icons{
+    @extend .all-icons;
+    height:25px;
+    width:25px;
+}
+.more-icons{
+    @extend .all-icons;
+    height:90px;
+    width:90px;
+}
+// Social Icons
+.social-links{
+    a{
+        font-size:0;
+        margin-left:10px;
+        text-decoration:none;
+        width: 40px;
+        height:40px;
+    }
+}
+.icon-social-facebook{
+    background-image:url('../img/icons/icons-social-facebook@2x.png');
+    @extend .standard-icons
+}
+.icon-social-instagram{
+    background-image:url('../img/icons/icons-social-instagram@2x.png');
+    @extend .standard-icons
+}
+.icon-social-pinterest{
+    background-image:url('../img/icons/icons-social-pinterest@2x.png');
+    @extend .standard-icons
+}
+
+// Toggle Icons
+.icon-toggle-minus{
+    background-image:url('../img/icons/icons-minus@2x.png');
+    @extend .standard-icons;
+}
+.icon-toggle-plus{
+    background-image:url('../img/icons/icons-plus@2x.png');
+    @extend .standard-icons;
+}
+.icon-toggle-hamburger{
+    background-image:url('../img/icons/icons-hamburger@2x.png');
+    @extend .standard-icons;
+}
+
+// System Icons
+.icon-system-left-arrow{
+    background-image:url('../img/icons/icons-system-arrow-left@2x.png');
+    @extend .standard-icons;
+}
+.icon-system-right-arrow{
+    background-image:url('../img/icons/icons-system-arrow-right@2x.png');
+    @extend .standard-icons;
+}
+.icon-system-left-caret{
+    background-image:url('../img/icons/icons-system-caret-left@2x.png');
+    @extend .standard-icons;
+}
+.icon-system-right-caret{
+    background-image:url('../img/icons/icons-system-caret-right@2x.png');
+    @extend .standard-icons;
+}
+.icon-system-download{
+    background-image:url('../img/icons/icons-download@2x.png');
+    @extend .standard-icons;
+}
+.icon-system-phone{
+    background-image:url('../img/icons/icons-phone@2x.png');
+    @extend .standard-icons;
+}
+.icon-system-envelope{
+    background-image:url('../img/icons/icons-envelope@2x.png');
+    @extend .standard-icons;
+}
+.icon-system-alert{
+    background-image:url('../img/icons/icons-alert@2x.png');
+    @extend .standard-icons;
+}
+.icon-system-info{
+    background-image:url('../img/icons/icons-info@2x.png');
+    @extend .standard-icons;
+}
+.icon-system-addtocart{
+    background-image:url('../img/icons/icons-addtocart@2x.png');
+    @extend .standard-icons;
+}
+.icon-system-check{
+    color:$teal;
+    font: 700 25px 'Font Awesome 5 Pro';
+    &::before{
+        content:"\f058";
+    }
+}
+.icon-system-x{
+    color:$white;
+    font: 700 25px 'Font Awesome 5 Pro';
+    &::before{
+        content:"\f00d";
+    }
+}
+.icon-system-marker{
+    background-image:url('../img/icons/icons-system-marker@2x.png');
+    @extend .standard-icons;
+}
+.icon-system-search-black{
+    background-image:url('../img/icons/icons-system-search-black@2x.png');
+    @extend .standard-icons;
+}
+.icon-system-search-teal{
+    background-image:url('../img/icons/icons-system-search-teal@2x.png');
+    background-size:cover;
+    @extend .standard-icons;
+}
+
+// Inputs
+// -----------------------------------------------------------------------------
+input:not(.button),
+textarea,
+select{
+    border:1px solid #d3d3d3;
+    border-radius:2px;
+    padding:5px;
+    &.input-active{
+        border-color:$utility-blue;
+    }
+    &.input-confirmed{
+        border-color:$utility-green;
+    }
+    &.input-error{
+        @extend .input-confirmed;
+        border-color:$utility-red;
+    }
+    &:not([disabled]) {
+        background: $color-white;
+    }
+}
+input{
+    &[type="radio"],
+    &[type="checkbox"]{
+        width:15px;
+    }
+}
+label{
+    &>span{
+        font-weight:700;
+        font-size:13px;
+    }
+    &.input-label{
+        display:flex;
+        flex-direction:column;
+        position:relative;
+    }
+    &.input-confirmed,
+    &.input-error{
+        @extend .input-label;
+        span{
+            &:not(:first-child){
+                bottom:8px;
+                position:absolute;
+                right:10px;
+            }
+        }
+    }
+}
+.input-confirmed{
+    span:not(:first-child){
+        color:$utility-green;
+    }
+}
+.input-error{
+    span:not(:first-child){
+        color:$utility-red;
+    }
+}
+textarea{
+    min-height:95px;
+    text-align:left;
+}
+.simple-dropdown{
+    display:flex;
+    flex-direction:column;
+}
+.simple-textarea{
+    display:flex;
+    flex-direction:column;
+}
+
+// Cookie consent privacy policy link
+a {
+    &.eapp-cookie-consent-message-componentMore {
+        font-size: 12px;
+        font-weight: 800;
+    }
+}
