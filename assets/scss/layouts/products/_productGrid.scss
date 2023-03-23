@@ -95,9 +95,9 @@
 .page-sidebar + .page-content {
     .productGrid {
         .product { // 1
-            padding: 2%;
+            padding: 1%;
             @include breakpoint("small") {
-                width: grid-calc(4, 18.5);
+                width: grid-calc(4, 21);
             }
             .card-title  {
                 height: 60px;

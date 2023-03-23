@@ -7,6 +7,9 @@
   @include grid-row($behavior: "nest");
   font-size: 0; // 1
   margin-bottom: spacing("single");
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 
   .card {
     margin-bottom: 0;
@@ -15,6 +18,17 @@
   li {
     &.product {
       border-radius: 5px;
+      padding: 1%;
     }
+  }
+  .grid-add-to-cart-form {
+    display: flex;
+    justify-content: center;
+  }
+}
+.actionBar {
+  margin-bottom: 0;
+  .form-field {
+    margin-bottom: 0;
   }
 }

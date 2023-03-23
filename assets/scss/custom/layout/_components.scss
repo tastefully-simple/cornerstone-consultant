@@ -66,8 +66,21 @@ h1, h2, h3, h4, h5, h6 {
   .price {
     font-weight: normal;
   }
+  .card-img-container {
+    padding-bottom: 80%;
+  }
+  .button--primary {
+    font-size: 13px !important;
+    font-weight: 700;
+  }
 }
 .list-switch {
+  .product {
+    margin-right: 0 !important;
+    .card-img-container {
+      padding-bottom: 100%;
+    }
+  }
   .card-body {
     .card-title {
       font-weight: normal !important;
