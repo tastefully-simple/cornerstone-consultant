@@ -55,6 +55,50 @@ h2 {
 h1, h2, h3, h4, h5, h6 {
 
 }
+.productGrid {
+  .card-title {
+    text-align: center;
+    a {
+      font-size: 14px !important;
+      font-weight: normal !important;
+    }
+  }
+  .price {
+    font-weight: normal;
+  }
+  .card-img-container {
+    padding-bottom: 80%;
+  }
+  .button--primary {
+    font-size: 13px !important;
+    font-weight: 700;
+  }
+}
+.list-switch {
+  .product {
+    margin-right: 0 !important;
+    .card-img-container {
+      padding-bottom: 100%;
+    }
+  }
+  .card-body {
+    .card-title {
+      font-weight: normal !important;
+    }
+    .price--withoutTax {
+      font-weight: normal !important;
+    }
+  }
+  .grid-add-to-cart-form {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 5px;
+    input[type="submit"] {
+      width: 50%;
+    }
+  }
+}
+
 .list-switch {
   .card-body {
     .card-title {

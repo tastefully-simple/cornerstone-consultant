@@ -105,10 +105,14 @@
   .navPages-list--user {
     .navPages-action {
       &.is-open {
-        text-transform: capitalize !important;
+        text-transform: unset !important;
       }
     }
   }
+}
+
+.navPages-action {
+  text-transform: unset !important;
 }
 
 .quick-add-popup {
