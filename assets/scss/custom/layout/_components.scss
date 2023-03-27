@@ -61,6 +61,7 @@ h1, h2, h3, h4, h5, h6 {
     a {
       font-size: 14px !important;
       font-weight: normal !important;
+      font-family: stencilFontFamily("body-font");
     }
   }
   .price {
@@ -115,5 +116,35 @@ h1, h2, h3, h4, h5, h6 {
     input[type="submit"] {
       width: 50%;
     }
+  }
+}
+
+.breadcrumb {
+  &.is-active {
+    a{
+      font-weight: bold !important;
+    }
+  }
+}
+
+.add-to-favorites-button {
+  float: left;
+  font-weight: 700;
+  display: block;
+  position: relative;
+  font-size: 30px;
+  color: #000000;
+  border-radius: 2px;
+  height: 41px;
+  width: 25%;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  padding-top: 11px;
+  padding-left: 16px;
+  &:hover {
+    font-weight: 700 !important;
   }
 }
