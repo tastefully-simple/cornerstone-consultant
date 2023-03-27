@@ -50,6 +50,7 @@
                     color: $tsteal;
                     font-size: 22px;
                     font-family:stencilFontFamily("headings-font");
+                    font-weight: normal;
                 }
             }
         }
@@ -120,7 +121,6 @@
                     }
                 }
                 #wishlist-dropdown {
-                    padding-right: 11px;
                     li {
                         .button:hover {
                             border-color: $tsteal;
@@ -296,6 +296,12 @@
     .productView {
         flex-direction: row; // TST-335
         .productView-details {
+            #form-action-addToCart {
+                padding-top: 17px;
+                padding-bottom: 17px;
+                padding-right: 70px;
+                padding-left: 70px;
+            }
             .productView-product {
                 border: none;
                 padding-bottom: 0;
@@ -331,10 +337,28 @@
                 padding-left: 0;
             }
             .form-action {
-                display: block;
-                float: none;
+                display: inline-block;
+                float: left;
                 max-width: 250px;
                 margin-right: 0.75rem;
+                &.wishlist-product-form {
+                    margin: 0;
+                    #wishlist-dropdown {
+                        width: 300px !important;
+                        border-top: 1px solid;
+                        margin-right: 0;
+                        padding-right: 0;
+                        margin-left: -117.5px;
+                        margin-top: 2px;
+                    }
+                    .button {
+                        height: 52px;
+                        width: 65px;
+                        &.is-open i::before {
+                            font-weight: 700 !important;
+                        }
+                    }
+                }
             }
         }
     }
@@ -345,4 +369,46 @@
             width:100%;
         }
     }
+}
+
+@media only screen and (max-width:800px) {
+    .productView {
+        .productView-options {
+            #wishlist-dropdown {
+                margin-left: -232px !important;
+                width: 300px !important;
+                border-top: 1px solid #000;
+                padding-right: 0 !important;
+            }
+            #form-action-addToCart {
+                padding-top: 17px;
+                padding-bottom: 17px;
+            }
+            .form {
+                float: left !important;
+                display: inline-block !important;
+                &.add-product-to-cart-form {
+                    width: 75% !important;
+                    margin-right: 5%;
+                }
+                &.wishlist-product-form {
+                    width: 20%;
+                    margin-top: 84px;
+                    .button {
+                        padding: 0;
+                        margin: 0;
+                        display: inline-block;
+                        position: relative;
+                        float: left;
+                        height: 52px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.container {
+    max-width: 1920px;
+    padding: 0 2rem;
 }
