@@ -35,7 +35,6 @@ export default class Category extends CatalogPage {
     }
 
     onReady() {
-        const self = this;
         this.arrangeFocusOnSortBy();
 
         $('[data-button-type="add-cart"]').on('click', (e) => this.setLiveRegionAttributes($(e.currentTarget).next(), 'status', 'polite'));

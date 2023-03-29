@@ -1,16 +1,12 @@
-<form action="{{product.add_to_wishlist_url}}" class="form form-wishlist form-action" data-wishlist-add method="post">
+<form action="{{product.add_to_wishlist_url}}" class="form form-wishlist form-action wishlist-product-form" data-wishlist-add method="post">
     <a aria-controls="wishlist-dropdown"
        aria-expanded="false"
        class="button dropdown-menu-button"
        data-dropdown="wishlist-dropdown"
        href="#"
+       style="padding:0; margin:0; display: inline-block; position: relative; float: left;"
     >
-        <span>{{lang 'account.wishlists.add_item'}}</span>
-        <i aria-hidden="true" class="icon">
-            <svg>
-                <use xlink:href="#icon-chevron-down" />
-            </svg>
-        </i>
+        <i class="add-to-favorites-button fal fa-heart"></i>
     </a>
     <ul aria-hidden="true" class="dropdown-menu" data-dropdown-content id="wishlist-dropdown">
         {{#if customer.wishlists}}
