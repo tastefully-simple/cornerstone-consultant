@@ -56,6 +56,11 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 .productGrid {
+  .grid-add-to-cart-form {
+    .form-input {
+      height: 2.4rem !important;
+    }
+  }
   .card-title {
     text-align: center;
     a {
