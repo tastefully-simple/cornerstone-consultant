@@ -52,6 +52,11 @@ h2 {
 .form-input {
   color: #000000;
 }
+@media screen and (max-width: 800px){
+  .form-select--small{
+      padding-right: 0;
+  }
+}
 h1, h2, h3, h4, h5, h6 {
 
 }

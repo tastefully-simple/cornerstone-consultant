@@ -21,6 +21,10 @@ $utility-red: #d0021b;
 $utility-blue: #3473da;
 $utility-error: #fdd;
 $utility-success: #d5ffd8;
+$pagination-link-color: #00757d;
+$pagination-link-color-hover: #2d2d2d;
+$pagination-link-color-active: #2d2d2d;
+
 
 // Text Color Classes
 // -----------------------------------------------------------------------------
@@ -314,12 +318,28 @@ footer{
     background-size:cover;
     @extend .standard-icons;
 }
-
+.pagination-item{
+    &.pagination-item--previous,
+    &.pagination-item--next,
+    &.pagination-item--current {
+    
+            > a {
+                color: $pagination-link-color;
+    
+                .icon > svg {
+                    fill: $pagination-link-color;
+                }
+    
+                &:hover {
+                    color: $pagination-link-color-hover;
+                
+            }
+        }
+    }
+}
 // Inputs
 // -----------------------------------------------------------------------------
-input:not(.button),
-textarea,
-select{
+@mixin input-styles{
     border:1px solid #d3d3d3;
     border-radius:2px;
     padding:5px;
@@ -333,10 +353,20 @@ select{
         @extend .input-confirmed;
         border-color:$utility-red;
     }
+}
+
+input:not(.button),
+textarea{
+    @include input-styles;
     &:not([disabled]) {
         background: $color-white;
     }
 }
+
+select{
+    @include input-styles;
+}
+
 input{
     &[type="radio"],
     &[type="checkbox"]{
