@@ -366,8 +366,8 @@
     "paymentbuttons-provider-sorting": [],
     "session_management": {
       "enabled": true,
-      "login_url": "#",
-      "timeout_seconds": 360
+      "login_url": "https://tastefullysimple-sandbox.rallyware.com/",
+      "timeout_minutes": 1
     }
   },
   "read_only_files": [
@@ -410,8 +410,8 @@
       "settings": {
         "session_management": {
           "enabled": false,
-          "login_url": "#",
-          "timeout_seconds": 360
+          "login_url": "https://tastefullysimple-sandbox.rallyware.com/",
+          "timeout_minutes": 60
         }
       }
     },
@@ -437,8 +437,8 @@
       "settings": {
         "session_management": {
           "enabled": true,
-          "login_url": "#",
-          "timeout_seconds": 360
+          "login_url": "https://tastefullysimple-sandbox.rallyware.com/",
+          "timeout_minutes": 60
         }
       }
     },
@@ -464,8 +464,8 @@
       "settings": {
         "session_management": {
           "enabled": true,
-          "login_url": "#",
-          "timeout_seconds": 360
+          "login_url": "https://tscentral.tastefullysimple.com/",
+          "timeout_minutes": 60
         }
       }
     }
