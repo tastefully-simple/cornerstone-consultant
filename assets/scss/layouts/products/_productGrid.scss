@@ -91,13 +91,15 @@
 // 1. When the sidebar is visible, reduce products to 3 across.
 //
 // -----------------------------------------------------------------------------
-
+.productGrid-container {
+    padding: 0 2%;
+}
 .page-sidebar + .page-content {
     .productGrid {
         .product { // 1
             padding: 1%;
             @include breakpoint("small") {
-                width: grid-calc(4, 21);
+                width: 21.5%;
             }
             .card-title  {
                 height: 60px;
