@@ -2,31 +2,29 @@
 // Tastefully Simple Cart Styles
 // =============================================================================
 
-
-
 .cart {
-    .button--icon svg{
+    .button--icon svg {
         fill: $teal;
     }
     a.cart-item-name__label {
         font-size: 16px;
         color: $teal;
     }
-    input:not(.button):not(.button-primary), textarea, select{
+    input:not(.button):not(.button-primary),
+    textarea,
+    select {
         border: none;
     }
-    .cart-remove svg{
+    .cart-remove svg {
         fill: $teal;
     }
-    
 }
-.cart-total-grandTotal{
+.cart-total-grandTotal {
     font-family: unset;
     font-size: 1rem;
     line-height: 1.5;
     padding: 0.5rem 0 0.5rem 1.5rem;
 }
-
 .cart-actions {
     @include clearfix;
     clear: both;
@@ -48,25 +46,23 @@
     @include breakpoint("large") {
         width: grid-calc(5, $total-columns);
     }
-    
-    .button {
 
+    .button {
         line-height: normal;
         display: block;
         width: 80%;
         margin-bottom: 2rem;
         margin-left: 0;
         padding: 1.17rem 3rem;
-        
+
         @include breakpoint("small") {
             float: right;
         }
-        
+
         &.button--primary {
             outline: none !important;
             font-weight: 700;
             margin-top: 2rem;
-            
         }
 
         &.shopMore {
@@ -75,5 +71,4 @@
             margin-right: 0;
         }
     }
-    
 }
