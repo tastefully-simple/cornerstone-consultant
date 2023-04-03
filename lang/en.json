@@ -274,7 +274,7 @@
         "heading": "Sign in",
         "field_email": "Email Address:",
         "field_password": "Password:",
-        "sso_message": "You will need to login using TS Central. Please click button below to be redirected.",
+        "sso_message": "You will need to login using TS Central. Please click the button below to be redirected.",
         "sso_message_inactive": "You have been inactive in TS Central Orders for 60 minutes and are no longer logged in. Please, proceed to TS Central to log in.",
         "click_here": "Click Here to Sign In",
         "submit_value": "Sign in",

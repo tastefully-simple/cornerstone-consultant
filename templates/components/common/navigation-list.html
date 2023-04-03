@@ -2,11 +2,11 @@
 <a class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}"
    href="{{url}}"
    data-collapsible="navPages-{{id}}"
-   {{#if name '===' 'products (P1)'}}target-submenu="true"{{/if}}
+   target-submenu="true"
 >
 {{name}}
 </a>
-<div class="navPage-subMenu" id="navPages-{{id}}" aria-hidden="true" tabindex="-1"  {{#if name '===' 'products (P1)'}}move-submenu="true"{{/if}}>
+<div class="navPage-subMenu" id="navPages-{{id}}" aria-hidden="true" tabindex="-1" move-submenu="navPages-{{id}}">
 <ul class="navPage-subMenu-list">
     {{#each children}}
     <li class="navPage-subMenu-item">
