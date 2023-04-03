@@ -8,7 +8,7 @@
             {{> components/products/card id=product_id theme_settings=../theme_settings}}
 
             {{#if ../show_remove}}
-            <form action="{{remove_url}}" class="form" method="post">
+            <form action="{{remove_url}}" class="form wishlist-remove-form" method="post">
                 <input type="submit" class="button button--primary button--small" value="{{lang 'account.wishlists.remove_item'}}" />
             </form>
             {{/if}}
@@ -17,3 +17,16 @@
     </ul>
     {{> components/common/paginator wishlist.pagination}}
 </div>
+<style>
+    .add-to-cart-buttons {
+        display: none;
+    }
+    .wishlist-remove-form {
+        display: flex;
+        justify-content: center;
+        padding-top: 5%;
+    }
+    .wishlist-remove-form .button {
+        width: 80%;
+    }
+</style>
