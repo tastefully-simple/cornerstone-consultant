@@ -12,6 +12,10 @@ function getCookie(key) {
 }
 
 export default function () {
+    // Disable on Wishlist page
+    if (window.location.pathname === '/wishlist.php') {
+        return true;
+    }
     const gridSwitcherCookie = 'grid-switcher';
     const expiryDays = 10;
     const $gridListSwitcher = $('.grid-list-selectors button');
