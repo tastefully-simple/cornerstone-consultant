@@ -3,153 +3,164 @@
 // =============================================================================
 
 .button {
-  font-size: 16px !important;
-  font-weight: 600;
-  font-family: "Muli", serif;
-  padding-bottom: 10px;
-  padding-top: 10px
+    font-size: 16px !important;
+    font-weight: 600;
+    font-family: "Muli", serif;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 h2 {
-  &.page-heading {
-    font-size: 30px;
-    color: $black;
-    font-weight: 300;
-  }
+    &.page-heading {
+        font-size: 30px;
+        color: $black;
+        font-weight: 300;
+    }
 }
 
 .breadcrumbs {
-  a {
-    font-size: 15px;
-  }
-
-  .breadcrumb {
-    &.is-active {
-      > .breadcrumb-label {
-        font-weight: normal;
-      }
+    a {
+        font-size: 15px;
     }
-  }
+
+    .breadcrumb {
+        &.is-active {
+            > .breadcrumb-label {
+                font-weight: normal;
+            }
+        }
+    }
 }
 
 .wishlists-table {
-  thead tr th {
-    font-size: 16px;
-  }
-  a, a:visited, a:hover {
-    color: $teal;
-    font-size: 14px;
-    text-decoration: underline;
-  }
-  .table-actions {
-    a {
-      font-size: initial;
-      color: $black;
-      text-decoration: initial;
+    thead tr th {
+        font-size: 16px;
     }
-  }
+    a,
+    a:visited,
+    a:hover {
+        color: $teal;
+        font-size: 14px;
+        text-decoration: underline;
+    }
+    .table-actions {
+        a {
+            font-size: initial;
+            color: $black;
+            text-decoration: initial;
+        }
+    }
 }
 .form-input {
-  color: #000000;
+    color: #000000;
 }
-h1, h2, h3, h4, h5, h6 {
-
+@media screen and (max-width: 800px) {
+    .form-select--small {
+        padding-right: 0;
+    }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 }
 .productGrid {
-  .grid-add-to-cart-form {
-    .form-input {
-      height: 2.4rem !important;
+    .grid-add-to-cart-form {
+        .form-input {
+            height: 2.4rem !important;
+        }
     }
-  }
-  .card-title {
-    text-align: center;
-    a {
-      font-size: 14px !important;
-      font-weight: normal !important;
-      font-family: stencilFontFamily("body-font");
+    .card-title {
+        text-align: center;
+        a {
+            font-size: 14px !important;
+            font-weight: normal !important;
+            font-family: stencilFontFamily("body-font");
+        }
     }
-  }
-  .price {
-    font-weight: normal;
-  }
-  .card-img-container {
-    padding-bottom: 80%;
-  }
-  .button--primary {
-    font-size: 13px !important;
-    font-weight: 700;
-  }
+    .price {
+        font-weight: normal;
+    }
+    .card-img-container {
+        padding-bottom: 80%;
+    }
+    .button--primary {
+        font-size: 13px !important;
+        font-weight: 700;
+    }
 }
 .list-switch {
-  .product {
-    margin-right: 0 !important;
-    .card-img-container {
-      padding-bottom: 100%;
+    .product {
+        margin-right: 0 !important;
+        .card-img-container {
+            padding-bottom: 100%;
+        }
     }
-  }
-  .card-body {
-    .card-title {
-      font-weight: normal !important;
+    .card-body {
+        .card-title {
+            font-weight: normal !important;
+        }
+        .price--withoutTax {
+            font-weight: normal !important;
+        }
     }
-    .price--withoutTax {
-      font-weight: normal !important;
+    .grid-add-to-cart-form {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 5px;
+        input[type="submit"] {
+            width: 50%;
+        }
     }
-  }
-  .grid-add-to-cart-form {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 5px;
-    input[type="submit"] {
-      width: 50%;
-    }
-  }
 }
 
 .list-switch {
-  .card-body {
-    .card-title {
-      font-weight: normal !important;
+    .card-body {
+        .card-title {
+            font-weight: normal !important;
+        }
+        .price--withoutTax {
+            font-weight: normal !important;
+        }
     }
-    .price--withoutTax {
-      font-weight: normal !important;
+    .grid-add-to-cart-form {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 5px;
+        input[type="submit"] {
+            width: 50%;
+        }
     }
-  }
-  .grid-add-to-cart-form {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 5px;
-    input[type="submit"] {
-      width: 50%;
-    }
-  }
 }
 
 .breadcrumb {
-  &.is-active {
-    a{
-      font-weight: bold !important;
+    &.is-active {
+        a {
+            font-weight: bold !important;
+        }
     }
-  }
 }
 
 .add-to-favorites-button {
-  float: left;
-  font-weight: 700;
-  display: block;
-  position: relative;
-  font-size: 30px;
-  color: #000000;
-  border-radius: 2px;
-  height: 41px;
-  width: 25%;
-  -webkit-font-smoothing: antialiased;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-  padding-top: 11px;
-  padding-left: 16px;
-  &:hover {
-    font-weight: 700 !important;
-  }
+    float: left;
+    font-weight: 700;
+    display: block;
+    position: relative;
+    font-size: 30px;
+    color: #000000;
+    border-radius: 2px;
+    height: 41px;
+    width: 25%;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    padding-top: 11px;
+    padding-left: 16px;
+    &:hover {
+        font-weight: 700 !important;
+    }
 }
