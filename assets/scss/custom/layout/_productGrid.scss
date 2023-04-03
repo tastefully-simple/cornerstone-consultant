@@ -2,12 +2,11 @@
 // PRODUCT GRID
 // =============================================================================
 .productGrid {
-
   @include u-listBullets("none");
   @include grid-row($behavior: "nest");
   font-size: 0; // 1
   margin-bottom: spacing("single");
-  justify-content: center;
+  justify-content: left;
   display: flex;
   flex-wrap: wrap;
 
