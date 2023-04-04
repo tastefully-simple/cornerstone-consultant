@@ -1,0 +1,74 @@
+// =============================================================================
+// Tastefully Simple Cart Styles
+// =============================================================================
+
+.cart {
+    .button--icon svg {
+        fill: $teal;
+    }
+    a.cart-item-name__label {
+        font-size: 16px;
+        color: $teal;
+    }
+    input:not(.button):not(.button-primary),
+    textarea,
+    select {
+        border: none;
+    }
+    .cart-remove svg {
+        fill: $teal;
+    }
+}
+.cart-total-grandTotal {
+    font-family: unset;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+}
+.cart-actions {
+    @include clearfix;
+    clear: both;
+    background-color: $tsaqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 0;
+
+    @include breakpoint("small") {
+        float: right;
+        width: 100%;
+    }
+
+    @include breakpoint("medium") {
+        width: grid-calc(7, $total-columns);
+    }
+
+    @include breakpoint("large") {
+        width: grid-calc(5, $total-columns);
+    }
+
+    .button {
+        line-height: normal;
+        display: block;
+        width: 80%;
+        margin-bottom: 2rem;
+        margin-left: 0;
+        padding: 1.17rem 3rem;
+
+        @include breakpoint("small") {
+            float: right;
+        }
+
+        &.button--primary {
+            outline: none !important;
+            font-weight: 700;
+            margin-top: 2rem;
+        }
+
+        &.shopMore {
+            background-color: $white;
+            font-weight: normal;
+            margin-right: 0;
+        }
+    }
+}

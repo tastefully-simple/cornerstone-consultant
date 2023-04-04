@@ -33,7 +33,10 @@ export default class Global extends PageManager {
         svgInjector();
 
         // Custom components
-        loginModal(!this.context.sessionManagement.enabled);
+        loginModal(
+            this.context.sessionManagement.enabled,
+            this.context.sessionManagement.timeout_minutes,
+        );
         quickAddToCart();
         gridListSwitcher();
         sessionManager(this.context.customerId, this.context.sessionManagement);
