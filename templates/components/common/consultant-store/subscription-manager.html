@@ -1,0 +1,44 @@
+{{#if customer.id '>' 0}}
+    {{#if theme_settings.subscription_management.enabled }}
+    <div class="subscription-manager-block">
+        <p style="font-weight: 600">{{lang 'subscriptions.one_time_delivery_message1'}}<br/>{{lang 'subscriptions.one_time_delivery_message2'}}</p>
+        <a href="#" id="subscriptionManager--trigger">{{lang 'subscriptions.add_to_next_delivery'}}</a>
+        <br/><br/>
+        <div id="subscriptionManager" class="modal" data-reveal style="display: none">
+            <div class="modal-header" style="background: #cccccc"><p>Select a delivery</p>
+                <button type="button" class="modal-close" aria-label="Close" role="button">
+                    <span aria-hidden="true" class="close-modal-alternate"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p class="modal-delivery-message">This product will be added <b>one time only</b> to the delivery you select below:</p>
+                </div>
+                <div class="subscriptions-list"></div>
+            </div>
+            <div class="subscriptions-footer">
+                <a href="#" class="subscriptions-cancel">{{lang 'subscriptions.cancel'}}</a><a class="subscriptions-continue">{{lang 'subscriptions.continue'}}</a>
+            </div>
+        </div>
+        <div class="subscriptions-templates" style="display: none">
+            <div class="subscription-card-template">
+                <div class="subscription-card" style="display: flex">
+                    <div class="subscription-card-left">
+                        <input class="subscription-select" type="radio" name="subscription" value="#subscription_id">
+                    </div>
+                    <div class="subscription-card-right">
+                        <div class="subscription-card-header">
+                            <p>{{lang 'subscriptions.next_order'}} <b>#next_order_date</b></p>
+                            <p>{{lang 'subscriptions.products'}}</p>
+                        </div>
+                        <div class="subscription-card-products-list"></div>
+                        <div class="subscription-info">
+                            <p>{{lang 'subscriptions.subscription'}} - #subscription_id</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+{{/if}}

@@ -368,6 +368,10 @@
       "enabled": true,
       "login_url": "https://tastefullysimple-sandbox.rallyware.com/",
       "timeout_minutes": 1
+    },
+    "subscription_management": {
+      "enabled": true,
+      "api_url": ""
     }
   },
   "read_only_files": [
@@ -412,6 +416,10 @@
           "enabled": false,
           "login_url": "https://tastefullysimple-sandbox.rallyware.com/",
           "timeout_minutes": 60
+        },
+        "subscription_management": {
+          "enabled": true,
+          "api_url": ""
         }
       }
     },
@@ -439,6 +447,10 @@
           "enabled": true,
           "login_url": "https://tastefullysimple-sandbox.rallyware.com/",
           "timeout_minutes": 60
+        },
+        "subscription_management": {
+          "enabled": true,
+          "api_url": ""
         }
       }
     },
@@ -466,6 +478,10 @@
           "enabled": true,
           "login_url": "https://tscentral.tastefullysimple.com/",
           "timeout_minutes": 60
+        },
+        "subscription_management": {
+          "enabled": true,
+          "api_url": ""
         }
       }
     }

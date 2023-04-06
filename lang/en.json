@@ -719,6 +719,16 @@
             }
         }
     },
+    "subscriptions": {
+        "add_to_next_delivery": "Add to next delivery",
+        "one_time_delivery_message1": "Want to save on shipping but just need this once?",
+        "one_time_delivery_message2": "Add one time only to your next autoship delivery.",
+        "next_order": "Next order:",
+        "products": "Products in this delivery",
+        "subscription": "Subscription",
+        "cancel": "Cancel",
+        "continue": "Continue"
+    },
     "products": {
         "current_stock": "Current Stock:",
         "quantity": "QTY:",

@@ -150,3 +150,116 @@ h6 {
     font-size: 14px !important;
   }
 }
+
+#subscriptionManager--trigger {
+    padding-top: 17px;
+    padding-bottom: 17px;
+    padding-right: 70px;
+    padding-left: 70px;
+    background: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#subscriptionManager {
+    width: 400px;
+    border-radius: 5px;
+    .modal-header {
+        p {
+            margin-bottom: 0;
+            color: teal;
+            text-transform: lowercase;
+            font-weight: bold;
+        }
+    }
+    .modal-delivery-message {
+        font-size: 13px;
+    }
+    .modal-body {
+        padding: 20px;
+        overflow: hidden;
+    }
+    .modal-close {
+        top: 0.7rem;
+        &::before, &::after {
+            display: none;
+        }
+        .close-modal-alternate {
+            font: 500 25px 'Font Awesome 5 Pro';
+            color: $teal;
+            &::before{
+                content:"\f00d";
+            }
+        }
+    }
+}
+
+.subscription-card {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px;
+    display: flex;
+    margin-right: 10px;
+}
+.subscription-card-left {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    justify-content: center;
+    padding-left: 15px;
+}
+
+.subscription-card-right {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.subscription-card-products-list {
+    img {
+        width: 40px;
+        border: 1px solid #eee;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+}
+
+.subscription-card-header {
+    p {
+        margin-bottom: 0;
+        font-size: 13px;
+    }
+}
+.subscription-info {
+    p {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        font-size: 13px;
+    }
+}
+.subscription-card {
+    +.subscription-card {
+        margin-top:10px;
+    }
+}
+.subscriptions-list {
+    height: 400px;
+    overflow-y: auto;
+    margin-right: 10px;
+    &::-webkit-scrollbar-track {
+        background: orange;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: blue;
+        border-radius: 20px;
+        border: 3px solid orange;
+    }
+}
+
+.subscriptions-list::-webkit-scrollbar-track {
+    background-color: blue;
+    border-radius: 20px;
+    border: 3px solid orange;
+}
