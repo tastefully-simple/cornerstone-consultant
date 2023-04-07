@@ -22,12 +22,15 @@ customer:
         <section class="account-content">
             {{#if customer.orders.length}}
                 {{> components/account/orders-list orders=customer.orders}}
-                {{> components/common/small-paginator pagination.orders}}
+                {{> components/custom/ts-paginator pagination.orders}}
             {{else}}
                 {{> components/common/alert/alert-info (lang 'account.orders.none')}}
             {{/if}}
         </section>
     </div>
+    <p class="support-message">If you need further assistance, please contact our Customer Service team at <strong><a href="tel:{{settings.phone_number}}" title="Call us">{{settings.phone_number}}</a></strong> or email <strong><a href="mailto:{{theme_settings.ts_help_email}}" title="Email us">{{theme_settings.ts_help_email}}</a></strong></p>
+        {{!-- TST-264 Check user last login date API --}}
+        <input type="hidden" class="customer-email" value="{{customer.email}}" />
 </div>
 
 {{/partial}}
