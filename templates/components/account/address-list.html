@@ -3,7 +3,7 @@
 {{/unless}}
 
 <ul class="addressList">
-    {{#each customer.addresses}}
+    {{#each (limit customer.addresses 1)}}
         <li class="address">
             <div class="panel panel--address">
                 <div class="panel-body">
@@ -21,16 +21,11 @@
                             <dd class="address-description">{{phone}}</dd>
                         </dl>
                     {{/if}}
-                    <form action="{{delete_url}}" method="post" data-delete-address="{{lang 'forms.address.confirm_delete'}}">
-                        <div class="form-actions">
-                            <a class="button button--primary button--small" href="{{edit_url}}">{{lang 'common.edit' }}</a>
-                            <button type="submit" class="button secondary button--small">{{lang 'common.delete' }}</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </li>
     {{/each}}
+    {{#unless customer.addresses}}
     <li class="address">
         <a class="panel panel--address panel--newAddress" href="{{urls.account.add_address}}">
             <span class="panel-body">
@@ -41,4 +36,5 @@
             </span>
         </a>
     </li>
+    {{/unless}}
 </ul>
