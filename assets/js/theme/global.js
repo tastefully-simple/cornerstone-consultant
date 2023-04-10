@@ -17,6 +17,7 @@ import quickAddToCart from './global/custom/quick-add-to-cart';
 import gridListSwitcher from './global/custom/grid-list-switcher';
 import loginModal from './global/custom/login-modal';
 import sessionManager from './global/custom/session-manager';
+import subscriptionManager from './global/custom/subscription-manager';
 
 export default class Global extends PageManager {
     onReady() {
@@ -37,9 +38,14 @@ export default class Global extends PageManager {
             this.context.sessionManagement.enabled,
             this.context.sessionManagement.timeout_minutes,
         );
+
         quickAddToCart();
         gridListSwitcher();
-        sessionManager(this.context.customerId, this.context.sessionManagement);
+        sessionManager(this.context.customerId, false);
+        subscriptionManager(
+            this.context.customerId, this.context.productId,
+            this.context.subscriptionManagement,
+        );
         const accountMenu = document.getElementById('navPages-account-main');
         if (accountMenu) {
             accountMenu.classList.add('is-open');
