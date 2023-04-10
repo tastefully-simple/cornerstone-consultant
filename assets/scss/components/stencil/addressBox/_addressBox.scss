@@ -86,11 +86,16 @@
 .address-title {
     margin: 0 0 spacing("half");
     text-transform: none;
+    color: $black;
 }
 
 .address-details {
     list-style: none;
     margin: 0 0 spacing("half");
+    color: #444444;
+    .address-label{
+        color: #444444;
+    }
 }
 
 .address-details--postal {
