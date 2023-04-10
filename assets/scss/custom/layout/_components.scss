@@ -166,6 +166,7 @@ h6 {
 
 #subscriptionManager {
     width: 400px;
+    height: 660px;
     border-radius: 5px;
     .modal-header {
         p {
@@ -202,6 +203,7 @@ h6 {
     border-radius: 5px;
     display: flex;
     margin-right: 10px;
+    margin-left: 10px;
 }
 .subscription-card-left {
     display: flex;
@@ -247,19 +249,89 @@ h6 {
 .subscriptions-list {
     height: 400px;
     overflow-y: auto;
-    margin-right: 10px;
-    &::-webkit-scrollbar-track {
-        background: orange;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    &::-webkit-scrollbar {
+        width: 10px;
     }
+
+    &::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+        border-radius: 2px;
+    }
+
     &::-webkit-scrollbar-thumb {
-        background-color: blue;
-        border-radius: 20px;
-        border: 3px solid orange;
+        background-color: #d7e0c6;
+        border-radius: 100px;
     }
 }
 
-.subscriptions-list::-webkit-scrollbar-track {
-    background-color: blue;
-    border-radius: 20px;
-    border: 3px solid orange;
+.subscriptions-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+    position: absolute;
+    top: 90%;
+    width: 100%;
+    a {
+        padding-left: 15px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        padding-right: 15px;
+        font-size: 18px;
+        text-transform: lowercase;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-right: 10px;
+        &.subscriptions-continue, &.subscriptions-done {
+            padding-right: 20px;
+            font-weight: 600;
+            background: $tsgreen-light;
+            color: $black;
+            display: block;
+
+            i {
+                display: block;
+                float: right;
+                margin-top: 7px;
+                margin-left: 10px;
+            }
+            &.disabled {
+                background-color: #b3c88d;
+                color: $white;
+            }
+        }
+        &.subscriptions-done {
+            display: none;
+        }
+        &.subscriptions-cancel {
+            background-color: #f1f0ee;
+            color: #8e973f;
+            border: 1px solid #8e973f;
+        }
+    }
+}
+.subscription-manager-block, .subscription-next-order-message {
+    display: none;
+}
+.subscription-next-order-message {
+    text-align: right;
+    top: 85%;
+}
+.subscription-manager-block {
+    p {
+        text-align: left;
+        font-weight: 600;
+    }
+}
+
+.subscription-selected {
+    border: 1px solid $teal;
+}
+
+.subscription-select {
+    accent-color: $teal;
+    &:focus-visible {
+        accent-color: $teal;
+    }
 }

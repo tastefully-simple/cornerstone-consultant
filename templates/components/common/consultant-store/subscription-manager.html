@@ -1,12 +1,12 @@
 {{#if customer.id '>' 0}}
     {{#if theme_settings.subscription_management.enabled }}
-    <div class="subscription-manager-block">
+    <div class="subscription-manager-block" id="subscription-manager-block">
         <p style="font-weight: 600">{{lang 'subscriptions.one_time_delivery_message1'}}<br/>{{lang 'subscriptions.one_time_delivery_message2'}}</p>
         <a href="#" id="subscriptionManager--trigger">{{lang 'subscriptions.add_to_next_delivery'}}</a>
         <br/><br/>
         <div id="subscriptionManager" class="modal" data-reveal style="display: none">
             <div class="modal-header" style="background: #cccccc"><p>Select a delivery</p>
-                <button type="button" class="modal-close" aria-label="Close" role="button">
+                <button type="button" class="modal-close close-subscriptions" aria-label="Close" role="button">
                     <span aria-hidden="true" class="close-modal-alternate"></span>
                 </button>
             </div>
@@ -16,24 +16,49 @@
                 </div>
                 <div class="subscriptions-list"></div>
             </div>
+            <div class="subscriptions-footer subscription-next-order-message">
+                <p class="modal-delivery-message" style="margin-right: 10px;">{{lang 'subscriptions.next_order_message'}}</p>
+            </div>
             <div class="subscriptions-footer">
-                <a href="#" class="subscriptions-cancel">{{lang 'subscriptions.cancel'}}</a><a class="subscriptions-continue">{{lang 'subscriptions.continue'}}</a>
+                <a href="#" class="subscriptions-cancel close-subscriptions">{{lang 'subscriptions.cancel'}}</a>
+                <a class="subscriptions-continue disabled" href="#">{{lang 'subscriptions.continue'}} <i class="far fa-chevron-right"></i></a>
+                <a class="subscriptions-done close-subscriptions" href="#">{{lang 'subscriptions.done'}} <i class="far fa-chevron-right"></i></a>
             </div>
         </div>
         <div class="subscriptions-templates" style="display: none">
-            <div class="subscription-card-template">
+            <div id="subscription-success-template">
+                <div class="subscription-card" style="display: flex; padding-top: 10px; padding-bottom: 20px;">
+                    <div class="subscription-card-left"></div>
+                    <div class="subscription-card-right">
+                        <div class="subscription-card-header">
+                            <p>{{lang 'subscriptions.next_order'}} <b>#NextOrder</b></p>
+                            <p>{{lang 'subscriptions.recurring_products'}}</p>
+                        </div>
+                        <div class="subscription-card-products-list"></div>
+                        <div class="subscription-card-header">
+                            <p>{{lang 'subscriptions.one_time'}}</p>
+                        </div>
+                        <div class="subscription-card-products-list">#SubscriptionProducts</div>
+                        <div class="subscription-info">
+                            <p>{{lang 'subscriptions.one_time_description'}}</p>
+                        </div>
+                        <div class="subscription-card-products-list">#NewProduct</div>
+                    </div>
+                </div>
+            </div>
+            <div id="subscription-card-template">
                 <div class="subscription-card" style="display: flex">
                     <div class="subscription-card-left">
-                        <input class="subscription-select" type="radio" name="subscription" value="#subscription_id">
+                        <input class="subscription-select" type="radio" name="select-subscription" value="#Id">
                     </div>
                     <div class="subscription-card-right">
                         <div class="subscription-card-header">
-                            <p>{{lang 'subscriptions.next_order'}} <b>#next_order_date</b></p>
+                            <p>{{lang 'subscriptions.next_order'}} <b>#NextOrder</b></p>
                             <p>{{lang 'subscriptions.products'}}</p>
                         </div>
-                        <div class="subscription-card-products-list"></div>
+                        <div class="subscription-card-products-list">#ProductsList</div>
                         <div class="subscription-info">
-                            <p>{{lang 'subscriptions.subscription'}} - #subscription_id</p>
+                            <p>{{lang 'subscriptions.subscription'}} - ##Id</p>
                         </div>
                     </div>
                 </div>

@@ -371,7 +371,7 @@
     },
     "subscription_management": {
       "enabled": true,
-      "api_url": ""
+      "api_url": "https://qa1-subscription.api.tastefullysimple.com/4"
     }
   },
   "read_only_files": [
@@ -419,7 +419,7 @@
         },
         "subscription_management": {
           "enabled": true,
-          "api_url": ""
+          "api_url": "https://qa1-subscription.api.tastefullysimple.com/4"
         }
       }
     },
@@ -450,7 +450,7 @@
         },
         "subscription_management": {
           "enabled": true,
-          "api_url": ""
+          "api_url": "https://qa1-subscription.api.tastefullysimple.com/4"
         }
       }
     },
@@ -481,7 +481,7 @@
         },
         "subscription_management": {
           "enabled": true,
-          "api_url": ""
+          "api_url": "https://subscription.api.tastefullysimple.com/4"
         }
       }
     }

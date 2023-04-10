@@ -38,10 +38,14 @@ export default class Global extends PageManager {
             this.context.sessionManagement.enabled,
             this.context.sessionManagement.timeout_minutes,
         );
+
         quickAddToCart();
         gridListSwitcher();
         sessionManager(this.context.customerId, false);
-        subscriptionManager(this.context.customerId, this.context.subscriptionManagement);
+        subscriptionManager(
+            this.context.customerId, this.context.productId,
+            this.context.subscriptionManagement,
+        );
         const accountMenu = document.getElementById('navPages-account-main');
         if (accountMenu) {
             accountMenu.classList.add('is-open');
