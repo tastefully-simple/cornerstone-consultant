@@ -287,3 +287,23 @@
         padding: 5px;
     }
 }
+@media only screen and (max-width: $screen-small) {
+    .actionBar {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .actionBar-section {
+        &.sort-selector {
+            display: contents;
+        }
+        select#sort {
+            width: grid-calc(8, $total-columns);
+        }
+        &.grid-list-selectors {
+            max-width: 100%;
+            .form-field {
+                float: right;
+            }
+        }
+    }
+}
