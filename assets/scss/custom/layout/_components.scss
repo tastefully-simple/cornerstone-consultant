@@ -127,7 +127,6 @@ h6 {
     float: left;
     font-weight: 700;
     display: block;
-    position: relative;
     font-size: 30px;
     color: #000000;
     border-radius: 2px;
@@ -139,7 +138,7 @@ h6 {
     text-rendering: auto;
     line-height: 1;
     padding-top: 11px;
-    padding-left: 16px;
+    padding-left: 28%;
     &:hover {
         font-weight: 700 !important;
     }
@@ -334,4 +333,18 @@ h6 {
     &:focus-visible {
         accent-color: $teal;
     }
+}
+.productView-options {
+    display: flex;
+    .form-wishlist {
+        align-self: self-end;
+        padding-left: 5px;
+    }
+    .add-to-cart-buttons, .add-product-to-cart-form, .form-wishlist {
+        margin-bottom: 0 !important;
+    }
+}
+.wishlist-product-form {
+    margin-left: 250px !important;
+    position: absolute !important;
 }
