@@ -318,6 +318,7 @@ h6 {
     top: 85%;
 }
 .subscription-manager-block {
+    border-top: 1px solid #91c23b;
     p {
         text-align: left;
         font-weight: 600;
@@ -347,4 +348,9 @@ h6 {
 .wishlist-product-form {
     margin-left: 250px !important;
     position: absolute !important;
+}
+@media (min-width: 420px) and (max-width: 550px) {
+    .wishlist-product-form {
+        margin-left: 70% !important;
+    }
 }

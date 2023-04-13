@@ -1,5 +1,5 @@
 // =============================================================================
-// Tastefully Simple Account Orders Page
+// CONSULTANT STORE ACCOUNT
 // =============================================================================
 
 .account-order-listItem {
@@ -119,5 +119,12 @@
     }
     .support-message {
         max-width: grid-calc(12, $total-columns);
+    }
+}
+#customer-portal-root {
+    .stx-button {
+        &.edit-text-button {
+            display: none;
+        }
     }
 }

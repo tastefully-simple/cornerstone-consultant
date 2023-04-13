@@ -12,7 +12,11 @@
 .bsub-details__toggle-btn {
     display: none !important;
 }
-
+.bsub-widget {
+    .stx-field, .stx-field--with-radio-field, .stx-field__label, label {
+        text-align: left !important;
+    }
+}
 // Product Page
 .productView {
     .price-section {
@@ -372,6 +376,12 @@
 }
 
 @media only screen and (max-width:800px) {
+    .add-to-cart-buttons {
+        text-align: left !important;
+        #form-action-addToCart {
+            width: 75% !important;
+        }
+    }
     .productView {
         .productView-options {
             #wishlist-dropdown {
@@ -389,12 +399,13 @@
                 float: left !important;
                 display: inline-block !important;
                 &.add-product-to-cart-form {
-                    width: 75% !important;
+                    width: 100% !important;
                     margin-right: 5%;
                 }
                 &.wishlist-product-form {
                     width: 20%;
                     margin-top: 84px;
+                    max-width: 80px;
                     .button {
                         padding: 0;
                         margin: 0;

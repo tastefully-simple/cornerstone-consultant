@@ -222,7 +222,6 @@
             {{#if product.release_date }}
                 <p>{{product.release_date}}</p>
             {{/if}}
-            {{> components/common/consultant-store/subscription-manager }}
             <form class="form add-product-to-cart-form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
                   data-cart-item-add>
                 <input type="hidden" name="action" value="add">
@@ -238,6 +237,7 @@
                         <span data-product-stock>{{product.stock_level}}</span>
                     </label>
                 </div> --}}
+                {{> components/common/consultant-store/subscription-manager }}
                 {{> components/products/add-to-cart}}
                 {{#if product.out_of_stock}}
                     {{#if product.out_of_stock_message}}
