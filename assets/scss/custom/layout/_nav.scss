@@ -25,7 +25,7 @@
   }
 }
 
-@media only screen and (max-width:1099px) {
+@media (min-width: 1000px) and (max-width:1099px) {
   [move-submenu] {
     width: 1000px !important;
     left: -500px !important;
@@ -35,7 +35,7 @@
     z-index: 10;
   }
 }
-@media only screen and (max-width:999px) {
+@media (min-width: 801px) and (max-width:999px) {
   [move-submenu] {
     width: 800px !important;
     left: -400px !important;
