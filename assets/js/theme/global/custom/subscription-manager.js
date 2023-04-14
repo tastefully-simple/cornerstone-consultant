@@ -213,7 +213,7 @@ export default function (customerId, productId, subscriptionManagement) {
             };
             window.subscriptionManager.subs[subscription.Id] = subscription;
             window.subscriptionManager.subs[subscription.Id].images = subscriptionImages;
-            $('#subscriptionManager .subscriptions-list').append(formatTemplate(subscriptionTemplate, map));
+            $('#subscriptionManager .subscriptions-list-content').prepend(formatTemplate(subscriptionTemplate, map));
         });
     });
 

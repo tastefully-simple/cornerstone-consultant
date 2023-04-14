@@ -372,7 +372,8 @@
     "subscription_management": {
       "enabled": true,
       "api_url": "https://qa1-subscription.api.tastefullysimple.com/4"
-    }
+    },
+    "ts_help_email": "help@tastefullysimple.com"
   },
   "read_only_files": [
     "/assets/scss/components/citadel",

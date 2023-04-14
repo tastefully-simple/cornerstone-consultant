@@ -246,8 +246,11 @@ h6 {
     }
 }
 .subscriptions-list {
+    .subscriptions-list-content {
+        min-height: 105%;
+    }
     height: 400px;
-    overflow-y: auto;
+    overflow-y: scroll;
     padding-top: 5px;
     padding-bottom: 10px;
     &::-webkit-scrollbar {
@@ -319,6 +322,7 @@ h6 {
 }
 .subscription-manager-block {
     border-top: 1px solid #91c23b;
+    padding-top: 10px;
     p {
         text-align: left;
         font-weight: 600;

@@ -4,7 +4,13 @@
 
 // Bold
 .productView-options .bsub-widget {
+    .stx-field--with-select {
+        margin-bottom: 0;
+    }
     border-style:none;
+    padding-left: 0;
+    margin-bottom: 0;
+    padding-right: 0;
     select {
         border: 1px solid;
     }
@@ -26,12 +32,15 @@
     }
     // Product Details Section - productView-product
     .productView-details {
-        margin-bottom: 0px;
+        &.product-data {
+            padding-bottom: 0;
+        }
+        margin-bottom: 0;
         .productView-product {
             // Title
             .productView-title {
                 font-size: 30px;
-                margin-bottom: 0px;
+                margin-bottom: 0;
                 color: $black;
             }
             // Product Rating
@@ -50,6 +59,8 @@
             }
             // Price
             .productView-price {
+                margin-bottom: 0;
+                padding-bottom: 0;
                 .price--withoutTax {
                     color: $tsteal;
                     font-size: 22px;
