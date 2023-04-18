@@ -4,20 +4,109 @@ import 'foundation-sites/js/foundation/foundation';
 import swal from '../../global/sweet-alert';
 
 /**
- * List all subscriptions for the customer
- * @param customerId
+ * Replaces all occurrences of the string "mapArray key" with the "mapArray value" in the "template" string
+ * @param template
+ * @param mapArray
+ * @returns {*}
  */
-function getSubscriptions(customerId) {
+function formatTemplate(template, mapArray) {
+    let finalObj = template;
+    // Replace all static data
+    // eslint-disable-next-line guard-for-in
+    for (const key in mapArray) {
+        finalObj = finalObj.replaceAll(key, mapArray[key]);
+    }
+    return finalObj;
+}
+
+/**
+ * Format date "2023-03-31T21:38:22Z" to "March 31, 2023"
+ * @param myDate
+ * @returns {string}
+ */
+function formatDate(myDate) {
+    const date = new Date(myDate);
+    return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+/**
+ * Get a list of all images
+ * @param products
+ * @returns {string}
+ */
+function getProductsImageList(products) {
+    let images = '';
+    // eslint-disable-next-line guard-for-in
+    for (const key in products) {
+        images += `<img src="${products[key].images[0].src}">`;
+    }
+
+    return images;
+}
+
+/**
+ *  Open subscription modal and load content inside of it
+ * @param subscriptionModal
+ * @param contentTemplate
+ */
+function loadSubscriptionModal(subscriptionModal, contentTemplate) {
+    // Open Modal with a Preloader layer
+    subscriptionModal.open({ clearContent: false, pending: true });
+
     $.ajax({
-        url: `${window.subscriptionManager.apiUrl}/customers/${customerId}/subscriptions`,
+        url: `${window.subscriptionManager.apiUrl}/customers/${window.subscriptionManager.customerId}/subscriptions`,
+        type: 'GET',
+        dataType: 'JSON',
+        success(response) {
+            if (response.length >= 1) {
+                window.subscriptionManager.subscriptions = response;
+
+                const subscriptionTemplate = window.subscriptionManager.subscriptionCard;
+                const subscriptions = window.subscriptionManager.subscriptions;
+                subscriptionModal.updateContent(contentTemplate);
+
+                // Create subscriptions list
+                subscriptions.forEach((subscription) => {
+                    const subscriptionImages = getProductsImageList(subscription.LineItems);
+                    const map = {
+                        '#NextOrder': formatDate(subscription.NextOrder),
+                        '#Id': subscription.Id,
+                        '#ProductsList': subscriptionImages,
+                    };
+                    window.subscriptionManager.subs[subscription.Id] = subscription;
+                    window.subscriptionManager.subs[subscription.Id].images = subscriptionImages;
+                    $(`#subscriptionManager--${window.subscriptionManager.version} .subscriptions-list-content`).prepend(formatTemplate(subscriptionTemplate, map));
+                });
+            }
+        },
+    });
+}
+
+/**
+ * Verify if this product has the autoship widget
+ * @param productId
+ */
+function isAutoshipEnabled(productId) {
+    $.ajax({
+        url: `${window.subscriptionManager.apiUrl}/Subscriptions/products/${productId}`,
         type: 'GET',
         dataType: 'JSON', // added data type
         success(response) {
-            if (response.length >= 1) {
-                // show component if the customer has active subscriptions
-                $('#subscription-manager-block').show();
-                window.subscriptionManager.subscriptions = response;
+            if (response) {
+                // This product is Autoship Eligible. Show  Widget Version 2
+                window.subscriptionManager.version = 'future';
             }
+            // Display Button and message
+            $(`#subscription--container-${window.subscriptionManager.version}`).show();
+            const subscriptionModal = modalFactory(`#subscriptionManager--${window.subscriptionManager.version}`)[0];
+            // Show Add to Next Delivery (Widget Version 1)
+            const $subscriptionManagerTrigger = $(`#subscriptionManager--trigger-${window.subscriptionManager.version}`);
+            $subscriptionManagerTrigger.on('click', () => {
+                loadSubscriptionModal(subscriptionModal, $(`#subscriptionManager--${window.subscriptionManager.version}`).html());
+            });
+            $('body').on('click', '.close-subscriptions', () => {
+                subscriptionModal.close();
+            });
         },
     });
 }
@@ -35,36 +124,9 @@ function hasSubscriptions(customerId) {
             if (response === true) {
                 // show component if the customer has active subscriptions
                 $('#subscription-manager-block').show();
-                window.subscriptionManager.subscriptions = response;
             }
         },
     });
-}
-
-/**
- * Format date "2023-03-31T21:38:22Z" to "March 31, 2023"
- * @param myDate
- * @returns {string}
- */
-function formatDate(myDate) {
-    const date = new Date(myDate);
-    return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-}
-
-/**
- * Replaces all occurrences of the string "mapArray key" with the "mapArray value" in the "template" string
- * @param template
- * @param mapArray
- * @returns {*}
- */
-function formatTemplate(template, mapArray) {
-    let finalObj = template;
-    // Replace all static data
-    // eslint-disable-next-line guard-for-in
-    for (const key in mapArray) {
-        finalObj = finalObj.replaceAll(key, mapArray[key]);
-    }
-    return finalObj;
 }
 
 /**
@@ -73,7 +135,7 @@ function formatTemplate(template, mapArray) {
  */
 function subscriptionUpdated(subscriptionId) {
     const newImageUrl = $('.productView-thumbnail-link:first img').attr('src');
-    const successTemplate = window.subscriptionManager.successModal;
+    const successTemplate = $(`#subscription-success-template--${window.subscriptionManager.version}`).html();
     const subscription = window.subscriptionManager.subs[subscriptionId];
     window.subscriptionManager.subs[subscriptionId] += `<img src="${newImageUrl}">`;
 
@@ -84,7 +146,7 @@ function subscriptionUpdated(subscriptionId) {
         '#NewProduct': `<img src="${newImageUrl}">`,
     };
 
-    $('#subscriptionManager .modal-body:first').html(formatTemplate(successTemplate, map));
+    $(`#subscriptionManager--${window.subscriptionManager.version} .modal-body:first`).html(formatTemplate(successTemplate, map));
 }
 
 /**
@@ -138,11 +200,11 @@ async function updateSubscription(subscriptionId, productId) {
         // eslint-disable-next-line no-unused-vars
         success(response) {
             subscriptionUpdated(subscriptionId);
-            $('#subscriptionManager .subscriptions-footer:first').hide();
-            $('#subscriptionManager .subscriptions-cancel').hide();
-            $('#subscriptionManager .subscriptions-continue').hide();
-            $('#subscriptionManager .subscriptions-done').show();
-            $('#subscriptionManager .modal-header p').html('product added to delivery');
+            $(`#subscriptionManager--${window.subscriptionManager.version} .subscriptions-footer:first`).hide();
+            $(`#subscriptionManager--${window.subscriptionManager.version} .subscriptions-cancel`).hide();
+            $(`#subscriptionManager--${window.subscriptionManager.version} .subscriptions-continue`).hide();
+            $(`#subscriptionManager--${window.subscriptionManager.version} .subscriptions-done`).show();
+            $(`#subscriptionManager--${window.subscriptionManager.version} .modal-header p`).html('product added to delivery');
         },
         // eslint-disable-next-line no-unused-vars
         error(xhr, status, error) {
@@ -152,21 +214,6 @@ async function updateSubscription(subscriptionId, productId) {
             });
         },
     });
-}
-
-/**
- * Get a list of all images
- * @param products
- * @returns {string}
- */
-function getProductsImageList(products) {
-    let images = '';
-    // eslint-disable-next-line guard-for-in
-    for (const key in products) {
-        images += `<img src="${products[key].images[0].src}">`;
-    }
-
-    return images;
 }
 
 /**
@@ -181,45 +228,20 @@ export default function (customerId, productId, subscriptionManagement) {
         return false;
     }
 
-    const subscriptionModal = modalFactory('#subscriptionManager')[0];
-
     // Set template data for the modal
     window.subscriptionManager = {
-        originalModal: $('#subscriptionManager').html(),
         subscriptionCard: $('#subscription-card-template').html(),
-        successModal: $('#subscription-success-template').html(),
         apiUrl: subscriptionManagement.api_url,
         subscriptions: [],
         subs: [],
+        version: 'next',
+        customerId,
+        productId,
     };
-
+    // Verify if this customer has subscriptions
     hasSubscriptions(customerId);
-    getSubscriptions(customerId);
-
-    const $subscriptionManagerTrigger = $('#subscriptionManager--trigger');
-    $subscriptionManagerTrigger.on('click', () => {
-        subscriptionModal.open({ clearContent: false, pending: true });
-        subscriptionModal.updateContent(window.subscriptionManager.originalModal);
-        const subscriptionTemplate = window.subscriptionManager.subscriptionCard;
-        const subscriptions = window.subscriptionManager.subscriptions;
-
-        // Create subscriptions list
-        subscriptions.forEach((subscription) => {
-            const subscriptionImages = getProductsImageList(subscription.LineItems);
-            const map = {
-                '#NextOrder': formatDate(subscription.NextOrder),
-                '#Id': subscription.Id,
-                '#ProductsList': subscriptionImages,
-            };
-            window.subscriptionManager.subs[subscription.Id] = subscription;
-            window.subscriptionManager.subs[subscription.Id].images = subscriptionImages;
-            $('#subscriptionManager .subscriptions-list-content').prepend(formatTemplate(subscriptionTemplate, map));
-        });
-    });
-
-    $('body').on('click', '.close-subscriptions', () => {
-        subscriptionModal.close();
-    });
+    // Verify if this product has the Bold widget
+    isAutoshipEnabled(productId);
 
     $('body').on('click', '.subscription-select', (event) => {
         $('.subscriptions-continue').removeClass('disabled');
