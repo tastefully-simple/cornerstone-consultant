@@ -396,6 +396,7 @@ export default class ProductDetails extends ProductDetailsBase {
         const $addToCartBtn = $('#form-action-addToCart', $(event.target));
         const originalBtnVal = $addToCartBtn.val();
         const waitMessage = $addToCartBtn.data('waitMessage');
+        const addedMessage = $addToCartBtn.data('addedMessage');
 
         // Do not do AJAX if browser doesn't support FormData
         if (window.FormData === undefined) {
@@ -416,9 +417,13 @@ export default class ProductDetails extends ProductDetailsBase {
             currencySelector(response.data.cart_id);
             const errorMessage = err || response.data.error;
 
-            $addToCartBtn
-                .val(originalBtnVal)
-                .prop('disabled', false);
+            $addToCartBtn.val(addedMessage);
+
+            setTimeout(() => {
+                $addToCartBtn
+                    .val(originalBtnVal)
+                    .prop('disabled', false);
+            }, 4000);
 
             this.$overlay.hide();
 
@@ -437,16 +442,6 @@ export default class ProductDetails extends ProductDetailsBase {
 
             // Open preview modal and update content
             if (this.previewModal) {
-                this.previewModal.open();
-
-                if (window.ApplePaySession) {
-                    this.previewModal.$modal.addClass('apple-pay-supported');
-                }
-
-                if (!this.checkIsQuickViewChild($addToCartBtn)) {
-                    this.previewModal.$preModalFocusedEl = $addToCartBtn;
-                }
-
                 this.updateCartContent(this.previewModal, response.data.cart_item.id);
             } else {
                 this.$overlay.show();
