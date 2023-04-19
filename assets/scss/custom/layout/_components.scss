@@ -322,6 +322,7 @@ h6 {
 }
 .subscription-manager-block {
     padding-top: 10px;
+    margin-bottom: 20px;
     p {
         text-align: left;
         font-weight: 600;
@@ -369,4 +370,13 @@ h6 {
 
 .modal-background {
     opacity: 0.8;
+}
+
+@media screen and (max-width: 550px) {
+    .subscriptionManager--trigger {
+        padding-right: unset;
+        padding-left: unset;
+        width: 100%;
+        display: block;
+    }
 }
