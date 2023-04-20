@@ -37,6 +37,7 @@ export default class Global extends PageManager {
         loginModal(
             this.context.sessionManagement.enabled,
             this.context.sessionManagement.timeout_minutes,
+            this.context.customerId >= 1,
         );
 
         quickAddToCart();
