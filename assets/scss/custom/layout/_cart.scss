@@ -72,3 +72,8 @@
         }
     }
 }
+
+//  Tastefully Simple Preview Cart Styles
+.previewCartAction-viewCart {
+    @include grid-column(12);
+}
