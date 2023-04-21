@@ -732,7 +732,7 @@
         "cancel": "Cancel",
         "continue": "Continue",
         "recurring_products": "Recurring products in this delivery",
-        "one_time": "One time only products in this delivery",
+        "one_time": "One time only product added to this delivery",
         "one_time_description": "One time only products will not be sent in future deliveries in this subscription",
         "product_added": "Product added to delivery",
         "next_order_message": "This product will be added to the next scheduled order",
