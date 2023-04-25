@@ -51,7 +51,7 @@ function getProductsImageList(products) {
  */
 function loadSubscriptionModal(subscriptionModal, contentTemplate) {
     // Open Modal with a Preloader layer
-    subscriptionModal.open({ clearContent: false, pending: true });
+    subscriptionModal.open({ clearContent: true, pending: true });
 
     $.ajax({
         url: `${window.subscriptionManager.apiUrl}/customers/${window.subscriptionManager.customerId}/subscriptions`,
@@ -64,6 +64,7 @@ function loadSubscriptionModal(subscriptionModal, contentTemplate) {
                 const subscriptionTemplate = window.subscriptionManager.subscriptionCard;
                 const subscriptions = window.subscriptionManager.subscriptions;
                 subscriptionModal.updateContent(contentTemplate);
+                $(`#subscriptionManager--${window.subscriptionManager.version} .subscriptions-list-content`).html(' ');
 
                 // Create subscriptions list
                 subscriptions.forEach((subscription) => {
