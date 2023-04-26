@@ -42,4 +42,6 @@ export default function () {
 
         setCookie(gridSwitcherCookie, event.currentTarget.id, expiryDays);
     });
+
+    $('.productGrid-container').show();
 }
