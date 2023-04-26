@@ -21,14 +21,6 @@
             </div>
         </li>
     {{/if}}
-    {{#if cart.shipping_handling.show_estimator}}
-        <li class="cart-total">
-            <div class="cart-total-label">
-                <strong>{{lang 'cart.checkout.shipping'}}:</strong>
-            </div>
-            {{> components/cart/shipping-estimator cart.shipping_handling}}
-        </li>
-    {{/if}}
     {{#each cart.taxes}}
         {{#unless included}}
             <li class="cart-total">
