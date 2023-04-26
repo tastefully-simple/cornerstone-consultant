@@ -3,7 +3,7 @@ import $ from 'jquery';
 function setCookie(key, value, expiry) {
     const expires = new Date();
     expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
-    document.cookie = `${key}=${value};expires=${expires.toUTCString()}`;
+    document.cookie = `${key}=${value};path=/;expires=${expires.toUTCString()}`;
 }
 
 function getCookie(key) {
