@@ -15,7 +15,6 @@ import carousel from './common/carousel';
 import svgInjector from './global/svg-injector';
 import quickAddToCart from './global/custom/quick-add-to-cart';
 import gridListSwitcher from './global/custom/grid-list-switcher';
-import loginModal from './global/custom/login-modal';
 import sessionManager from './global/custom/session-manager';
 import subscriptionManager from './global/custom/subscription-manager';
 
@@ -34,7 +33,7 @@ export default class Global extends PageManager {
         svgInjector();
 
         // Custom components
-        loginModal(
+        sessionManager(
             this.context.sessionManagement.enabled,
             this.context.sessionManagement.timeout_minutes,
             this.context.customerId >= 1,
@@ -42,7 +41,6 @@ export default class Global extends PageManager {
 
         quickAddToCart();
         gridListSwitcher();
-        sessionManager(this.context.customerId, false);
         subscriptionManager(
             this.context.customerId, this.context.productId,
             this.context.subscriptionManagement,
