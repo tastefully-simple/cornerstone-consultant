@@ -1,0 +1,130 @@
+// =============================================================================
+// CONSULTANT STORE ACCOUNT
+// =============================================================================
+
+.account-order-listItem {
+    max-width: 760px;
+    border: none;
+    margin: auto;
+    padding: 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 30px;
+    border-radius: 0.25rem;
+
+    &:not(:first-child) {
+        margin-top: 2rem;
+    }
+
+    .account-product-title {
+        a {
+            color: $tsaqua;
+            font-family: "Muli", serif;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+    }
+    .account-product-detail-heading {
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        margin: 0;
+    }
+    .account-product-figure {
+        margin-top: 1rem;
+        width: 170px;
+        &::after {
+            padding-bottom: 0;
+        }
+    }
+    .account-product {
+        border: none;
+        padding: 1.5rem 2rem;
+    }
+    .account-product-details {
+        display: grid;
+    }
+    .account-product-detail {
+        width: 100%;
+        &:not(:first-child) {
+            padding-top: 1rem;
+        }
+    }
+    .account-orderStatus-label {
+        font-size: 1rem;
+        text-transform: capitalize;
+        font-family: "Muli", serif;
+        color: $black;
+        background-color: $order-status-light;
+        padding: 0.6rem 1.5rem;
+    }
+}
+.support-message {
+    max-width: grid-calc(10, $total-columns);
+    margin: auto;
+    text-align: center;
+    a {
+        color: $tsaqua;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+}
+.orders-pagination {
+    max-width: grid-calc(6, $total-columns);
+    margin: auto;
+    .pagination-item {
+        font-size: 1rem;
+    }
+    li {
+        display: inline-grid;
+    }
+    .paginator-pageOf {
+        font-size: 1rem;
+        &::marker {
+            font-size: 0;
+        }
+    }
+}
+
+@media only screen and (max-width: $screen-small) {
+    .account-product-figure {
+        display: contents;
+        margin-top: 1rem;
+        &::after {
+            padding-bottom: 0;
+        }
+    }
+    .account-product-body {
+        display: inline-grid;
+        text-align: center;
+        width: grid-calc(12, $total-columns);
+    }
+    .account-orderStatus {
+        display: inline-grid;
+        width: 100%;
+
+        .account-orderStatus-label {
+            text-align: center;
+        }
+    }
+    .account-order-listItem {
+        .account-product-detail {
+            &:not(:first-child) {
+                padding-top: 0;
+            }
+        }
+    }
+}
+@media only screen and (min-width: $screen-medium) {
+    .account--fixed {
+        width: grid-calc(10, $total-columns);
+    }
+    .support-message {
+        max-width: grid-calc(12, $total-columns);
+    }
+}
+#customer-portal-root {
+    .stx-button {
+        &.edit-text-button {
+            display: none;
+        }
+    }
+}

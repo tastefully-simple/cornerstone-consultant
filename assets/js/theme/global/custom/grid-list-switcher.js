@@ -3,7 +3,7 @@ import $ from 'jquery';
 function setCookie(key, value, expiry) {
     const expires = new Date();
     expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
-    document.cookie = `${key}=${value};expires=${expires.toUTCString()}`;
+    document.cookie = `${key}=${value};path=/;expires=${expires.toUTCString()}`;
 }
 
 function getCookie(key) {
@@ -12,10 +12,14 @@ function getCookie(key) {
 }
 
 export default function () {
+    // Disable on Wishlist page
+    if (window.location.pathname === '/wishlist.php') {
+        return true;
+    }
     const gridSwitcherCookie = 'grid-switcher';
     const expiryDays = 10;
     const $gridListSwitcher = $('.grid-list-selectors button');
-    const defaultDisplay = 'grid-switch';
+    const defaultDisplay = 'list-switch';
 
     if (!getCookie(gridSwitcherCookie)) {
         setCookie(gridSwitcherCookie, defaultDisplay, expiryDays);
@@ -25,7 +29,7 @@ export default function () {
     const currentDisplayId = `#${currentDisplay}`;
     $(currentDisplayId).addClass('active');
 
-    if (currentDisplay !== defaultDisplay) {
+    if (currentDisplay === defaultDisplay) {
         $('.productGrid:first').addClass('list-switch');
     }
 
@@ -38,5 +42,6 @@ export default function () {
 
         setCookie(gridSwitcherCookie, event.currentTarget.id, expiryDays);
     });
-}
 
+    $('.productGrid-container').show();
+}

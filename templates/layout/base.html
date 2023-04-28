@@ -52,6 +52,7 @@
         {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
         {{~inject 'customerId' customer.id}}
         {{~inject 'sessionManagement' theme_settings.session_management}}
+        {{~inject 'subscriptionManagement' theme_settings.subscription_management}}
         {{!-- add fontawesome --}}
         <script src="https://kit.fontawesome.com/b258ff8a4b.js" crossorigin="anonymous"></script>
     </head>
@@ -73,7 +74,7 @@
         <script async defer src="{{cdn 'assets/dist/theme-bundle.main.js' resourceHint='preload' as='script'}}" onload="onThemeBundleMain()"></script>
 
         <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-        <div class="elfsight-app-44513817-57c9-4834-917d-7b9e9ba8a63f"></div>
+        <div class="elfsight-app-099d6b80-904b-4cdf-89aa-e5695f5c0ea6"></div>
 
         {{{footer.scripts}}}
     </body>

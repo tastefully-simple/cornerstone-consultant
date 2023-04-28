@@ -106,7 +106,7 @@
     "default_image_gift_certificate": "img/GiftCertificate.png",
     "body-font": "Muli",
     "headings-font": "Google_PT+Serif_400",
-    "fontSize-root": 12,
+    "fontSize-root": 16,
     "fontSize-h1": 28,
     "fontSize-h2": 25,
     "fontSize-h3": 22,
@@ -214,7 +214,7 @@
     "navUser-color-hover": "#000000",
     "navUser-dropdown-backgroundColor": "#ffffff",
     "navUser-dropdown-borderColor": "#cccccc",
-    "navUser-indicator-backgroundColor": "#000000",
+    "navUser-indicator-backgroundColor": "#005e64",
     "navPages-color": "#000000",
     "navPages-color-hover": "#000000",
     "navPages-subMenu-backgroundColor": "#e5e5e5",
@@ -366,9 +366,14 @@
     "paymentbuttons-provider-sorting": [],
     "session_management": {
       "enabled": true,
-      "login_url": "#",
-      "timeout_seconds": 360
-    }
+      "login_url": "https://tastefullysimple-sandbox.rallyware.com/",
+      "timeout_minutes": 1
+    },
+    "subscription_management": {
+      "enabled": true,
+      "api_url": "https://qa1-subscription.api.tastefullysimple.com/4"
+    },
+    "ts_help_email": "help@tastefullysimple.com"
   },
   "read_only_files": [
     "/assets/scss/components/citadel",
@@ -410,8 +415,12 @@
       "settings": {
         "session_management": {
           "enabled": false,
-          "login_url": "#",
-          "timeout_seconds": 360
+          "login_url": "https://tastefullysimple-sandbox.rallyware.com/",
+          "timeout_minutes": 60
+        },
+        "subscription_management": {
+          "enabled": true,
+          "api_url": "https://qa1-subscription.api.tastefullysimple.com/4"
         }
       }
     },
@@ -437,8 +446,12 @@
       "settings": {
         "session_management": {
           "enabled": true,
-          "login_url": "#",
-          "timeout_seconds": 360
+          "login_url": "https://tastefullysimple-sandbox.rallyware.com/",
+          "timeout_minutes": 60
+        },
+        "subscription_management": {
+          "enabled": true,
+          "api_url": "https://qa1-subscription.api.tastefullysimple.com/4"
         }
       }
     },
@@ -464,8 +477,12 @@
       "settings": {
         "session_management": {
           "enabled": true,
-          "login_url": "#",
-          "timeout_seconds": 360
+          "login_url": "https://tscentral.tastefullysimple.com/",
+          "timeout_minutes": 60
+        },
+        "subscription_management": {
+          "enabled": true,
+          "api_url": "https://subscription.api.tastefullysimple.com/4"
         }
       }
     }

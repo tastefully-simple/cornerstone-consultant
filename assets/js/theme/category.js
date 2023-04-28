@@ -35,7 +35,6 @@ export default class Category extends CatalogPage {
     }
 
     onReady() {
-        const self = this;
         this.arrangeFocusOnSortBy();
 
         $('[data-button-type="add-cart"]').on('click', (e) => this.setLiveRegionAttributes($(e.currentTarget).next(), 'status', 'polite'));
@@ -72,6 +71,7 @@ export default class Category extends CatalogPage {
         const $addToCartBtn = $('.button:first', $(event.target));
         const originalBtnVal = $addToCartBtn.val();
         const waitMessage = $addToCartBtn.data('waitMessage');
+        const addedMessage = $addToCartBtn.data('addedMessage');
         const productId = $('input[name=product_id]:first', $(event.target)).val();
         const productQty = $('input[name=qty]:first', $(event.target)).val();
 
@@ -99,12 +99,17 @@ export default class Category extends CatalogPage {
             if (typeof response === 'undefined') {
                 return;
             }
+
             currencySelector(response.data.cart_id);
             const errorMessage = err || response.data.error;
 
-            $addToCartBtn
-                .val(originalBtnVal)
-                .prop('disabled', false);
+            $addToCartBtn.val(addedMessage);
+
+            setTimeout(() => {
+                $addToCartBtn
+                    .val(originalBtnVal)
+                    .prop('disabled', false);
+            }, 4000);
 
             this.$overlay.hide();
 
@@ -123,12 +128,6 @@ export default class Category extends CatalogPage {
 
             // Open preview modal and update content
             if (this.previewModal) {
-                this.previewModal.open();
-
-                if (window.ApplePaySession) {
-                    this.previewModal.$modal.addClass('apple-pay-supported');
-                }
-
                 if (!this.checkIsQuickViewChild($addToCartBtn)) {
                     this.previewModal.$preModalFocusedEl = $addToCartBtn;
                 }
@@ -139,7 +138,6 @@ export default class Category extends CatalogPage {
                 this.redirectTo(response.data.cart_item.cart_url || this.context.urls.cart);
             }
         });
-
         this.setLiveRegionAttributes($addToCartBtn.next(), 'status', 'polite');
     }
 

@@ -2,13 +2,52 @@
 // PRODUCT GRID
 // =============================================================================
 .productGrid {
-
   @include u-listBullets("none");
   @include grid-row($behavior: "nest");
   font-size: 0; // 1
   margin-bottom: spacing("single");
+  justify-content: left;
+  display: flex;
+  flex-wrap: wrap;
 
   .card {
     margin-bottom: 0;
+  }
+
+  li {
+    &.product {
+      border-radius: 5px;
+      padding: 1%;
+    }
+  }
+  .grid-add-to-cart-form {
+    display: flex;
+    justify-content: center;
+  }
+}
+.actionBar {
+  margin-bottom: 0;
+  .form-field {
+    margin-bottom: 0;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .productGrid {
+    &.list-switch {
+      .card-figure {
+        width: 18% !important;
+      }
+      .card-body {
+        width: 80% !important;
+      }
+      .add-to-cart-wrapper {
+        &.add-to-cart-category {
+          width: 80% !important;
+        }
+      }
+      .price {
+        padding-left: 10px;
+      }
+    }
   }
 }

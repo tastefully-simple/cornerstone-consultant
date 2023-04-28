@@ -14,17 +14,49 @@
   }
 }
 
-@media only screen and (min-width:801px) {
-  #navpages-quick-add-mobile {
-    display: none;
+@media only screen and (min-width:1100px) {
+  [move-submenu] {
+    width: 1100px !important;
+    left: -550px !important;
+    margin-left: 50%;
+    top: 132px;
+    position: absolute;;
+    z-index: 10;
   }
-  [move-submenu="true"] {
+}
+
+@media (min-width: 1000px) and (max-width:1099px) {
+  [move-submenu] {
     width: 1000px !important;
     left: -500px !important;
     margin-left: 50%;
-    top: 130px;
+    top: 132px;
     position: absolute;;
     z-index: 10;
+  }
+}
+@media (min-width: 801px) and (max-width:999px) {
+  [move-submenu] {
+    width: 800px !important;
+    left: -400px !important;
+    margin-left: 50%;
+    top: 132px;
+    position: absolute;;
+    z-index: 10;
+  }
+}
+
+@media only screen and (min-width:801px) {
+  .navPage-childList {
+    list-style-type: none;
+    .navPage-childList-item {
+      .navPage-childList-action {
+        font-weight: 100;
+      }
+    }
+  }
+  #navpages-quick-add-mobile {
+    display: none;
   }
   .navPage-subMenu-item {
     list-style: none;
@@ -39,12 +71,11 @@
         border-bottom: 5px solid #e2e2e2;
         content: '';
         height: 0;
-        left: 31%;
+        margin-left: 25px;
         position: absolute;
         top: 20px;
         width: 0;
         margin-top: 33px;
-        margin-left: -17%;
       }
     }
   }
@@ -91,6 +122,21 @@
 }
 
 @media only screen and (max-width:800px) {
+  .navPages-action {
+    font-size: 14px;
+  }
+  .navPage-subMenu-action {
+    .collapsible-icon-wrapper {
+      width: 100%;
+      position: absolute;
+      height: unset;
+      i {
+        &.navPages-action-moreIcon {
+          margin-right: 20%;
+        }
+      }
+    }
+  }
   .header-logo {
     clear: both;
     display: block;
@@ -105,10 +151,14 @@
   .navPages-list--user {
     .navPages-action {
       &.is-open {
-        text-transform: capitalize !important;
+        text-transform: unset !important;
       }
     }
   }
+}
+
+.navPages-action {
+  text-transform: unset !important;
 }
 
 .quick-add-popup {
@@ -129,4 +179,11 @@
 
 .navPages-search form input {
   width: 250px;
+}
+.navPage-subMenu-action {
+  &.navPages-action {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: none !important;
+  }
 }

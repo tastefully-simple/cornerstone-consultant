@@ -1,8 +1,7 @@
-<h3 class="account-heading">{{lang 'account.orders.heading' }}</h3>
 
 <ul class="account-list">
     {{#each orders}}
-    <li class="account-listItem">
+    <li class="account-listItem account-order-listItem">
         <div class="account-product">
             <div class="account-product-figure">
                 {{#if items.0.type '===' 'giftcertificate'}}
@@ -40,11 +39,11 @@
                 <div class="account-product-details">
                     <div class="account-product-detail">
                         <h6 class="account-product-detail-heading">{{lang 'account.orders.order_placed' }}</h6>
-                        <span>{{this.date}}</span>
+                        <span>{{moment this.date format="MMM Do YYYY"}}</span>
                     </div>
                     <div class="account-product-detail">
                         <h6 class="account-product-detail-heading">{{lang 'account.orders.last_update' }}</h6>
-                        <span>{{this.last_update_date}}</span>
+                        <span>{{moment this.last_update_date format="MMM Do YYYY"}}</span>
                     </div>
                 </div>
             </div>

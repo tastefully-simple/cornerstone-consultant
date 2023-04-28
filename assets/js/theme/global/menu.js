@@ -33,11 +33,18 @@ class Menu {
 
     updateMenuLocation() {
         if (window.innerWidth <= 800) {
+            let submenu;
+            let dataCollapsible;
+
             // Mobile menu. Move it to the original location
-            $('[target-submenu=true]:first').after($('[move-submenu=true]:first'));
+            $('[move-submenu]').each((i, element) => {
+                submenu = $(element).attr('move-submenu');
+                dataCollapsible = `[data-collapsible="${submenu}"]`;
+                $(dataCollapsible).after(element);
+            });
         } else {
             // Desktop menu. Move it to after the header
-            $('.header-container:first').after($('[move-submenu=true]:first'));
+            $('.header-container:first').after($('[move-submenu]'));
         }
     }
 

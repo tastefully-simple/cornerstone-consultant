@@ -1,10 +1,12 @@
-<ul class="productGrid">
-    {{#each products}}
-    <li class="product">
+<div class="productGrid-container" style="display: none">
+    <ul class="productGrid">
+        {{#each products}}
+        <li class="product">
             {{>components/products/card settings=../settings show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event=../event position=(add @index 1)}}
-    </li>
-    {{/each}}
-</ul>
+        </li>
+        {{/each}}
+    </ul>
+</div>
 
 <div id="previewModal" class="modal modal--large" data-reveal>
     {{> components/common/modal/modal-close-btn }}

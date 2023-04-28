@@ -1,4 +1,9 @@
 {{#partial "page"}}
+{{#if theme_settings.session_management.enabled '==' true}}
+<script>
+    window.location = '/';
+</script>
+{{else}}
 <div class="login">
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
     <h1 class="page-heading">{{lang 'login.heading' }}</h1>
@@ -47,5 +52,6 @@
         {{/if}}
     </div>
 </div>
+{{/if}}
 {{/partial}}
 {{> layout/base}}

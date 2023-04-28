@@ -72,7 +72,7 @@
                 }
             }
             .price-section {
-                margin-top: 10px;
+                margin-top: 0;
             }
             .card-text {
                 padding-top: 15px;
@@ -91,13 +91,15 @@
 // 1. When the sidebar is visible, reduce products to 3 across.
 //
 // -----------------------------------------------------------------------------
-
+.productGrid-container {
+    padding: 0 2%;
+}
 .page-sidebar + .page-content {
     .productGrid {
         .product { // 1
-            padding: 2%;
+            padding: 1%;
             @include breakpoint("small") {
-                width: grid-calc(4, 17);
+                width: 21.5%;
             }
             .card-title  {
                 height: 60px;
@@ -107,7 +109,7 @@
             }
         }
         .product {
-            margin-right: 1.5%;
+            margin-right: 4.5%;
             margin-top: 20px;
         }
         .product:nth-of-type(4n) {
@@ -225,7 +227,6 @@
             display: block;
             width: 10%;
             margin-top: 1%;
-            padding-top: 5px;
         }
         .add-to-cart-category {
             float: right;
@@ -284,5 +285,25 @@
     }
     &.sort-selector {
         padding: 5px;
+    }
+}
+@media only screen and (max-width: $screen-small) {
+    .actionBar {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .actionBar-section {
+        &.sort-selector {
+            display: contents;
+        }
+        select#sort {
+            width: grid-calc(8, $total-columns);
+        }
+        &.grid-list-selectors {
+            max-width: 100%;
+            .form-field {
+                float: right;
+            }
+        }
     }
 }

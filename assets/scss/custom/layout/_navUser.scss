@@ -3,6 +3,10 @@
     background-color: #2d2d2d;
   }
 
+  .navUser-action {
+    padding: 0.7rem 0.75rem;
+  }
+
   .navUser-item--account {
     a.main-user-menu, a.main-user-menu:hover, a.main-user-menu:visited, a.main-user-menu:focus {
       color: #ffffff;
@@ -71,6 +75,7 @@
 
 #quick-add-to-cart-mobile {
   height: 42px;
+  display: none;
 
   input {
     height: 41px;
@@ -128,46 +133,55 @@
 }
 
 #quick-add-to-cart-top {
-  margin-top: 5px;
+  margin-top: 7.5px;
   padding-right: 10px;
-  height: 42px;
+  height: 35px;
   margin-left: 20px;
+  display: none;
 
   input {
-    height: 41px;
+    height: 35px;
   }
 
   .sku-field {
     float: left;
     position: relative;
     display: block;
-    width: 200px;
+    width: 170px;
     text-transform: capitalize !important;
+    font-size: 12px !important;
   }
 
   .qty-field {
     float: left;
     position: relative;
     display: block;
-    width: 50px;
+    width: 35px;
     text-align: center;
-    margin-left: 5px
+    margin-left: 5px;
+    font-size: 16px;
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
   .add-to-cart-button {
     float: left;
     display: block;
     position: relative;
-    font-weight: 700;
     color: #000000;
     margin-left: 5px;
     border-radius: 2px;
-    height: 42px;
-    width: 130px;
-    padding-top: 10px;
-
-    span {
-      font-size: 11px;
-    }
+    height: 35px;
+    padding-top: 8.5px;
+    font-family: stencilFontFamily("body-font");
+    font-size: 14px !important;
+    font-weight: 700;
+    padding-left: 15px;
+    padding-right: 15px;
   }
+}
+.navUser--desktop {
+  line-height: normal;
 }
