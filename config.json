@@ -456,6 +456,37 @@
       }
     },
     {
+      "name": "Business-Sandbox",
+      "id": "business",
+      "meta": {
+        "desktop_screenshot": "desktop_light.png",
+        "mobile_screenshot": "mobile_light.png",
+        "description": "Settings adjusted to be used in the Business Sandbox.",
+        "demo_url": "https://cornerstone-light-demo.mybigcommerce.com",
+        "optimized_for": [
+          "multi_purpose",
+          "mobile_tablet_desktop",
+          "sales_discounts",
+          "large_catalog"
+        ],
+        "industries": [
+          "home_garden"
+        ]
+      },
+      "images": {},
+      "settings": {
+        "session_management": {
+          "enabled": true,
+          "login_url": "https://tastefullysimple-sandbox.rallyware.com/",
+          "timeout_minutes": 60
+        },
+        "subscription_management": {
+          "enabled": true,
+          "api_url": "https://stage-subscription.api.tastefullysimple.com/4"
+        }
+      }
+    },
+    {
       "name": "Production",
       "id": "production",
       "meta": {
