@@ -181,6 +181,8 @@ h6 {
     .modal-body {
         padding: 20px;
         overflow: hidden;
+        height: 80%;
+        max-height: none !important;
     }
     .modal-close {
         top: 0.7rem;
@@ -193,6 +195,15 @@ h6 {
             &::before{
                 content:"\f00d";
             }
+        }
+    }
+    .modal-content {
+        height: 100%;
+        .subscriptions-list {
+            height: 90%;
+        }
+        .subscription-card:last-child {
+            margin-bottom: 5%;
         }
     }
 }
