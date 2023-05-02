@@ -11,6 +11,8 @@ export default function (status, timeoutMinutes, isLogged) {
     $element.foundation({
         reveal: {
             close_on_background_click: false,
+            close_on_esc: false,
+            bg_class: 'modal-background-solid',
         },
     });
 
