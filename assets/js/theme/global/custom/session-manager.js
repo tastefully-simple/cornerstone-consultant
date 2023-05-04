@@ -1,6 +1,23 @@
 import modalFactory from '../../global/modal';
 import $ from 'jquery';
 
+let intervalId = null;
+
+/**
+ * Verify if the session timed out and display modal
+ * @param loginModal
+ * @param content
+ */
+function verifyTimeout(loginModal, content) {
+    if (new Date().getTime() > window.localStorage.getItem('consultant-timeout')) {
+        loginModal.open();
+        loginModal.updateContent(content);
+        $('#sso_login_message').hide();
+        $('#sso_login_message_inactive').show();
+        clearInterval(intervalId);
+    }
+}
+
 export default function (status, timeoutMinutes, isLogged) {
     if (!status) {
         return;
@@ -39,12 +56,7 @@ export default function (status, timeoutMinutes, isLogged) {
 
     // Verify if the page has been inactive for more than the time defined
     // on config.json (session_management.timeout_minutes). If it is, show login modal
-    setInterval(() => {
-        if (new Date().getTime() > window.localStorage.getItem('consultant-timeout')) {
-            loginModal.open();
-            loginModal.updateContent(content);
-            $('#sso_login_message').hide();
-            $('#sso_login_message_inactive').show();
-        }
+    intervalId = setInterval(() => {
+        verifyTimeout(loginModal, content);
     }, 10000); // runs every ten seconds
 }
