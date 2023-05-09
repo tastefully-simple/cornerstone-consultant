@@ -59,7 +59,6 @@
                 {{/if}}
             {{/or}}
         {{/if}}
-
         <a href="{{url}}"
            class="card-figure__link"
            aria-label="{{> components/products/product-info}}"
@@ -127,14 +126,7 @@
                 {{name}}
             </a>
         </h3>
-        {{> components/category/custom/add-to-cart with_wallet_buttons=false id=id add_to_cart_url=add_to_cart_url}}
-        <div class="card-text" data-test-info-type="price">
-            {{#or customer (unless settings.hide_price_from_guests)}}
-                {{> components/products/price price=price}}
-            {{else}}
-                {{> components/common/login-for-pricing}}
-            {{/or}}
-        </div>
+        {{> components/category/custom/add-to-cart with_wallet_buttons=false id=id add_to_cart_url=add_to_cart_url price=price url=url}}
         {{> components/products/bulk-discount-rates}}
     </div>
 </article>

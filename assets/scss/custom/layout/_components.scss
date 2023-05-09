@@ -67,11 +67,6 @@ h5,
 h6 {
 }
 .productGrid {
-    .grid-add-to-cart-form {
-        .form-input {
-            height: 2.4rem !important;
-        }
-    }
     .card-title {
         text-align: center;
         a {
@@ -92,6 +87,12 @@ h6 {
     }
 }
 .list-switch {
+    .add-to-cart-buttons {
+        width: 100%;
+    }
+    .add-to-cart-flex-container {
+        margin-left: 30px;
+    }
     .product {
         margin-right: 0 !important;
         .card-img-container {
@@ -99,6 +100,7 @@ h6 {
         }
     }
     .card-body {
+        padding: 0;
         .card-title {
             font-weight: normal !important;
         }
