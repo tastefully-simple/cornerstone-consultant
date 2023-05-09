@@ -50,7 +50,7 @@ function getProductsImageList(products) {
     // eslint-disable-next-line guard-for-in
     for (const key in products) {
         sortedImages = sortByPosition(products[key].images);
-        images += `<img src="${sortedImages[0].src}">`;
+        images += `<img alt="${products[key].ProductName}" src="${sortedImages[0].src}">`;
     }
 
     return images;
@@ -148,15 +148,16 @@ function hasSubscriptions(customerId) {
  */
 function subscriptionUpdated(subscriptionId) {
     const newImageUrl = $('.productView-thumbnail-link:first img').attr('src');
+    const newImageAltTitle = $('.productView-thumbnail-link:first img').attr('alt');
     const successTemplate = $(`#subscription-success-template--${window.subscriptionManager.version}`).html();
     const subscription = window.subscriptionManager.subs[subscriptionId];
-    window.subscriptionManager.subs[subscriptionId] += `<img src="${newImageUrl}">`;
+    window.subscriptionManager.subs[subscriptionId] += `<img alt="${newImageAltTitle}" src="${newImageUrl}">`;
 
     const map = {
         '#NextOrder': formatDate(subscription.NextOrder),
         '#Id': subscriptionId,
         '#SubscriptionProducts': subscription.images,
-        '#NewProduct': `<img src="${newImageUrl}">`,
+        '#NewProduct': `<img alt="${newImageAltTitle}" src="${newImageUrl}">`,
     };
 
     $(`#subscriptionManager--${window.subscriptionManager.version} .modal-body:first`).html(formatTemplate(successTemplate, map));

@@ -789,6 +789,8 @@
             "show": "Show Videos"
         },
         "add_to_cart": "Add to Cart",
+        "quick_add_to_cart": "Quick Add to Cart",
+        "select_options": "Select Options",
         "adding_to_cart": "Adding to cart",
         "added": "Added!",
         "options": "Options",

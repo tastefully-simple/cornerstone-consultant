@@ -48,6 +48,7 @@ export default function () {
                     $('.cart-quantity:first').addClass('countPill--positive');
                 }
                 $('.cart-quantity:first').html(totalCartItems);
+                $('[aria-label^="Cart with"]').attr('aria-label', ("Cart with " + totalCartItems + " items"));
             } else {
                 $($(event.currentTarget).find('div[data-error-sku-unavailable]')).show().click().delay(5000).fadeOut();
                 focusOnSkuField();
