@@ -30,15 +30,27 @@ function formatDate(myDate) {
 }
 
 /**
+ * Sort array by "position" key in its objects
+ * @param arr
+ * @returns {*}
+ */
+function sortByPosition(arr) {
+    return arr.sort((a, b) => a.position - b.position);
+}
+
+/**
  * Get a list of all images
  * @param products
  * @returns {string}
  */
 function getProductsImageList(products) {
     let images = '';
+    let sortedImages = [];
+
     // eslint-disable-next-line guard-for-in
     for (const key in products) {
-        images += `<img src="${products[key].images[0].src}">`;
+        sortedImages = sortByPosition(products[key].images);
+        images += `<img src="${sortedImages[0].src}">`;
     }
 
     return images;
