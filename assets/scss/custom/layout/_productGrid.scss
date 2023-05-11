@@ -74,7 +74,7 @@
         padding-bottom: 3px;
 
         img {
-          margin-right: 10px;
+          margin-right: 5px;
           width: 25%;
           max-width: 50px;
         }
@@ -90,6 +90,9 @@
 }
 @media only screen and (max-width: 800px) {
   .productGrid {
+    .button--primary {
+      font-size: 12px !important;
+    }
     &.list-switch {
       .add-to-cart-flex-container {
         width: 100% !important;
