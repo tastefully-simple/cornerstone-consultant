@@ -59,6 +59,7 @@
       }
     }
     .row3 {
+      visibility: hidden;
       .ts-to-you-link {
         text-decoration: none;
         font-size: 0.7em;
@@ -123,12 +124,15 @@
 @media only screen and (min-width: 801px) {
   .productGrid {
     &.list-switch {
+      .add-to-cart-category {
+        padding-top: 10px !important;
+      }
       .card-figure {
-        margin-top: 15px !important;
+        margin-top: 5px !important;
       }
       .card-title  {
         a {
-          margin-top: 40px;
+          margin-top: 25px;
         }
       }
     }
@@ -140,6 +144,29 @@
       width: 100%;
       display: flex;
       flex-direction: row;
+    }
+  }
+}
+.productGrid {
+  &.list-switch {
+    .row3 {
+      display: none;
+    }
+    .row2 {
+      div {
+        input {
+          margin-top: 5px;
+          margin-bottom: 0;
+        }
+      }
+    }
+    .autoship-enabled-product {
+      .add-to-cart-category {
+        padding-top: 0 !important;
+      }
+      .row3 {
+        padding-top: 5px;
+      }
     }
   }
 }
