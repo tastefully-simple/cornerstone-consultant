@@ -14,23 +14,65 @@
     <div class="add-to-cart-buttons">
         <div class="form-action">
             <form class="grid-add-to-cart-form" id="grid-add-to-cart-{{id}}">
-                <input class="form-input"
-                       name="qty"
-                       type="tel"
-                       value="1"
-                       min="1"
-                       pattern="[0-9]*"
-                       aria-live="polite">
-                <input
-                        data-wait-message="{{lang 'products.adding_to_cart'}}"
-                        data-added-message="{{lang 'products.added'}}"
-                        class="button button--primary"
-                        type="submit"
-                        value="{{lang 'products.add_to_cart'}}"
-                >
+                <div class="row1 hide-on-grid">
+                    <div class="card-pricing">
+                        <div class="card-text" data-test-info-type="price">
+                            {{#or customer (unless settings.hide_price_from_guests)}}
+                            {{> components/products/price price=price}}
+                            {{else}}
+                            {{> components/common/login-for-pricing}}
+                            {{/or}}
+                        </div>
+                    </div>
+                    <div class="card-input">
+                        <input class="form-input"
+                               name="qty"
+                               type="tel"
+                               value="1"
+                               min="1"
+                               pattern="[0-9]*"
+                               aria-live="polite">
+                    </div>
+                </div>
+                <div class="add-to-cart-flex-container">
+                    <div class="row1 hide-on-list">
+                        <div class="card-pricing">
+                            <div class="card-text" data-test-info-type="price">
+                                {{#or customer (unless settings.hide_price_from_guests)}}
+                                {{> components/products/price price=price}}
+                                {{else}}
+                                {{> components/common/login-for-pricing}}
+                                {{/or}}
+                            </div>
+                        </div>
+                        <div class="card-input">
+                            <input class="form-input"
+                                   name="qty"
+                                   type="tel"
+                                   value="1"
+                                   min="1"
+                                   pattern="[0-9]*"
+                                   aria-live="polite">
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div>
+                            <input
+                                    data-wait-message="{{lang 'products.adding_to_cart'}}"
+                                    data-added-message="{{lang 'products.added'}}"
+                                    class="button button--primary"
+                                    type="submit"
+                                    value="{{lang 'products.quick_add_to_cart'}}"
+                            >
+                        </div>
+                    </div>
+                    <div class="row3">
+                        <a href="{{url}}" class="ts-to-you-link"><img src="{{cdn 'assets/img/tstoyou.png'}}" width="50">{{lang 'products.select_options'}}</a>
+                    </div>
+                </div>
+
                 <input type="hidden" name="action" value="add">
                 <input type="hidden" name="product_id" value="{{id}}">
-
                 <span class="product-status-message aria-description--hidden">{{lang 'products.adding_to_cart'}} {{lang 'category.add_cart_announcement'}}</span>
             </form>
         </div>

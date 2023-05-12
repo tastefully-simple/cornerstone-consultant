@@ -60,7 +60,7 @@
         }
         &.list-switch {
             .card-body {
-                width: 80% !important;
+                width: 100% !important;
             }
             .card-title {
                 width: 100% !important;
@@ -116,7 +116,6 @@
             margin-right: 0 !important;
         }
     }
-
 }
 
 
@@ -200,26 +199,43 @@
 }
 
 .list-switch {
+    .hide-on-list {
+        display: none !important;
+    }
+    .hide-on-grid {
+        display: flex !important;
+    }
+    .row1 {
+        display: flex;
+        align-items: flex-end;
+        flex-flow: row;
+        height: 40px;
+        flex-basis: fit-content;
+        align-self: center;
+    }
+    .row2 {
+        margin-top: 0 !important;
+    }
     .product + .product {
         margin-left: 0 !important;
         margin-top: 10px;
     }
     li.product {
         width: 100% !important;
-        padding: 0 !important;
+        padding: 10px 20px 10px 0;
         .card-figure {
             width: 65px;
             float: left;
             position: relative;
             display: block;
             margin-top: auto;
-            margin-left: 2%;
         }
         .card-body {
             width: 90%;
             position: relative;
-            float: left;
+            float: right;
             display: block;
+            padding-right: 0px;
         }
         .card-text {
             float: left;
@@ -234,15 +250,11 @@
             position: relative;
         }
         .card-title {
-            width: 50%;
+            width: 30%;
             margin: 0 !important;
             padding: 0 !important;
             display: block;
             float: left;
-            a {
-                margin-top: 2%;
-                margin-left: 5%;
-            }
         }
         .add-to-cart-category {
             padding-top: 3px;

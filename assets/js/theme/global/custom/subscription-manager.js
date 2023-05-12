@@ -30,15 +30,27 @@ function formatDate(myDate) {
 }
 
 /**
+ * Sort array by "position" key in its objects
+ * @param arr
+ * @returns {*}
+ */
+function sortByPosition(arr) {
+    return arr.sort((a, b) => a.position - b.position);
+}
+
+/**
  * Get a list of all images
  * @param products
  * @returns {string}
  */
 function getProductsImageList(products) {
     let images = '';
+    let sortedImages = [];
+
     // eslint-disable-next-line guard-for-in
     for (const key in products) {
-        images += `<img alt="${products[key].ProductName}" src="${products[key].images[0].src}">`;
+        sortedImages = sortByPosition(products[key].images);
+        images += `<img alt="${products[key].ProductName}" src="${sortedImages[0].src}">`;
     }
 
     return images;
@@ -91,7 +103,7 @@ function isAutoshipEnabled(productId) {
     $.ajax({
         url: `${window.subscriptionManager.apiUrl}/Subscriptions/products/${productId}`,
         type: 'GET',
-        dataType: 'JSON', // added data type
+        dataType: 'JSON',
         success(response) {
             if (response) {
                 // This product is Autoship Eligible. Show  Widget Version 2
@@ -120,7 +132,7 @@ function hasSubscriptions(customerId) {
     $.ajax({
         url: `${window.subscriptionManager.apiUrl}/customers/${customerId}/hassubscriptions`,
         type: 'GET',
-        dataType: 'JSON', // added data type
+        dataType: 'JSON',
         success(response) {
             if (response === true) {
                 // show component if the customer has active subscriptions
@@ -219,6 +231,55 @@ async function updateSubscription(subscriptionId, productId) {
 }
 
 /**
+ * Creates CSS styles to display the autoship buttons
+ * @param products
+ */
+function displayAutoshipButtonForProducts(products) {
+    // eslint-disable-next-line guard-for-in
+    for (const i in products) {
+        $(`#autoship-card${products[i]}`).addClass('autoship-enabled-product');
+    }
+}
+
+/**
+ * Get list of autoship-enabled products
+ * @param subscriptionManagement
+ */
+function getAutoshipProducts(subscriptionManagement) {
+    let subscriptionProductsData = false;
+    $.ajax({
+        url: `${subscriptionManagement.api_url}/Products/available`,
+        type: 'GET',
+        dataType: 'JSON',
+        success(response) {
+            if (response) {
+                const autoshipData = {
+                    timeout: new Date().getTime() + 3600000, // Data expires in 1 hour
+                    products: response,
+                };
+                subscriptionProductsData = JSON.stringify(autoshipData);
+                displayAutoshipButtonForProducts(autoshipData.products);
+            }
+            window.localStorage.setItem('subscription-products', subscriptionProductsData);
+        },
+    });
+}
+
+function toggleAutoshipButtons(subscriptionManagement) {
+    // Fetches a list of products
+    // [timeout: int, products: array[]]
+    const autoshipData = window.localStorage.getItem('subscription-products') ?
+        JSON.parse(window.localStorage.getItem('subscription-products')) : false;
+
+    if (!autoshipData || autoshipData.timeout < new Date().getTime()) {
+        getAutoshipProducts(subscriptionManagement);
+    } else {
+        // Data is still valid. Display the current products on the local storage
+        displayAutoshipButtonForProducts(autoshipData.products);
+    }
+}
+
+/**
  * Main function
  * @param customerId
  * @param productId
@@ -226,7 +287,16 @@ async function updateSubscription(subscriptionId, productId) {
  * @returns {boolean}
  */
 export default function (customerId, productId, subscriptionManagement) {
-    if (!customerId || !subscriptionManagement.enabled || productId === undefined) {
+    if (!customerId || !subscriptionManagement.enabled) {
+        return false;
+    }
+
+    // Toggle Autoship buttons after DOM is ready
+    $(document).ready(() => {
+        toggleAutoshipButtons(subscriptionManagement);
+    });
+
+    if (productId === undefined) {
         return false;
     }
 
