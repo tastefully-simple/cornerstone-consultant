@@ -109,17 +109,9 @@ function isAutoshipEnabled(productId) {
                 // This product is Autoship Eligible. Show  Widget Version 2
                 window.subscriptionManager.version = 'future';
             }
-            const $element = $(document);
-            $element.foundation({
-                reveal: {
-                    close_on_background_click: true,
-                    close_on_esc: true,
-                    bg_class: 'modal-background',
-                },
-            });
             // Display Button and message
             $(`#subscription--container-${window.subscriptionManager.version}`).show();
-            const subscriptionModal = modalFactory(`#subscriptionManager--${window.subscriptionManager.version}`, { $context: $element })[0];
+            const subscriptionModal = modalFactory(`#subscriptionManager--${window.subscriptionManager.version}`)[0];
             // Show Add to Next Delivery (Widget Version 1)
             const $subscriptionManagerTrigger = $(`#subscriptionManager--trigger-${window.subscriptionManager.version}`);
             $subscriptionManagerTrigger.on('click', () => {
