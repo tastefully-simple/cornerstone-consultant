@@ -4,20 +4,28 @@ import $ from 'jquery';
 let intervalId = null;
 
 /**
+ * Block the background when a modal is open
+ */
+function blockBackground() {
+    // Prevent modal from closing when clicking on the background
+    const $element = $(document);
+    $element.foundation({
+        reveal: {
+            close_on_background_click: false,
+            close_on_esc: false,
+            bg_class: 'modal-background-solid',
+        },
+    });
+}
+
+/**
  * Verify if the session timed out and display modal
  * @param loginModal
  * @param content
  */
 function verifyTimeout(loginModal, content) {
     if (new Date().getTime() > window.localStorage.getItem('consultant-timeout')) {
-        const $element = $(document);
-        $element.foundation({
-            reveal: {
-                close_on_background_click: false,
-                close_on_esc: false,
-                bg_class: 'modal-background-solid',
-            },
-        });
+        blockBackground();
         loginModal.open();
         loginModal.updateContent(content);
         $('#sso_login_message').hide();
@@ -31,17 +39,7 @@ export default function (status, timeoutMinutes, isLogged) {
         return;
     }
 
-    // Prevent modal from closing when clicking on the background
-    const $element = $(document);
-    $element.foundation({
-        reveal: {
-            close_on_background_click: false,
-            close_on_esc: false,
-            bg_class: 'modal-background-solid',
-        },
-    });
-
-    const loginModal = modalFactory('#loginModal', { $context: $element })[0];
+    const loginModal = modalFactory('#loginModal')[0];
     const content = $('#loginModal .login-modal-form:first');
     const $loginModalTrigger = $('#loginModal--trigger');
     $loginModalTrigger.on('click', () => {
@@ -53,6 +51,7 @@ export default function (status, timeoutMinutes, isLogged) {
         // Set last time the user loaded a page + 1 hour
         window.localStorage.setItem('consultant-timeout', new Date().getTime() + (timeoutMinutes * 60000));
     } else {
+        blockBackground();
         // Session is already timed out
         window.localStorage.setItem('consultant-timeout', 0);
         // Show login modal
