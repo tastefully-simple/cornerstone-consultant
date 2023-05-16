@@ -10,6 +10,14 @@ let intervalId = null;
  */
 function verifyTimeout(loginModal, content) {
     if (new Date().getTime() > window.localStorage.getItem('consultant-timeout')) {
+        const $element = $(document);
+        $element.foundation({
+            reveal: {
+                close_on_background_click: false,
+                close_on_esc: false,
+                bg_class: 'modal-background-solid',
+            },
+        });
         loginModal.open();
         loginModal.updateContent(content);
         $('#sso_login_message').hide();
