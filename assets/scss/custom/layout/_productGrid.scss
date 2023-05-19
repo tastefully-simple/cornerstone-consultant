@@ -23,25 +23,34 @@
   .grid-add-to-cart-form {
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .row1 {
     display: flex;
-    height: 40px;
+    height: auto;
+    font-size: 14px;
     .card-pricing {
+      display: flex;
       width: 50%;
+      height: 100%;
+      align-content: center;
       .price-section {
+        display: inline-flex;
         text-align: center;
         vertical-align: middle;
         padding-top: 6px;
       }
     }
     .card-text {
+      display: flex;
+      flex-wrap: wrap;
       height: 100%;
     }
     .card-input {
       width: 50%;
       display: flex;
-      flex-direction: row-reverse;
+      flex-basis: min-content;
+      height: fit-content;
       .form-input {
         width: 50%;
         margin-right: 0;
@@ -49,6 +58,9 @@
         min-width: 50px;
       }
     }
+  }
+  .price {
+    padding-left: 5px;
   }
   .add-to-cart-flex-container {
     width: 80%;
@@ -62,8 +74,8 @@
       visibility: hidden;
       .ts-to-you-link {
         text-decoration: none;
-        font-size: 0.7em;
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: 700;
         text-align: center;
         font-family: "Muli", serif;
         width: 100%;
@@ -72,6 +84,7 @@
         border: 1px solid #000;
         padding-top: 3px;
         padding-bottom: 3px;
+        color: #4d4d4d;
 
         img {
           margin-right: 5px;
@@ -82,10 +95,28 @@
     }
   }
 }
+.list-switch {
+  li.product {
+    .card-text {
+      font-size: 14px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
 .actionBar {
   margin-bottom: 0;
   .form-field {
     margin-bottom: 0;
+  }
+}
+.page-sidebar + .page-content {
+  .productGrid {
+      .product {
+          .card-title  {
+              height: auto;
+          }
+      }
   }
 }
 @media only screen and (max-width: 800px) {
@@ -119,9 +150,13 @@
 .productGrid-container {
   .hide-on-grid {
     display: none;
+    align-items: center;
+    justify-content: right;
   }
   .hide-on-list {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 @media only screen and (min-width: 801px) {
@@ -144,9 +179,8 @@
 .add-to-cart-wrapper {
   .row2 {
     div {
-      width: 100%;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
     }
   }
 }
@@ -154,11 +188,12 @@
   &.list-switch {
     .row3 {
       display: none;
+      padding-top: 5px;
     }
     .row2 {
       div {
         input {
-          margin-top: 5px;
+          margin-top: 0;
           margin-bottom: 0;
         }
       }
@@ -169,6 +204,42 @@
       }
       .row3 {
         padding-top: 5px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  .productGrid {
+    .row1 {
+      .card-input {
+        .form-input {
+          min-width: 25px;
+          width: 25%;
+          height: 100%;
+          margin-right: 0;
+        }
+      }
+      .card-pricing {
+        width: 70%;
+        margin-right: 5%;
+        justify-content: center;
+      }
+    }
+    .add-to-cart-flex-container {
+      .row3 {
+        .ts-to-you-link {
+          font-size: 0.7rem;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  .list-switch {
+    li.product {
+      .card-text {
+        font-size: 13px;
+        width: 100%;
+        padding-top: 0;
       }
     }
   }
