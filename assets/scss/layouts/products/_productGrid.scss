@@ -80,6 +80,13 @@
             .card-img-container {
                 margin-top: 11px;
             }
+            li.product:nth-child(odd) {
+                margin-right: 0% !important;
+                margin-left: 0 !important;
+            }
+            .grid-add-to-cart-form {
+                justify-content: right;
+            }
         }
     }
 }
