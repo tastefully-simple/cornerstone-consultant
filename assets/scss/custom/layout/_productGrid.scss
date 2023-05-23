@@ -31,9 +31,9 @@
     font-size: 14px;
     .card-pricing {
       display: flex;
-      width: 50%;
+      width: 75%;
       height: 100%;
-      align-content: center;
+      justify-content: center;
       .price-section {
         display: inline-flex;
         text-align: center;
@@ -64,6 +64,7 @@
   }
   .add-to-cart-flex-container {
     width: 80%;
+    max-width: 180px;
     .row2 {
       margin-top: 10px;
       input {
@@ -142,7 +143,7 @@
         }
       }
       .price {
-        padding-left: 10px;
+        padding-left: 5px;
       }
     }
     .row1 {
@@ -161,6 +162,11 @@
       }
     }
     .add-to-cart-flex-container {
+      .row2 {
+        input {
+          white-space: normal;
+        }
+      }
       .row3 {
         .ts-to-you-link {
           font-size: 0.7rem;
@@ -189,6 +195,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 @media only screen and (min-width: 801px) {
@@ -203,6 +210,13 @@
       .card-title  {
         a {
           margin-top: 25px;
+        }
+      }
+    }
+    .row1 {
+      .card-input {
+        .form-input {
+          min-width: 30px;
         }
       }
     }
