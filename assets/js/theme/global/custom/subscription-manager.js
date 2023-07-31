@@ -196,7 +196,7 @@ async function renewToken() {
  * @param productId
  * @returns {Promise<void>}
  */
-async function updateSubscription(subscriptionId, productId) {
+async function updateSubscription(subscriptionId, productId, quantitySubscription) {
     await renewToken();
 
     $.ajax({
@@ -209,7 +209,7 @@ async function updateSubscription(subscriptionId, productId) {
         data: JSON.stringify({
             productId,
             variantId: '',
-            quantity: 1,
+            quantity: quantitySubscription,
         }),
         // eslint-disable-next-line no-unused-vars
         success(response) {
@@ -241,41 +241,30 @@ function displayAutoshipButtonForProducts(products) {
     }
 }
 
-/**
- * Get list of autoship-enabled products
- * @param subscriptionManagement
- */
-function getAutoshipProducts(subscriptionManagement) {
-    let subscriptionProductsData = false;
-    $.ajax({
-        url: `${subscriptionManagement.api_url}/Products/available`,
-        type: 'GET',
-        dataType: 'JSON',
-        success(response) {
-            if (response) {
-                const autoshipData = {
-                    timeout: new Date().getTime() + 3600000, // Data expires in 1 hour
-                    products: response,
-                };
-                subscriptionProductsData = JSON.stringify(autoshipData);
-                displayAutoshipButtonForProducts(autoshipData.products);
+function isSubscriptionProduct(productId) {
+    let data = window.BOLD.subscriptions.data;
+    for (let i = 0; i < data.subscriptionGroups.length; i += 1) {
+        let subscriptionGroup = data.subscriptionGroups[i];
+        for (let j = 0; j < subscriptionGroup.selection_options.length; j += 1) {
+            let selectionOption = subscriptionGroup.selection_options[j];
+            if (selectionOption.platform_entity_id === productId) {
+                return true;
             }
-            window.localStorage.setItem('subscription-products', subscriptionProductsData);
-        },
-    });
+        }
+    }
+    return false;
 }
 
-function toggleAutoshipButtons(subscriptionManagement) {
-    // Fetches a list of products
-    // [timeout: int, products: array[]]
-    const autoshipData = window.localStorage.getItem('subscription-products') ?
-        JSON.parse(window.localStorage.getItem('subscription-products')) : false;
-
-    if (!autoshipData || autoshipData.timeout < new Date().getTime()) {
-        getAutoshipProducts(subscriptionManagement);
-    } else {
-        // Data is still valid. Display the current products on the local storage
-        displayAutoshipButtonForProducts(autoshipData.products);
+function toggleAutoshipButtons() {
+    const onPageProducts = document.getElementsByName('product_id');
+    const subscriptionProductIds = [];
+    for (let i = 0; i < onPageProducts.length; i++) {
+        if (isSubscriptionProduct(onPageProducts[i].defaultValue)) {
+            subscriptionProductIds.push(onPageProducts[i].defaultValue);
+        }
+    }
+    if (subscriptionProductIds.length > 0) {
+        displayAutoshipButtonForProducts(subscriptionProductIds);
     }
 }
 
@@ -293,7 +282,7 @@ export default function (customerId, productId, subscriptionManagement) {
 
     // Toggle Autoship buttons after DOM is ready
     $(document).ready(() => {
-        toggleAutoshipButtons(subscriptionManagement);
+        toggleAutoshipButtons();
     });
 
     if (productId === undefined) {
@@ -324,10 +313,11 @@ export default function (customerId, productId, subscriptionManagement) {
 
     $('body').on('click', '.subscriptions-continue', () => {
         const selectedSubscription = $('input[name="select-subscription"]:checked').val();
+        const quantitySubscription = parseInt(document.getElementById('qty[]').value, 10);
         $('.subscriptions-continue').addClass('disabled');
 
         if (selectedSubscription !== undefined) {
-            updateSubscription(selectedSubscription, productId);
+            updateSubscription(selectedSubscription, productId, quantitySubscription);
         }
     });
 }

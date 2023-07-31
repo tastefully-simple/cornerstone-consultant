@@ -505,7 +505,8 @@
             "copy_link": "Copy Link",
             "link_copied": "Copied!",
             "enter_wishlist_name_error": "You must enter a Favorites List name.",
-            "list": "Favorite List Name"
+            "list": "Favorite List Name",
+            "view": "View Favorites"
         }
     },
     "page": {
