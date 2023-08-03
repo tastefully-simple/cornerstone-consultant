@@ -238,8 +238,10 @@
                     </label>
                 </div> --}}
                 <div class="bold-subscriptions-widget"></div>
-                {{> components/common/consultant-store/subscription-manager }}
-                {{> components/products/add-to-cart}}
+                {{#if product.can_purchase}}
+                    {{> components/common/consultant-store/subscription-manager }}
+                    {{> components/products/add-to-cart}}
+                {{/if}}
                 {{#if product.out_of_stock}}
                     {{#if product.out_of_stock_message}}
                         {{> components/common/product-alert-error product.out_of_stock_message}}
