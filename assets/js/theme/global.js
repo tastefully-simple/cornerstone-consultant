@@ -17,6 +17,7 @@ import quickAddToCart from './global/custom/quick-add-to-cart';
 import gridListSwitcher from './global/custom/grid-list-switcher';
 import sessionManager from './global/custom/session-manager';
 import subscriptionManager from './global/custom/subscription-manager';
+import stickyHeader from './global/sticky-header';
 
 export default class Global extends PageManager {
     onReady() {
@@ -31,6 +32,7 @@ export default class Global extends PageManager {
         mobileMenuToggle();
         privacyCookieNotification();
         svgInjector();
+        stickyHeader();
 
         // Custom components
         sessionManager(
