@@ -5,6 +5,47 @@
   z-index: 1;
 }
 
+.container {
+  padding: 0 2rem;
+  &.header-container {
+    position: unset;
+    &.sticky-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: white;
+      .navUser-item--cart {
+        &__hidden-s {
+          display: block;
+        }
+        .navUser-action {
+          color: $teal !important;
+        }
+      }
+      .navUser-section--alt {
+        float: right;
+        margin-left: 1.5rem;
+        display: flex;
+        height: 100%;
+        margin-block-start: auto !important;
+        margin-block-end: auto !important;
+        margin-inline-start: 0px !important;
+        margin-inline-end: 0px !important;
+        padding-inline-start: 0px !important;
+        align-items: center;
+      }
+      .fas.fa-user-circle.fa-lg,
+      .far .fa-shopping-cart {
+        color: $teal;
+      }
+      .navUser-action--account-text {
+        display: none;
+        color: $teal;
+      }
+    }
+  }
+}
+
 .navUser-item-cartLabel {
   margin-top: 2px;
   display: block;
@@ -21,9 +62,28 @@ a[data-collapsible="navPages-account"] {
   .navPages-action {
     font: 900 14px Muli;
   }
+  .sticky-menu {
+    top: 70px !important;
+    position: fixed !important;
+    ul {
+      list-style: none !important;
+    }
+    
+  }
+  .sticky-header {
+    .navUser-action {
+      .navUser-item-cartLabel {
+        color: $teal;
+      }
+    }
+    .navUser-item-cartLabel {
+      margin-top: 0 !important;
+    }
+
+  }
   .header-container {
     max-width: 1920px !important;
-    margin: 1.5rem auto 1.5rem;
+    margin: 0 auto 1.5rem;
   }
   .navUser--desktop {
     display: flex;
@@ -41,6 +101,17 @@ a[data-collapsible="navPages-account"] {
     margin-top: 10px;
   }
 }
+@media only screen and (min-width:800px) and (max-width:900px) {
+  .sticky-header {
+    .navPages-search {
+      form {
+        input {
+          width: 170px;
+        }
+      }
+    }
+  }
+}
 .header-logo {
   @include breakpoint("small") { // 4
     margin-left: 2rem;
@@ -52,5 +123,12 @@ a[data-collapsible="navPages-account"] {
   }
   .countPill {
     background-color: $teal;
+  }
+  .navUser-item--cart {
+    .navUser-action {
+      .navUser-item-cartLabel {
+        color: $teal !important;
+      }
+    }
   }
 }
