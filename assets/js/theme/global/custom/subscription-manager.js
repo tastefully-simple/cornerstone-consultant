@@ -101,7 +101,7 @@ function loadSubscriptionModal(subscriptionModal, contentTemplate) {
  */
 function isAutoshipEnabled(productId) {
     $.ajax({
-        url: `${window.subscriptionManager.apiUrl}/Subscriptions/products/${productId}`,
+        url: `${window.subscriptionManager.apiUrl}/Products/${productId}`,
         type: 'GET',
         dataType: 'JSON',
         success(response) {
