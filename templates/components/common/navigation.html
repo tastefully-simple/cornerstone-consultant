@@ -51,6 +51,11 @@
                 </a>
             </li>
             {{/if}}
+            {{#if customer}}
+                <li class="navUser-item navUser-item--account">
+                    {{> components/common/earned-incentives-button}}
+                </li>
+            {{/if}}
             <li class="navUser-item navUser-item--account">
                 {{#if customer}}
                 <a class="navUser-action main-user-menu"
@@ -67,6 +72,7 @@
                         <li><a class="textgray-text" href="{{urls.account.orders.all}}">{{lang 'account.nav.order_history'}}</a></li>
                         <li><a class="textgray-text" href="/manage-subscriptions/">{{lang 'account.nav.manage_subscriptions'}}</a></li>
                         <li><a class="textgray-text" href="{{urls.account.wishlists.all}}">{{lang 'account.nav.wishlists_menu'}}</a></li>
+                        <li><a class="textgray-text" href="/earned-incentives/">earned incentives</a></li>
                         <li><a class="textgray-text" href="{{urls.auth.logout}}">{{lang 'common.logout'}}</a></li>
                     </ul>
                 </div>

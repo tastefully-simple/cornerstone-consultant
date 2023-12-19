@@ -164,47 +164,20 @@ function subscriptionUpdated(subscriptionId) {
 }
 
 /**
- * Renew the Current Customer API JWT token
- * @returns {Promise<void>}
- */
-async function renewToken() {
-    const resource = `/customer/current.jwt?app_client_id=${window.currentCustomer.bigcommerce_app_client_id}`;
-    window.currentCustomer.token = await fetch(resource)
-        .then(response => {
-            if (response.status === 200) {
-                return response.text();
-            }
-            swal.fire({
-                text: 'An error has happened. Please, try again later. (001)',
-                icon: 'error',
-            });
-            return response.status;
-        })
-        .catch(error => {
-            console.log(error);
-            swal.fire({
-                text: 'An error has happened. Please, try again later. (002)',
-                icon: 'error',
-            });
-            return -1;
-        });
-}
-
-/**
  * Send a request to add productId into subscriptionId
  * @param subscriptionId
  * @param productId
  * @returns {Promise<void>}
  */
 async function updateSubscription(subscriptionId, productId, quantitySubscription) {
-    await renewToken();
 
+    const jwtToken = await window.jwtToken();
     $.ajax({
         url: `${window.subscriptionManager.apiUrl}/Subscriptions/${subscriptionId}/products`,
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'jwt-token': window.currentCustomer.token,
+            'jwt-token': jwtToken
         },
         data: JSON.stringify({
             productId,
