@@ -11,7 +11,7 @@
         {{#each cart.items}}
             {{assignVar 'isIncentive' '0'}}
             {{#each category_names}}
-                {{#if this '==' 'supplies'}}
+                {{#if this '==' 'Incentive Items'}}
                     {{assignVar 'isIncentive' '1'}}
                 {{/if}}
             {{/each}}
