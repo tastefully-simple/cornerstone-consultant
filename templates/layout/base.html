@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="{{ locale_name }}">
     <head>
+
         <title>{{ head.title }}</title>
         {{{ resourceHints }}}
         {{{ head.meta_tags }}}
@@ -11,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script>
+
             {{!-- Change document class from no-js to js so we can detect this in css --}}
             document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
         </script>
@@ -53,6 +55,7 @@
         {{~inject 'customerId' customer.id}}
         {{~inject 'sessionManagement' theme_settings.session_management}}
         {{~inject 'subscriptionManagement' theme_settings.subscription_management}}
+        {{~inject 'consultantManagement' theme_settings.consultant_management}}
         {{!-- add fontawesome --}}
         <script src="https://kit.fontawesome.com/b258ff8a4b.js" crossorigin="anonymous"></script>
     </head>

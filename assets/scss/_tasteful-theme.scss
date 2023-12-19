@@ -423,3 +423,53 @@ a {
         font-weight: 800;
     }
 }
+
+.incentive-item {
+    border: solid 1px black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.incetinve-item-title, .incetinve-item-date {
+    display: block;
+    margin-bottom: 0px;
+    margin-top: 6px;
+}
+.incentive-item-add {
+    text-align: end;
+}
+.incentive-item-add button {
+    margin-bottom: 0px !important;
+}
+.incetinve-item-title, .incetinve-item-date, .incentive-item-add {
+    flex-basis: 33%;
+}
+
+.razoyo-sticker {
+    color: black;
+    float: left;
+    position: relative;
+    z-index: zIndex("lower");
+    svg {
+        fill: #ffc107;
+        height: 50px;
+        width: 50px;
+    }
+
+    .sticker-text {
+        color: black;
+        display: flex;
+        flex-direction: column;
+        float: left;
+        height: 50px;
+        justify-content: center;
+        left: 0px;
+        line-height: 1;
+        position: absolute;
+        text-align: center;
+        top: 0px;
+        width: 50px;
+    }
+}
