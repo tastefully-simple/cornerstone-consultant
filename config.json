@@ -373,6 +373,10 @@
       "enabled": true,
       "api_url": "https://qa1-subscription.api.tastefullysimple.com/4"
     },
+    "consultant_management": {
+      "enabled": true,
+      "api_url": "https://qa1-consultant.api.tastefullysimple.com/store/4"
+    },
     "ts_help_email": "help@tastefullysimple.com"
   },
   "read_only_files": [
@@ -421,6 +425,10 @@
         "subscription_management": {
           "enabled": true,
           "api_url": "https://qa1-subscription.api.tastefullysimple.com/store/4"
+        },
+        "consultant_management": {
+            "enabled": true,
+            "api_url": "https://qa1-consultant.api.tastefullysimple.com/store/4"
         }
       }
     },
@@ -452,6 +460,10 @@
         "subscription_management": {
           "enabled": true,
           "api_url": "https://qa1-subscription.api.tastefullysimple.com/store/4"
+        },
+        "consultant_management": {
+            "enabled": true,
+            "api_url": "https://qa1-consultant.api.tastefullysimple.com/store/4"
         }
       }
     },
@@ -483,6 +495,10 @@
         "subscription_management": {
           "enabled": true,
           "api_url": "https://stage-subscription.api.tastefullysimple.com/store/4"
+        },
+        "consultant_management": {
+            "enabled": true,
+            "api_url": "https://stage-consultant.api.tastefullysimple.com/store/4"
         }
       }
     },
@@ -514,6 +530,10 @@
         "subscription_management": {
           "enabled": true,
           "api_url": "https://subscription.api.tastefullysimple.com/store/4"
+        },
+        "consultant_management": {
+            "enabled": true,
+            "api_url": "https://consultant.api.tastefullysimple.com/store/4"
         }
       }
     }

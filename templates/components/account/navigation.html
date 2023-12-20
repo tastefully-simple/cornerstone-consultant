@@ -27,5 +27,8 @@
                 <a class="navBar-action" href="{{urls.account.wishlists.all}}">{{lang 'account.nav.wishlists'}}</a>
             </li>
         {{/if}}
+        <li class="navBar-item {{#if account_page '===' 'earned-incentives'}}is-active{{/if}}">
+            <a class="navBar-action" href="/earned-incentives/">Earned Incentives</a>
+        </li>
     </ul>
 </nav>

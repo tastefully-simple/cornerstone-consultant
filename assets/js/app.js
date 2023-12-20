@@ -52,7 +52,9 @@ const pageClasses = {
     wishlists: () => import('./theme/wishlist'),
 };
 
-const customClasses = {};
+const customClasses = {
+    'pages/custom/page/incentives': () => import('./theme/earned-incentives'),
+};
 
 /**
  * This function gets added to the global window and then called

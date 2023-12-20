@@ -2,6 +2,8 @@ import 'focus-within-polyfill';
 
 import './global/jquery-migrate';
 import './common/select-option-plugin';
+import 'regenerator-runtime/runtime';
+import 'foundation-sites/js/foundation/foundation';
 import PageManager from './page-manager';
 import quickSearch from './global/quick-search';
 import currencySelector from './global/currency-selector';
@@ -18,10 +20,15 @@ import gridListSwitcher from './global/custom/grid-list-switcher';
 import sessionManager from './global/custom/session-manager';
 import subscriptionManager from './global/custom/subscription-manager';
 import stickyHeader from './global/sticky-header';
+import globalIncentives from './global/global-incentives';
+import jwtTokenManager from './global/jwt-token';
 
 export default class Global extends PageManager {
     onReady() {
         const { cartId, secureBaseUrl } = this.context;
+
+        window.jwtToken = jwtTokenManager;
+
         cartPreview(secureBaseUrl, cartId);
         quickSearch();
         currencySelector(cartId);
@@ -33,6 +40,7 @@ export default class Global extends PageManager {
         privacyCookieNotification();
         svgInjector();
         stickyHeader();
+        globalIncentives(this.context.customerId ?? 0, this.context.consultantManagement.api_url);
 
         // Custom components
         sessionManager(
