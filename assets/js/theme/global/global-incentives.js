@@ -19,14 +19,23 @@ export default async function (customerId, apiUrl) {
         },
         success(response) {
             if (response && response.rewards && response.rewards.count) {
-                document.querySelector('.razoyo-sticker.incentives .sticker-text').innerText = response.rewards.count;
+                // Mobile
+                document.querySelector('.mobile-nav-name .razoyo-sticker.incentives .sticker-text').innerText = response.rewards.count;
+                // Desktop
+                document.querySelector('.navUser-item .razoyo-sticker.incentives .sticker-text').innerText = response.rewards.count;
             } else {
-                document.querySelector('.razoyo-sticker.incentives .sticker-text').innerText = 0;
+                // Mobile
+                document.querySelector('.mobile-nav-name .razoyo-sticker.incentives .sticker-text').innerText = 0;
+                // Desktop
+                document.querySelector('.navUser-item .razoyo-sticker.incentives .sticker-text').innerText = 0;
             }
         },
         error(xhr, status, error) {
             console.error('Error getting incentive count', xhr, status, error);
-            document.querySelector('.razoyo-sticker.incentives .sticker-text').innerText = 0;
+            // Mobile
+            document.querySelector('.mobile-nav-name .razoyo-sticker.incentives .sticker-text').innerText = 0;
+            // Desktop
+            document.querySelector('.navUser-item .razoyo-sticker.incentives .sticker-text').innerText = 0;
         },
     });
 }

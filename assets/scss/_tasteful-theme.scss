@@ -461,6 +461,7 @@ a {
 .razoyo-sticker {
     color: black;
     float: left;
+    margin-top: 3px;
     position: relative;
     z-index: zIndex("lower");
     &.incentives {
@@ -468,8 +469,8 @@ a {
     }
     svg {
         fill: #ffc107;
-        height: 50px;
-        width: 50px;
+        height: 40px;
+        width: 40px;
     }
 
     .sticker-text {
@@ -477,13 +478,18 @@ a {
         display: flex;
         flex-direction: column;
         float: left;
-        height: 50px;
+        height: 40px;
         justify-content: center;
         left: 0px;
         line-height: 1;
         position: absolute;
         text-align: center;
         top: 0px;
-        width: 50px;
+        width: 40px;
     }
+}
+
+.mobile-nav-name {
+    display: flex;
+    justify-content: space-between;
 }
