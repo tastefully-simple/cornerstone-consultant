@@ -1,15 +1,6 @@
 {{#partial "page"}}
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-    {{! @razoyo todo - fix breadcrumbs }}
-    {{inject "tmp" breadcrumbs }}
-
-    <script>
-        var jsContext = JSON.parse({{jsContext}});
-console.log(jsContext.tmp);
-// results in: "BigCommerce Coffee Mug"
-    </script>
-
     <h2 class="page-heading">Earned Incentives</h2>
     {{> components/account/navigation account_page='earned-incentives'}}
 

@@ -38,11 +38,10 @@ export default class EarnedIncentives extends PageManager {
                 formData.set('qty[]', '1');
 
                 utils.api.cart.itemAdd(formData, (err, response) => {
-                        console.warn('err', err);
-                        console.warn('err response', response);
+                    console.warn('err', err);
+                    console.warn('err response', response);
                     if(err == null) {
                         e.target.innerText = 'Added!';
-                    } else {
                     }
                 });
             }
@@ -57,7 +56,7 @@ export default class EarnedIncentives extends PageManager {
     async grabIncentives() {
         const that = this;
         const itemIds = [];
-        if(that.context.cartId) {
+        if (that.context.cartId) {
             await fetch('/api/storefront/checkouts/' + that.context.cartId, {
                 credentials: 'include'
             }).then(
