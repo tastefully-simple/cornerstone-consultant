@@ -9,6 +9,8 @@ export default async function (customerId, apiUrl) {
     }
 
     const jwtToken = await window.jwtToken();
+    const mobileSelector = '.mobile-nav-name .razoyo-sticker.incentives';
+    const desktopSelector = '.navUser-item .razoyo-sticker.incentives';
 
     $.ajax({
         url: `${apiUrl}/incentives/${customerId}/count`,
@@ -20,22 +22,36 @@ export default async function (customerId, apiUrl) {
         success(response) {
             if (response && response.rewards && response.rewards.count) {
                 // Mobile
-                document.querySelector('.mobile-nav-name .razoyo-sticker.incentives .sticker-text').innerText = response.rewards.count;
+                document.querySelector(mobileSelector + ' .sticker-text').innerText = response.rewards.count;
+
                 // Desktop
-                document.querySelector('.navUser-item .razoyo-sticker.incentives .sticker-text').innerText = response.rewards.count;
+                document.querySelector(desktopSelector + ' .sticker-text').innerText = response.rewards.count;
+
+                if(response.rewards.count != 0) {
+                    document.querySelector(mobileSelector).classList.remove('hidden');
+                    document.querySelector(desktopSelector).classList.remove('hidden');
+                }
             } else {
                 // Mobile
-                document.querySelector('.mobile-nav-name .razoyo-sticker.incentives .sticker-text').innerText = 0;
+                document.querySelector(mobileSelector + ' .sticker-text').innerText = 0;
+
                 // Desktop
-                document.querySelector('.navUser-item .razoyo-sticker.incentives .sticker-text').innerText = 0;
+                document.querySelector(desktopSelector + ' .sticker-text').innerText = 0;
+
+                document.querySelector(mobileSelector).classList.add('hidden');
+                document.querySelector(desktopSelector).classList.add('hidden');
             }
         },
         error(xhr, status, error) {
             console.error('Error getting incentive count', xhr, status, error);
             // Mobile
-            document.querySelector('.mobile-nav-name .razoyo-sticker.incentives .sticker-text').innerText = 0;
+            document.querySelector(mobileSelector + ' .sticker-text').innerText = 0;
+
             // Desktop
-            document.querySelector('.navUser-item .razoyo-sticker.incentives .sticker-text').innerText = 0;
+            document.querySelector(desktopSelector + ' .sticker-text').innerText = 0;
+
+            document.querySelector(mobileSelector).classList.add('hidden');
+            document.querySelector(desktopSelector).classList.add('hidden');
         },
     });
 }
