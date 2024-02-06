@@ -461,11 +461,16 @@ a {
 .razoyo-sticker {
     color: black;
     float: left;
+    height: 44px;
     margin-top: 3px;
     position: relative;
+    width: 40px;
     z-index: zIndex("lower");
     &.incentives {
       z-index: 1;
+    }
+    &.hidden svg, &.hidden span {
+        display: none;
     }
     svg {
         fill: #ffc107;
