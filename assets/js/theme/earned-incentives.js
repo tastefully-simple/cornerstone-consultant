@@ -90,12 +90,12 @@ export default class EarnedIncentives extends PageManager {
                 if(response && response.rewards && response.rewards.items) {
                     response.rewards.items.forEach((product) => {
                         let productDisabled = false;
-                        if(disabledItemIds.includes(product.id)) {
+                        if(disabledItemIds.includes(product.productId)) {
                             productDisabled = true;
                         }
                         const effectiveDate = new Date(Date.parse(product.effectiveDate));
                         const effectiveDateString = `${effectiveDate.getMonth()}/${effectiveDate.getDay()}/${effectiveDate.getFullYear()}`;
-                        that.addIncentive(product.productName, effectiveDateString, product.id, productDisabled);
+                        that.addIncentive(product.productName, effectiveDateString, product.productId, productDisabled);
                     });
                 }
             },
@@ -106,13 +106,13 @@ export default class EarnedIncentives extends PageManager {
         });
     }
 
-    addIncentive (title, date, id, disabled) {
+    addIncentive(title, date, productId, disabled) {
         var incentiveItem = document.createElement('div');
         incentiveItem.classList.add("incentive-item");
         incentiveItem.innerHTML = `
             <p class="incetinve-item-title">${title}</p>
             <p class="incetinve-item-date">Available Until: ${date}</p>
-            <div class="incentive-item-add"><button ${disabled ? 'disabled="true"' : ''} data-product-id="${id}" class="button button--primary">Add to Cart</button></div>
+            <div class="incentive-item-add"><button ${disabled ? 'disabled="true"' : ''} data-product-id="${productId}" class="button button--primary">Add to Cart</button></div>
         `;
         document.querySelector('.incentive-list').append(incentiveItem);
     }
