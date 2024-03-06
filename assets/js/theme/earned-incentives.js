@@ -79,6 +79,9 @@ export default class EarnedIncentives extends PageManager {
     async getIncentives(disabledItemIds) {
         const that = this;
         const jwtToken = await window.jwtToken();
+        const retryCount = 2;
+        let tryCount = 1;
+
         $.ajax({
             url: `${that.context.consultantManagement.api_url}/incentives/${that.context.customerId}/list`,
             method: 'GET',
@@ -101,7 +104,17 @@ export default class EarnedIncentives extends PageManager {
             },
             // eslint-disable-next-line no-unused-vars
             error(xhr, status, error) {
-                console.error('Error getting incentive products', xhr, status, error);
+                const request = this;
+                // Retry req with fresh token
+                if (xhr.status == 401 && tryCount <= retryCount) {
+                    tryCount++;
+                    window.jwtToken(true).then((freshToken) => {
+                        request.headers['jwt-token'] = freshToken;
+                        return $.ajax(request);
+                    });
+                } else {
+                    console.error('Error getting incentive products', xhr, status, error);
+                }
             },
         });
     }
