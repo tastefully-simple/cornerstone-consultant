@@ -172,6 +172,9 @@ function subscriptionUpdated(subscriptionId) {
 async function updateSubscription(subscriptionId, productId, quantitySubscription) {
 
     const jwtToken = await window.jwtToken();
+    const retryCount = 2;
+    let tryCount = 1;
+
     $.ajax({
         url: `${window.subscriptionManager.apiUrl}/Subscriptions/${subscriptionId}/products`,
         method: 'POST',
@@ -186,6 +189,7 @@ async function updateSubscription(subscriptionId, productId, quantitySubscriptio
         }),
         // eslint-disable-next-line no-unused-vars
         success(response) {
+            console.log('SUBSCRIPTION MANAGER SUCCESSFULL');
             subscriptionUpdated(subscriptionId);
             $(`#subscriptionManager--${window.subscriptionManager.version} .subscriptions-footer:first`).hide();
             $(`#subscriptionManager--${window.subscriptionManager.version} .subscriptions-cancel`).hide();
@@ -195,10 +199,20 @@ async function updateSubscription(subscriptionId, productId, quantitySubscriptio
         },
         // eslint-disable-next-line no-unused-vars
         error(xhr, status, error) {
-            swal.fire({
-                text: 'An error has happened. Please, try again later. (003)',
-                icon: 'error',
-            });
+            const request = this;
+            // Retry req with fresh token
+            if (xhr.status == 401 && tryCount <= retryCount) {
+                tryCount++;
+                window.jwtToken(true).then((freshToken) => {
+                    request.headers['jwt-token'] = freshToken;
+                    return $.ajax(request);
+                });
+            } else {
+                swal.fire({
+                    text: 'An error has happened. Please, try again later. (003)',
+                    icon: 'error',
+                });
+            }
         },
     });
 }
