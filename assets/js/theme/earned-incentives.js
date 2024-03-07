@@ -79,6 +79,9 @@ export default class EarnedIncentives extends PageManager {
     async getIncentives(disabledItemIds) {
         const that = this;
         const jwtToken = await window.jwtToken();
+        const retryCount = 2;
+        let tryCount = 1;
+
         $.ajax({
             url: `${that.context.consultantManagement.api_url}/incentives/${that.context.customerId}/list`,
             method: 'GET',
@@ -90,29 +93,39 @@ export default class EarnedIncentives extends PageManager {
                 if(response && response.rewards && response.rewards.items) {
                     response.rewards.items.forEach((product) => {
                         let productDisabled = false;
-                        if(disabledItemIds.includes(product.id)) {
+                        if(disabledItemIds.includes(product.productId)) {
                             productDisabled = true;
                         }
                         const effectiveDate = new Date(Date.parse(product.effectiveDate));
                         const effectiveDateString = `${effectiveDate.getMonth()}/${effectiveDate.getDay()}/${effectiveDate.getFullYear()}`;
-                        that.addIncentive(product.productName, effectiveDateString, product.id, productDisabled);
+                        that.addIncentive(product.productName, effectiveDateString, product.productId, productDisabled);
                     });
                 }
             },
             // eslint-disable-next-line no-unused-vars
             error(xhr, status, error) {
-                console.error('Error getting incentive products', xhr, status, error);
+                const request = this;
+                // Retry req with fresh token
+                if (xhr.status == 401 && tryCount <= retryCount) {
+                    tryCount++;
+                    window.jwtToken(true).then((freshToken) => {
+                        request.headers['jwt-token'] = freshToken;
+                        return $.ajax(request);
+                    });
+                } else {
+                    console.error('Error getting incentive products', xhr, status, error);
+                }
             },
         });
     }
 
-    addIncentive (title, date, id, disabled) {
+    addIncentive(title, date, productId, disabled) {
         var incentiveItem = document.createElement('div');
         incentiveItem.classList.add("incentive-item");
         incentiveItem.innerHTML = `
             <p class="incetinve-item-title">${title}</p>
             <p class="incetinve-item-date">Available Until: ${date}</p>
-            <div class="incentive-item-add"><button ${disabled ? 'disabled="true"' : ''} data-product-id="${id}" class="button button--primary">Add to Cart</button></div>
+            <div class="incentive-item-add"><button ${disabled ? 'disabled="true"' : ''} data-product-id="${productId}" class="button button--primary">Add to Cart</button></div>
         `;
         document.querySelector('.incentive-list').append(incentiveItem);
     }
