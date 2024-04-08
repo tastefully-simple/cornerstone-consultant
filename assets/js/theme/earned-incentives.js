@@ -38,10 +38,27 @@ export default class EarnedIncentives extends PageManager {
                 formData.set('qty[]', e.target.dataset.qty);
 
                 utils.api.cart.itemAdd(formData, (err, response) => {
-                    console.warn('err', err);
-                    console.warn('err response', response);
-                    if(err == null) {
+                    if (err == null) {
+                        const $body = $('body');
                         e.target.innerText = 'Added!';
+                        let qty = 0;
+
+                        // Get existing quantity from localStorage if found
+                        if (utils.tools.storage.localStorageAvailable()) {
+                            if (localStorage.getItem('cart-quantity')) {
+                                qty = Number(localStorage.getItem('cart-quantity'));
+                            }
+                        }
+
+                        response.data.line_items.forEach(function(item) {
+                            qty += item.quantity;
+                        });
+
+                        $body.trigger('cart-quantity-update', qty);
+                    }
+                    if (err) {
+                        console.warn('err', err);
+                        console.warn('err response', response);
                     }
                 });
             }
