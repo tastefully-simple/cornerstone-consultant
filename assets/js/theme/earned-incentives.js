@@ -35,7 +35,7 @@ export default class EarnedIncentives extends PageManager {
                 let formData = new FormData();
                 formData.set('action', 'add');
                 formData.set('product_id', e.target.dataset.productId);
-                formData.set('qty[]', '1');
+                formData.set('qty[]', e.target.dataset.qty);
 
                 utils.api.cart.itemAdd(formData, (err, response) => {
                     console.warn('err', err);
@@ -98,7 +98,14 @@ export default class EarnedIncentives extends PageManager {
                         if(disabledItemIds.includes(product.productId) || expirationDate < new Date()) {
                             productDisabled = true;
                         }
-                        that.addIncentive(product.productName, expirationDateString, product.productId, productDisabled);
+
+                        that.addIncentive(
+                            product.productName, 
+                            expirationDateString, 
+                            product.productId, 
+                            product.quantity, 
+                            productDisabled
+                        );
                     });
                 }
             },
@@ -119,13 +126,18 @@ export default class EarnedIncentives extends PageManager {
         });
     }
 
-    addIncentive(title, date, productId, disabled) {
+    addIncentive(title, date, productId, qty, disabled) {
         var incentiveItem = document.createElement('div');
         incentiveItem.classList.add("incentive-item");
         incentiveItem.innerHTML = `
             <p class="incetinve-item-title">${title}</p>
             <p class="incetinve-item-date">Available Until: ${date}</p>
-            <div class="incentive-item-add"><button ${disabled ? 'disabled="true"' : ''} data-product-id="${productId}" class="button button--primary">Add to Cart</button></div>
+            <div class="incentive-item-add">
+                <button ${disabled ? 'disabled="true"' : ''} 
+                    data-product-id="${productId}" 
+                    data-qty="${qty}" 
+                    class="button button--primary">Add to Cart</button>
+            </div>
         `;
         document.querySelector('.incentive-list').append(incentiveItem);
     }
