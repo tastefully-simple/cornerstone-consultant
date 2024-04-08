@@ -93,12 +93,12 @@ export default class EarnedIncentives extends PageManager {
                 if(response && response.rewards && response.rewards.items) {
                     response.rewards.items.forEach((product) => {
                         let productDisabled = false;
-                        if(disabledItemIds.includes(product.productId)) {
+                        let expirationDate = new Date(Date.parse(product.expirationDate));
+                        let expirationDateString = `${expirationDate.getMonth()+1}/${expirationDate.getDate()}/${expirationDate.getFullYear()}`;
+                        if(disabledItemIds.includes(product.productId) || expirationDate < new Date()) {
                             productDisabled = true;
                         }
-                        const effectiveDate = new Date(Date.parse(product.effectiveDate));
-                        const effectiveDateString = `${effectiveDate.getMonth()}/${effectiveDate.getDay()}/${effectiveDate.getFullYear()}`;
-                        that.addIncentive(product.productName, effectiveDateString, product.productId, productDisabled);
+                        that.addIncentive(product.productName, expirationDateString, product.productId, productDisabled);
                     });
                 }
             },
