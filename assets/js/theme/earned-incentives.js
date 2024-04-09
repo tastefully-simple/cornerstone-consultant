@@ -35,13 +35,30 @@ export default class EarnedIncentives extends PageManager {
                 let formData = new FormData();
                 formData.set('action', 'add');
                 formData.set('product_id', e.target.dataset.productId);
-                formData.set('qty[]', '1');
+                formData.set('qty[]', e.target.dataset.qty);
 
                 utils.api.cart.itemAdd(formData, (err, response) => {
-                    console.warn('err', err);
-                    console.warn('err response', response);
-                    if(err == null) {
+                    if (err == null) {
+                        const $body = $('body');
                         e.target.innerText = 'Added!';
+                        let qty = 0;
+
+                        // Get existing quantity from localStorage if found
+                        if (utils.tools.storage.localStorageAvailable()) {
+                            if (localStorage.getItem('cart-quantity')) {
+                                qty = Number(localStorage.getItem('cart-quantity'));
+                            }
+                        }
+
+                        response.data.line_items.forEach(function(item) {
+                            qty += item.quantity;
+                        });
+
+                        $body.trigger('cart-quantity-update', qty);
+                    }
+                    if (err) {
+                        console.warn('err', err);
+                        console.warn('err response', response);
                     }
                 });
             }
@@ -93,12 +110,21 @@ export default class EarnedIncentives extends PageManager {
                 if(response && response.rewards && response.rewards.items) {
                     response.rewards.items.forEach((product) => {
                         let productDisabled = false;
+                        let expirationDate = new Date(Date.parse(product.expirationDate));
+                        let expirationDateString = `${expirationDate.getMonth()+1}/${expirationDate.getDate()}/${expirationDate.getFullYear()}`;
                         if(disabledItemIds.includes(product.productId)) {
                             productDisabled = true;
                         }
-                        const effectiveDate = new Date(Date.parse(product.effectiveDate));
-                        const effectiveDateString = `${effectiveDate.getMonth()}/${effectiveDate.getDay()}/${effectiveDate.getFullYear()}`;
-                        that.addIncentive(product.productName, effectiveDateString, product.productId, productDisabled);
+
+                        if(expirationDate >= new Date()) {
+                            that.addIncentive(
+                                product.productName, 
+                                expirationDateString, 
+                                product.productId, 
+                                product.quantity, 
+                                productDisabled
+                            );
+                        }
                     });
                 }
             },
@@ -119,13 +145,18 @@ export default class EarnedIncentives extends PageManager {
         });
     }
 
-    addIncentive(title, date, productId, disabled) {
+    addIncentive(title, date, productId, qty, disabled) {
         var incentiveItem = document.createElement('div');
         incentiveItem.classList.add("incentive-item");
         incentiveItem.innerHTML = `
             <p class="incetinve-item-title">${title}</p>
             <p class="incetinve-item-date">Available Until: ${date}</p>
-            <div class="incentive-item-add"><button ${disabled ? 'disabled="true"' : ''} data-product-id="${productId}" class="button button--primary">Add to Cart</button></div>
+            <div class="incentive-item-add">
+                <button ${disabled ? 'disabled="true"' : ''} 
+                    data-product-id="${productId}" 
+                    data-qty="${qty}" 
+                    class="button button--primary">Add to Cart</button>
+            </div>
         `;
         document.querySelector('.incentive-list').append(incentiveItem);
     }
