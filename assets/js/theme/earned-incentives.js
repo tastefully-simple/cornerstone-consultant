@@ -110,10 +110,12 @@ export default class EarnedIncentives extends PageManager {
                 if(response && response.rewards && response.rewards.items) {
                     response.rewards.items.forEach((product) => {
                         let productDisabled = false;
+                        let buttonMessage = "Add to Cart";
                         let expirationDate = new Date(Date.parse(product.expirationDate));
                         let expirationDateString = `${expirationDate.getMonth()+1}/${expirationDate.getDate()}/${expirationDate.getFullYear()}`;
                         if(disabledItemIds.includes(product.productId)) {
                             productDisabled = true;
+                            buttonMessage = "Added!";
                         }
 
                         if(expirationDate >= new Date()) {
@@ -122,7 +124,8 @@ export default class EarnedIncentives extends PageManager {
                                 expirationDateString, 
                                 product.productId, 
                                 product.quantity, 
-                                productDisabled
+                                productDisabled,
+                                buttonMessage
                             );
                         }
                     });
@@ -145,7 +148,7 @@ export default class EarnedIncentives extends PageManager {
         });
     }
 
-    addIncentive(title, date, productId, qty, disabled) {
+    addIncentive(title, date, productId, qty, disabled, btnMessage) {
         var incentiveItem = document.createElement('div');
         incentiveItem.classList.add("incentive-item");
         incentiveItem.innerHTML = `
@@ -155,7 +158,7 @@ export default class EarnedIncentives extends PageManager {
                 <button ${disabled ? 'disabled="true"' : ''} 
                     data-product-id="${productId}" 
                     data-qty="${qty}" 
-                    class="button button--primary">Add to Cart</button>
+                    class="button button--primary">${btnMessage}</button>
             </div>
         `;
         document.querySelector('.incentive-list').append(incentiveItem);
