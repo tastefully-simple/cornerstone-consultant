@@ -134,13 +134,13 @@ export default class EarnedIncentives extends PageManager {
                     }else {
                         console.log('rewards has no items');
                         var incentiveItem = document.createElement('div');
-                        incentiveItem.innerHTML = '<p>Customer has no active subscriptions.</p>';
+                        incentiveItem.innerHTML = '<p>You have no earned incentives available.</p>';
                         document.querySelector('.incentive-list').append(incentiveItem);
                     }
                 } else {
                     console.log('rewards is empty')
                     var incentiveItem = document.createElement('div');
-                    incentiveItem.innerHTML = '<p>Customer has no active subscriptions.</p>';
+                    incentiveItem.innerHTML = '<p>You have no earned incentives available.</p>';
                     document.querySelector('.incentive-list').append(incentiveItem);
                 }
             },
