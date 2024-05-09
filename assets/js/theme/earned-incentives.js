@@ -135,14 +135,14 @@ export default class EarnedIncentives extends PageManager {
                         console.log('rewards has no items');
                         var incentiveItem = document.createElement('div');
                         incentiveItem.classList.add("alertBox");
-                        incentiveItem.innerHTML = '<p>You have no earned incentives available.</p>';
+                        incentiveItem.innerHTML = '<span>You have no earned incentives available.</span>';
                         document.querySelector('.incentive-list').append(incentiveItem);
                     }
                 } else {
                     console.log('rewards is empty')
                     var incentiveItem = document.createElement('div');
                     incentiveItem.classList.add("alertBox");
-                    incentiveItem.innerHTML = '<p>You have no earned incentives available.</p>';
+                    incentiveItem.innerHTML = '<span>You have no earned incentives available.</span>';
                     document.querySelector('.incentive-list').append(incentiveItem);
                 }
             },
