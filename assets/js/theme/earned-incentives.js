@@ -108,28 +108,36 @@ export default class EarnedIncentives extends PageManager {
             },
             success(response) {
                 if(response && response.rewards && response.rewards.items) {
-                    response.rewards.items.forEach((product) => {
-                        let productDisabled = false;
-                        let buttonMessage = "Add to Cart";
-                        let expirationDate = new Date(Date.parse(product.expirationDate));
-                        let expirationDateString = `${expirationDate.getMonth()+1}/${expirationDate.getDate()}/${expirationDate.getFullYear()}`;
-                        if(disabledItemIds.includes(product.productId)) {
-                            productDisabled = true;
-                            buttonMessage = "Added!";
-                        }
+                    if(response.rewards.items.length > 0){
+                        console.log('rewards has items')
+                        response.rewards.items.forEach((product) => {
+                            let productDisabled = false;
+                            let buttonMessage = "Add to Cart";
+                            let expirationDate = new Date(Date.parse(product.expirationDate));
+                            let expirationDateString = `${expirationDate.getMonth()+1}/${expirationDate.getDate()}/${expirationDate.getFullYear()}`;
+                            if(disabledItemIds.includes(product.productId)) {
+                                productDisabled = true;
+                                buttonMessage = "Added!";
+                            }
+    
+                            if(expirationDate >= new Date()) {
+                                that.addIncentive(
+                                    product.productName, 
+                                    expirationDateString, 
+                                    product.productId, 
+                                    product.quantity, 
+                                    productDisabled,
+                                    buttonMessage
+                                );
+                            }
+                        });
+                    }else {
+                        console.log('rewards has no items')
+                        document.querySelector('.incentive-list').append('<p>Customer has no active subscriptions.</p>');
+                    }
 
-                        if(expirationDate >= new Date()) {
-                            that.addIncentive(
-                                product.productName, 
-                                expirationDateString, 
-                                product.productId, 
-                                product.quantity, 
-                                productDisabled,
-                                buttonMessage
-                            );
-                        }
-                    });
                 } else {
+                    console.log('rewards is empty')
                     document.querySelector('.incentive-list').append('<p>Customer has no active subscriptions.</p>');
                 }
             },
