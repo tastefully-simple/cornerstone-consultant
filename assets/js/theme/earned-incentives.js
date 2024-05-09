@@ -132,13 +132,16 @@ export default class EarnedIncentives extends PageManager {
                             }
                         });
                     }else {
-                        console.log('rewards has no items')
-                        document.querySelector('.incentive-list').append('<p>Customer has no active subscriptions.</p>');
+                        console.log('rewards has no items');
+                        var incentiveItem = document.createElement('div');
+                        incentiveItem.innerHTML = '<p>Customer has no active subscriptions.</p>';
+                        document.querySelector('.incentive-list').append(incentiveItem);
                     }
-
                 } else {
                     console.log('rewards is empty')
-                    document.querySelector('.incentive-list').append('<p>Customer has no active subscriptions.</p>');
+                    var incentiveItem = document.createElement('div');
+                    incentiveItem.innerHTML = '<p>Customer has no active subscriptions.</p>';
+                    document.querySelector('.incentive-list').append(incentiveItem);
                 }
             },
             // eslint-disable-next-line no-unused-vars
