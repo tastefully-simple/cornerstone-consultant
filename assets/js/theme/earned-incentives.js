@@ -129,6 +129,8 @@ export default class EarnedIncentives extends PageManager {
                             );
                         }
                     });
+                } else {
+                    document.querySelector('.incentive-list').append('<p>Customer has no active subscriptions.</p>');
                 }
             },
             // eslint-disable-next-line no-unused-vars
