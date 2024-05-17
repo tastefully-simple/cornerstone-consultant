@@ -7,6 +7,13 @@
 <script type="text/javascript">
     window.language = {{{langJson 'optimized_checkout'}}};
 </script>
+<script type="text/javascript">
+    const refererPath = document.referrer.replace(window.location.origin, '');
+    if (refererPath !== '/cart.php') {
+        window.location.href = '/cart.php';
+    }
+</script>
+
 
 {{{head.scripts}}}
 
