@@ -16,6 +16,9 @@
             {{!-- Change document class from no-js to js so we can detect this in css --}}
             document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
         </script>
+        <script>
+            window.themeGraphql = '{{ settings.storefront_api.token }}';
+        </script>
 
         {{> components/common/polyfill-script }}
         <script>window.consentManagerTranslations = `{{{langJson 'consent_manager'}}}`;</script>

@@ -53,7 +53,6 @@ const pageClasses = {
 };
 
 const customClasses = {
-    'pages/custom/page/incentives': () => import('./theme/earned-incentives'),
 };
 
 /**

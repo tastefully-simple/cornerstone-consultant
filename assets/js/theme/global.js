@@ -20,7 +20,7 @@ import gridListSwitcher from './global/custom/grid-list-switcher';
 import sessionManager from './global/custom/session-manager';
 import subscriptionManager from './global/custom/subscription-manager';
 import stickyHeader from './global/sticky-header';
-import globalIncentives from './global/global-incentives';
+import earnedIncentives from './global/earned-incentives';
 import jwtTokenManager from './global/jwt-token';
 
 export default class Global extends PageManager {
@@ -40,7 +40,7 @@ export default class Global extends PageManager {
         privacyCookieNotification();
         svgInjector();
         stickyHeader();
-        globalIncentives(this.context.customerId ?? 0, this.context.consultantManagement.api_url);
+        let incetives = new earnedIncentives(this.context);
 
         // Custom components
         sessionManager(

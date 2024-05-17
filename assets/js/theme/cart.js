@@ -276,6 +276,11 @@ export default class Cart extends PageManager {
             // edit item in cart
             this.cartEditOptions(itemId, productId);
         });
+
+        const $body = $('body');
+        $body.on('cart-refresh', (event) => {
+            this.refreshContent(true);
+        });
     }
 
     bindPromoCodeEvents() {
