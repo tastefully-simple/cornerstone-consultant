@@ -133,7 +133,6 @@ export default class EarnedIncentives {
             },
             success(response) {
                 if(response && response.rewards && response.rewards.items) {
-                    if(response.rewards.items.length > 0){
                     response.rewards.items.forEach((product) => {
                         let productDisabled = false;
                         let expirationDate = new Date(Date.parse(product.expirationDate));
@@ -154,12 +153,6 @@ export default class EarnedIncentives {
                         incentiveProducts.push(incentiveProduct);
                     });
                     return incentiveProducts;
-                }else {
-                        console.log('rewards has no items');
-                        var incentiveItem = document.createElement('div');
-                        incentiveItem.classList.add("alertBox");
-                        incentiveItem.innerHTML = '<span>You have no earned incentives.</span>';
-                        document.querySelector('.incentive-list').append(incentiveItem);
                 }
             },
             // eslint-disable-next-line no-unused-vars
@@ -172,13 +165,6 @@ export default class EarnedIncentives {
                         request.headers['jwt-token'] = freshToken;
                         return $.ajax(request);
                     });
-                } else {
-                    console.error('Error getting incentive products', xhr, status, error);
-                    console.log('rewards is empty')
-                    var incentiveItem = document.createElement('div');
-                    incentiveItem.classList.add("alertBox");
-                    incentiveItem.innerHTML = '<span>You have no earned incentives.</span>';
-                    document.querySelector('.incentive-list').append(incentiveItem);
                 }
                 return [];
             },
@@ -212,6 +198,13 @@ export default class EarnedIncentives {
                 document.querySelector('.incentive-list').append(incentiveItem);
             }
         });
+        if(inventiveProducts.length < 1){
+            console.log('rewards has no items');
+            var incentiveItem = document.createElement('div');
+            incentiveItem.classList.add("alertBox");
+            incentiveItem.innerHTML = '<span>You have no earned incentives.</span>';
+            document.querySelector('.incentive-list').append(incentiveItem);
+        }
     }
 
     async removeExpiredIncentives(activeIncentiveItemIds) {
