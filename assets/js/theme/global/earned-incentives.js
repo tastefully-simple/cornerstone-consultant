@@ -153,6 +153,12 @@ export default class EarnedIncentives {
                         incentiveProducts.push(incentiveProduct);
                     });
                     return incentiveProducts;
+                }else {
+                        console.log('rewards has no items');
+                        var incentiveItem = document.createElement('div');
+                        incentiveItem.classList.add("alertBox");
+                        incentiveItem.innerHTML = '<span>You have no earned incentives.</span>';
+                        document.querySelector('.incentive-list').append(incentiveItem);
                 }
             },
             // eslint-disable-next-line no-unused-vars
@@ -167,6 +173,11 @@ export default class EarnedIncentives {
                     });
                 } else {
                     console.error('Error getting incentive products', xhr, status, error);
+                    console.log('rewards is empty')
+                    var incentiveItem = document.createElement('div');
+                    incentiveItem.classList.add("alertBox");
+                    incentiveItem.innerHTML = '<span>You have no earned incentives.</span>';
+                    document.querySelector('.incentive-list').append(incentiveItem);
                 }
                 return [];
             },
