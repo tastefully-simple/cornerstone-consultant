@@ -165,7 +165,9 @@ export default class EarnedIncentives {
                         request.headers['jwt-token'] = freshToken;
                         return $.ajax(request);
                     });
-                }
+                 } else {
+                    console.error('Error getting incentive products', xhr, status, error);
+                 }
                 return [];
             },
         })
