@@ -133,6 +133,7 @@ export default class EarnedIncentives {
             },
             success(response) {
                 if(response && response.rewards && response.rewards.items) {
+                    if(response.rewards.items.length > 0){
                     response.rewards.items.forEach((product) => {
                         let productDisabled = false;
                         let expirationDate = new Date(Date.parse(product.expirationDate));
