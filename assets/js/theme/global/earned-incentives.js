@@ -52,11 +52,19 @@ export default class EarnedIncentives {
                             }
                         }
 
-                        response.data.line_items.forEach(function(item) {
-                            qty += item.quantity;
-                        });
+                        if (response.data.hasOwnProperty('line_items')) {
+                            response.data.line_items.forEach(function(item) {
+                                qty += item.quantity;
+                            });
 
-                        that.updateMiniCart(qty);
+                            that.updateMiniCart(qty);
+                        } else {
+                            utils.api.cart.getCartQuantity({}, (err, qty) => {
+                                if (typeof qty === 'number') {
+                                    that.updateMiniCart(qty);
+                                }
+                            });
+                        }
                     }
                     if (err) {
                         console.warn('err', err);
