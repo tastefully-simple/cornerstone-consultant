@@ -218,12 +218,23 @@ export default class EarnedIncentives {
     }
 
     async removeExpiredIncentives(activeIncentiveItemIds) {
+        
+        console.log("removeExpiredIncentives");
+        console.log(activeIncentiveItemIds);
+        
+        
         let cartLineItems = await this.getLineItemIds();
         let cartLineItemIds = [];
         cartLineItems.forEach((item) => {
             cartLineItemIds.push(item.productId);
         });
         let incentiveLineItems = await this.getIncentiveCartItem(cartLineItemIds);
+        
+        console.log("cartLineItemIds");
+        console.log(cartLineItemIds);
+        console.log("incentiveLineItems");
+        console.log(incentiveLineItems);
+        
         let incentiveCartLineItemsToRemove = [];
         cartLineItems.forEach((cartItem) => {
             if (incentiveLineItems.includes(cartItem.productId) && !activeIncentiveItemIds.includes(cartItem.productId)) { 
@@ -237,6 +248,9 @@ export default class EarnedIncentives {
         if (incentiveCartLineItemsToRemove.length > 0) {
             this.updateMiniCart(cartItemQty);
         }
+
+        console.log("incentiveCartLineItemsToRemove");
+        console.log(incentiveCartLineItemsToRemove);
         return incentiveCartLineItemsToRemove;
     }
 
