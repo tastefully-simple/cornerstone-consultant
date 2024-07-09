@@ -218,23 +218,14 @@ export default class EarnedIncentives {
     }
 
     async removeExpiredIncentives(activeIncentiveItemIds) {
-        
-        console.log("removeExpiredIncentives");
-        console.log(activeIncentiveItemIds);
-        
-        
+
         let cartLineItems = await this.getLineItemIds();
         let cartLineItemIds = [];
         cartLineItems.forEach((item) => {
             cartLineItemIds.push(item.productId);
         });
         let incentiveLineItems = await this.getIncentiveCartItem(cartLineItemIds);
-        
-        console.log("cartLineItemIds");
-        console.log(cartLineItemIds);
-        console.log("incentiveLineItems");
-        console.log(incentiveLineItems);
-        
+                
         let incentiveCartLineItemsToRemove = [];
         cartLineItems.forEach((cartItem) => {
             if (incentiveLineItems.includes(cartItem.productId) && !activeIncentiveItemIds.includes(cartItem.productId)) { 
@@ -249,8 +240,6 @@ export default class EarnedIncentives {
             this.updateMiniCart(cartItemQty);
         }
 
-        console.log("incentiveCartLineItemsToRemove");
-        console.log(incentiveCartLineItemsToRemove);
         return incentiveCartLineItemsToRemove;
     }
 
@@ -314,11 +303,8 @@ export default class EarnedIncentives {
           success(response) {
             if(response && response.incentiveProductIds) {
               response.incentiveProductIds.forEach((id) => {
-                  console.log(id)
                   incentiveProductIds.push(id);
               });
-            console.log("incentiveProductIds");
-            console.log(incentiveProductIds);
             return incentiveProductIds;
             }
           },
