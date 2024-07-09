@@ -302,6 +302,35 @@ export default class EarnedIncentives {
     async getIncentiveCartItem(productIds) {
         const that = this;
         const entityIdString = `[${productIds.join()}]`;
+
+
+        //alternate method for checking if cart items are incentive items...
+        await $.ajax({
+          url: `${that.context.consultantManagement.api_url}/incentives/items/${productIds.join()}`,
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          success(response) {
+            if(response && response.incentiveProductIds) {
+              response.incentiveProductIds.forEach((id) => {
+                  console.log(id)
+                  inventiveProductIds.push(id);
+              });
+              //return inventiveProductIds;
+            }
+          },
+          // eslint-disable-next-line no-unused-vars
+          error(xhr, status, error) {
+              const request = this;
+              // Retry req with fresh token
+              onsole.error('Error getting incentive products list', xhr, status, error);
+              return [];
+          },
+        })
+
+
+        
         try {
             const graphqlToken = window.themeGraphql;
             const response = await fetch('/graphql', {
