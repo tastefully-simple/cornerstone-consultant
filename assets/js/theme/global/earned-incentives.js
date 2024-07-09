@@ -317,17 +317,19 @@ export default class EarnedIncentives {
                   console.log(id)
                   incentiveProductIds.push(id);
               });
-              return incentiveProductIds;
+            console.log("incentiveProductIds");
+            console.log(incentiveProductIds);
+            return incentiveProductIds;
             }
           },
           // eslint-disable-next-line no-unused-vars
           error(xhr, status, error) {
-              const request = this;
-              // Retry req with fresh token
               console.error('Error getting incentive products list', xhr, status, error);
               return [];
           },
         })
+
+       return incentiveProductIds;
     }
 
     parseCartItems(data) {
