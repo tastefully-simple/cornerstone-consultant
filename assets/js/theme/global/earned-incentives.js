@@ -302,7 +302,7 @@ export default class EarnedIncentives {
     async getIncentiveCartItem(productIds) {
         const that = this;
         const entityIdString = `[${productIds.join()}]`;
-
+        let incentiveProductIds = [];
 
         //alternate method for checking if cart items are incentive items...
         await $.ajax({
@@ -315,73 +315,19 @@ export default class EarnedIncentives {
             if(response && response.incentiveProductIds) {
               response.incentiveProductIds.forEach((id) => {
                   console.log(id)
-                  inventiveProductIds.push(id);
+                  incentiveProductIds.push(id);
               });
-              //return inventiveProductIds;
+              return incentiveProductIds;
             }
           },
           // eslint-disable-next-line no-unused-vars
           error(xhr, status, error) {
               const request = this;
               // Retry req with fresh token
-              onsole.error('Error getting incentive products list', xhr, status, error);
+              console.error('Error getting incentive products list', xhr, status, error);
               return [];
           },
         })
-
-
-        
-        try {
-            const graphqlToken = window.themeGraphql;
-            const response = await fetch('/graphql', {
-                method: 'POST',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${graphqlToken}`
-                },
-                body: JSON.stringify({
-                    query: `
-                    {
-                      site {
-                        products(entityIds: ${entityIdString}) {
-                          edges {
-                            node {
-                              categories {
-                                edges {
-                                  node {
-                                    name
-                                  }
-                                }
-                              }
-                              entityId
-                              sku
-                            }
-                          }
-                        }
-                      }
-                    }
-                    `
-                }),
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
-            }
-
-            let data = await response.json();
-            let productData = that.parseProducts(data) ?? [];
-            let inventiveProductIds = [];
-            productData.forEach((productData) => {
-                if (productData.categories.includes('Incentive Items')) {
-                    inventiveProductIds.push(productData.productId);
-                }
-            });
-            
-            return inventiveProductIds;
-        } catch (error) {
-            return [];
-        }
     }
 
     parseCartItems(data) {
