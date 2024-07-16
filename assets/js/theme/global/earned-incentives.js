@@ -52,11 +52,19 @@ export default class EarnedIncentives {
                             }
                         }
 
-                        response.data.line_items.forEach(function(item) {
-                            qty += item.quantity;
-                        });
+                        if (response.data.hasOwnProperty('line_items')) {
+                            response.data.line_items.forEach(function(item) {
+                                qty += item.quantity;
+                            });
 
-                        that.updateMiniCart(qty);
+                            that.updateMiniCart(qty);
+                        } else {
+                            utils.api.cart.getCartQuantity({}, (err, qty) => {
+                                if (typeof qty === 'number') {
+                                    that.updateMiniCart(qty);
+                                }
+                            });
+                        }
                     }
                     if (err) {
                         console.warn('err', err);
@@ -200,15 +208,24 @@ export default class EarnedIncentives {
                 document.querySelector('.incentive-list').append(incentiveItem);
             }
         });
+        if(inventiveProducts.length < 1){
+            console.log('rewards has no items');
+            var incentiveItem = document.createElement('div');
+            incentiveItem.classList.add("alertBox");
+            incentiveItem.innerHTML = '<span>You have no earned incentives.</span>';
+            document.querySelector('.incentive-list').append(incentiveItem);
+        }
     }
 
     async removeExpiredIncentives(activeIncentiveItemIds) {
+
         let cartLineItems = await this.getLineItemIds();
         let cartLineItemIds = [];
         cartLineItems.forEach((item) => {
             cartLineItemIds.push(item.productId);
         });
         let incentiveLineItems = await this.getIncentiveCartItem(cartLineItemIds);
+                
         let incentiveCartLineItemsToRemove = [];
         cartLineItems.forEach((cartItem) => {
             if (incentiveLineItems.includes(cartItem.productId) && !activeIncentiveItemIds.includes(cartItem.productId)) { 
@@ -222,6 +239,7 @@ export default class EarnedIncentives {
         if (incentiveCartLineItemsToRemove.length > 0) {
             this.updateMiniCart(cartItemQty);
         }
+
         return incentiveCartLineItemsToRemove;
     }
 
@@ -273,57 +291,31 @@ export default class EarnedIncentives {
     async getIncentiveCartItem(productIds) {
         const that = this;
         const entityIdString = `[${productIds.join()}]`;
-        try {
-            const graphqlToken = window.themeGraphql;
-            const response = await fetch('/graphql', {
-                method: 'POST',
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${graphqlToken}`
-                },
-                body: JSON.stringify({
-                    query: `
-                    {
-                      site {
-                        products(entityIds: ${entityIdString}) {
-                          edges {
-                            node {
-                              categories {
-                                edges {
-                                  node {
-                                    name
-                                  }
-                                }
-                              }
-                              entityId
-                              sku
-                            }
-                          }
-                        }
-                      }
-                    }
-                    `
-                }),
-            });
+        let incentiveProductIds = [];
 
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
+        //alternate method for checking if cart items are incentive items...
+        await $.ajax({
+          url: `${that.context.consultantManagement.api_url}/incentives/items/${productIds.join()}`,
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          success(response) {
+            if(response && response.incentiveProductIds) {
+              response.incentiveProductIds.forEach((id) => {
+                  incentiveProductIds.push(id);
+              });
+            return incentiveProductIds;
             }
+          },
+          // eslint-disable-next-line no-unused-vars
+          error(xhr, status, error) {
+              console.error('Error getting incentive products list', xhr, status, error);
+              return [];
+          },
+        })
 
-            let data = await response.json();
-            let productData = that.parseProducts(data) ?? [];
-            let inventiveProductIds = [];
-            productData.forEach((productData) => {
-                if (productData.categories.includes('Incentive Items')) {
-                    inventiveProductIds.push(productData.productId);
-                }
-            });
-            
-            return inventiveProductIds;
-        } catch (error) {
-            return [];
-        }
+       return incentiveProductIds;
     }
 
     parseCartItems(data) {
