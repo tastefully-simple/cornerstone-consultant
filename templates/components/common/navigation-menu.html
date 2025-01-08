@@ -102,6 +102,7 @@
         {{/if}}
         {{#if customer}}
             <li class="navPages-item">
+                <div class="mobile-nav-name">
                 <a class="navPages-action has-subMenu is-open"
                    href="{{urls.account.index}}"
                    data-collapsible="navPages-account"
@@ -111,6 +112,8 @@
                 >
                     Hi, {{ first (split customer.name " ") }}!
                 </a>
+                    {{> components/common/earned-incentives-button}}
+                </div>
                 <div class="navPage-subMenu is-open" id="navPages-account" aria-hidden="false" tabindex="-1">
                     <ul class="navPage-subMenu-list">
                         <li class="navPage-subMenu-item">
@@ -163,6 +166,14 @@
                                aria-label="{{lang 'account.mobile_nav.wishlists'}}"
                             >
                                 {{lang 'account.mobile_nav.wishlists'}}
+                            </a>
+                        </li>
+                        <li class="navPage-subMenu-item">
+                            <a class="navPage-subMenu-action navPages-action"
+                               href="/earned-incentives/"
+                               aria-label="Earned Incentives"
+                            >
+                                Earned Incentives
                             </a>
                         </li>
                         <li class="navPage-subMenu-item">
